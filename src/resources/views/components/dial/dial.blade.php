@@ -10,6 +10,7 @@
     >
     <button type="button" x-ref="button" @if (!$hover) x-on:click="show = !show" @endif dusk="tallstackui_dial_toggle" 
         @class([
+            $colors['background'],
             $personalize['button'],
             'rounded-full' => !$square,
             'rounded-lg' => $square,
