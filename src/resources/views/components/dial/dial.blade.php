@@ -2,19 +2,15 @@
     $personalize = $classes();
 @endphp
 
-<div x-data="{ show: false }" @class($personalize["position.{$position}"])
-    @if ($hover)
-        x-on:mouseover="show = true"
-        x-on:mouseleave="show = false"
-    @endif
-    >
-    <button type="button" x-ref="button" @if (!$hover) x-on:click="show = !show" @endif dusk="tallstackui_dial_toggle" 
-        @class([
-            $colors['background'],
-            $personalize['button'],
-            'rounded-full' => !$square,
-            'rounded-lg' => $square,
-        ])>
+<div x-data="{ show: false }" @class($personalize["position.{$position}"]) @if ($hover) x-on:mouseover="show = true" x-on:mouseleave="show = false" @endif>
+    <button type="button"
+            dusk="tallstackui_dial_toggle"
+            x-ref="button"
+            @class([
+                'rounded-full' => !$square,
+                $colors['background'],
+                $personalize['button'],
+            ]) @if (!$hover) x-on:click="show = !show" @endif>
         @if ($icon)
             <x-dynamic-component :component="TallStackUi::component('icon')"
                                  :icon="TallStackUi::icon($icon)"

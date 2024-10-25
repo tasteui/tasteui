@@ -34,7 +34,7 @@ class Dial extends TallStackUiComponent implements Personalization
     {
         return Arr::dot([
             'icon' => 'w-5 h-5 transition-transform',
-            'button' => 'flex items-center justify-center text-white w-14 h-14 focus:ring-4 focus:outline-none',
+            'button' => 'focus:shadow-outline text-md dark:focus:ring-offset-dark-900 group inline-flex h-14 w-14 items-center justify-center gap-x-2 border border-transparent outline-none transition-all duration-200 ease-in-out hover:shadow-sm focus:border-transparent focus:ring-2 focus:ring-offset-2 focus:ring-offset-white disabled:cursor-not-allowed disabled:opacity-80',
             'position' => [
                 'top-left' => 'fixed top-6 start-6 group',
                 'top-right' => 'fixed top-6 end-6 group',
