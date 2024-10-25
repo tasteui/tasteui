@@ -2,13 +2,13 @@
     $personalize = $classes();
 @endphp
 
-<button type="button"
-    @class([
+<{{ $tag }} @if ($href) href="{{ $href }}" @else type="{{ $attributes->get('type', 'button') }}" @endif
+    {{ $attributes->except('type')->class([
         $personalize['button'],
         'rounded-full' => !$square,
         'rounded-lg' => $square,
         'flex-col' => $label
-    ])>
+    ]) }}>
     <x-dynamic-component :component="TallStackUi::component('icon')"
             :icon="TallStackUi::icon($icon)"
             @class([
@@ -20,4 +20,4 @@
         <span @class($personalize['label'])>{{ $label }}</span>
         <span class="sr-only">{{ $label }}</span>
     @endif
-</button>
+</{{ $tag }}>

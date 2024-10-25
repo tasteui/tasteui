@@ -13,7 +13,7 @@ it('can render', function () {
 });
 
 it('can render with label', function () {
-    $dial = <<<HTML
+    $dial = <<<'HTML'
     <x-dial text="Menu">
         <x-dial.items icon="arrow-up" label="Up" />
     </x-dial>

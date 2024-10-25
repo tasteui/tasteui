@@ -4,17 +4,21 @@ namespace TallStackUi\View\Components\Dial;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Arr;
+use TallStackUi\Foundation\Attributes\PassThroughRuntime;
 use TallStackUi\Foundation\Attributes\SoftPersonalization;
 use TallStackUi\Foundation\Personalization\Contracts\Personalization;
+use TallStackUi\Foundation\Support\Runtime\Components\DialItemRuntime;
 use TallStackUi\TallStackUiComponent;
 
 #[SoftPersonalization('dial.items')]
+#[PassThroughRuntime(DialItemRuntime::class)]
 class Items extends TallStackUiComponent implements Personalization
 {
     public function __construct(
         public ?string $icon = null,
         public ?string $label = null,
         public ?bool $square = false,
+        public ?string $href = null,
         public ?string $tooltip = null,
         public ?string $tooltipPosition = 'right',
     ) {
