@@ -63,6 +63,8 @@ abstract class AbstractRuntime
 
     /**
      * Get data from $this->data using data_get when $key is set or return the whole data as a collection.
+     *
+     * @return mixed|Collection
      */
     protected function data(?string $key = null, mixed $default = null): mixed
     {

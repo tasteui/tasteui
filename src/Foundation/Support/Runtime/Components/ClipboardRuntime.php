@@ -10,7 +10,7 @@ class ClipboardRuntime extends AbstractRuntime
     public function runtime(): array
     {
         $data = [
-            'sentence' => $text = $this->data['text'] ??= $this->data('slot')->toHtml(),
+            'sentence' => $text = $this->data('text') ?? $this->data('slot')->toHtml(),
             'hash' => md5($text.uniqid()),
         ];
 

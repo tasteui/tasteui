@@ -25,7 +25,7 @@ class Password extends TallStackUiComponent implements Personalization
         public ?bool $generator = false,
         public ?bool $invalidate = null
     ) {
-        //
+        $this->rules = collect($this->rules);
     }
 
     /**
@@ -37,7 +37,7 @@ class Password extends TallStackUiComponent implements Personalization
     {
         // This is not a "final" method because it
         // can be overridden in the child class.
-        return ['min' => '8', 'symbols' => '!@#$%^&*()_+-='];
+        return ['min' => '8', 'symbols' => '!@#$%^&*()_+-=']; // TODO: config this.
     }
 
     public function blade(): View
