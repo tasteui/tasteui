@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\View\ViewException;
-use TallStackUi\View\Components\Form\Password;
 
 it('can render')
     ->expect('<x-password />')
@@ -29,7 +28,7 @@ it('can render with rules', function () {
     expect($component)
         ->render()
         ->toContain(trans('tallstack-ui::messages.password.rules.title'))
-        ->toContain(trans('tallstack-ui::messages.password.rules.formats.min', ['min' => Password::defaults()['min']]))
+        ->toContain(trans('tallstack-ui::messages.password.rules.formats.min', ['min' => __ts_configuration('settings.form.password.rules')['min']]))
         ->toContain(trans('tallstack-ui::messages.password.rules.formats.symbols', ['symbols' => '!@#']))
         ->toContain(trans('tallstack-ui::messages.password.rules.formats.numbers'))
         ->toContain(trans('tallstack-ui::messages.password.rules.formats.mixed'));

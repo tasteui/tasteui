@@ -28,18 +28,6 @@ class Password extends TallStackUiComponent implements Personalization
         $this->rules = collect($this->rules);
     }
 
-    /**
-     * Set the default rules values for `min` and `symbols`.
-     *
-     * @return string[]
-     */
-    public static function defaults(): array
-    {
-        // This is not a "final" method because it
-        // can be overridden in the child class.
-        return ['min' => '8', 'symbols' => '!@#$%^&*()_+-=']; // TODO: config this.
-    }
-
     public function blade(): View
     {
         return view('tallstack-ui::components.form.password');
@@ -70,7 +58,7 @@ class Password extends TallStackUiComponent implements Personalization
     protected function setup(): void
     {
         $this->rules = collect($this->rules)->reduce(function (Collection $carry, string $value) {
-            $defaults = self::defaults();
+            $defaults = __ts_configuration('settings.form.password.rules');
 
             if (str_contains($value, 'min')) {
                 $carry->put('min', (explode(':', $value)[1] ?? $defaults['min']));
