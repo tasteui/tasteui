@@ -31,10 +31,14 @@ class TimeRuntime extends AbstractRuntime
         return $data;
     }
 
-    private function validate(array|string $value): void
+    private function validate(mixed $value): void
     {
         if (! is_string($value)) {
             throw new InvalidArgumentException('The time [value] must be a string.');
+        }
+
+        if ($this->data('format') === '12' && ! preg_match('/(AM|PM)/', $value)) {
+            throw new InvalidArgumentException('The time format is not 24 and the value does not contain the interval. Please, include the interval (AM/PM).');
         }
     }
 }
