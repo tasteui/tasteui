@@ -1,6 +1,6 @@
 <?php
 
-namespace TallStackUi\View\Components\Select\Traits;
+namespace TallStackUi\View\Components\Form\Select\Traits;
 
 use Illuminate\Support\Collection;
 use InvalidArgumentException;

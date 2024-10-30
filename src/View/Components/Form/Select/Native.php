@@ -1,6 +1,6 @@
 <?php
 
-namespace TallStackUi\View\Components\Select;
+namespace TallStackUi\View\Components\Form\Select;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Arr;
@@ -11,8 +11,8 @@ use TallStackUi\Foundation\Attributes\SoftPersonalization;
 use TallStackUi\Foundation\Personalization\Contracts\Personalization;
 use TallStackUi\Foundation\Support\Runtime\Components\SelectNativeRuntime;
 use TallStackUi\TallStackUiComponent;
+use TallStackUi\View\Components\Form\Select\Traits\Setup;
 use TallStackUi\View\Components\Form\Traits\DefaultInputClasses;
-use TallStackUi\View\Components\Select\Traits\Setup;
 
 #[SoftPersonalization('select.native')]
 #[PassThroughRuntime(SelectNativeRuntime::class)]

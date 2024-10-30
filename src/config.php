@@ -64,6 +64,7 @@ return [
         */
         'ignore' => [
             // Components\Alert::class,
+            // Components\Avatar::class
         ],
     ],
 
@@ -244,6 +245,7 @@ return [
             'size' => '2xl',
             'center' => false,
         ],
+
         /*
         |----------------------------------------------------------------------
         | Loading
@@ -260,6 +262,7 @@ return [
             'blur' => false,
             'opacity' => true,
         ],
+
         /*
         |----------------------------------------------------------------------
         | Slide
@@ -280,6 +283,7 @@ return [
             'size' => 'lg',
             'position' => 'right',
         ],
+
         /*
         |----------------------------------------------------------------------
         | Toast
@@ -344,8 +348,8 @@ return [
         'radio' => Components\Form\Radio::class,
         'range' => Components\Form\Range::class,
         'rating' => Components\Rating::class,
-        'select.native' => Components\Select\Native::class,
-        'select.styled' => Components\Select\Styled::class,
+        'select.native' => Components\Form\Select\Native::class,
+        'select.styled' => Components\Form\Select\Styled::class,
         'signature' => Components\Signature::class,
         'slide' => Components\Slide::class,
         'stats' => Components\Stats::class,
