@@ -153,11 +153,7 @@ class Styled extends TallStackUiComponent implements Personalization
             throw new InvalidArgumentException('The [select.styled] [options] and [request] cannot be defined at the same time.');
         }
 
-        if (($this->common && isset($this->options[0]) && (is_array($this->options[0]) && ! $this->select)) || ! $this->common && ! $this->select) {
-            throw new InvalidArgumentException('The [select.styled] parameter [select] must be defined.');
-        }
-
-        if ($this->common || $this->request && ! is_array($this->request)) {
+        if ($this->common || ($this->request !== null && ! is_array($this->request))) {
             return;
         }
 
@@ -168,7 +164,7 @@ class Styled extends TallStackUiComponent implements Personalization
         $this->request['method'] = strtolower((string) $this->request['method']);
 
         if (! in_array($this->request['method'], ['get', 'post'])) {
-            throw new InvalidArgumentException('The [select.styled] parameter [method] must be get or post.');
+            throw new InvalidArgumentException('The [select.styled] parameter [method] must be "get" or "post".');
         }
 
         if (! isset($this->request['params'])) {

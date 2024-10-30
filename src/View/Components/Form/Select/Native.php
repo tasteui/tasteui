@@ -5,7 +5,6 @@ namespace TallStackUi\View\Components\Form\Select;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use InvalidArgumentException;
 use TallStackUi\Foundation\Attributes\PassThroughRuntime;
 use TallStackUi\Foundation\Attributes\SoftPersonalization;
 use TallStackUi\Foundation\Personalization\Contracts\Personalization;
@@ -45,13 +44,5 @@ class Native extends TallStackUiComponent implements Personalization
             'input' => [...$this->input()],
             'error' => $this->error('focus:ring-2'),
         ]);
-    }
-
-    /** @throws InvalidArgumentException */
-    protected function validate(): void
-    {
-        if (($this->options !== [] && is_array($this->options[0])) && ! $this->select) {
-            throw new InvalidArgumentException('The [select] parameter must be defined');
-        }
     }
 }

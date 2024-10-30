@@ -4,6 +4,7 @@ namespace TallStackUi\View\Components\Form\Select\Traits;
 
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
+use TallStackUi\View\Components\Form\Select\Native;
 
 trait Setup
 {
@@ -13,7 +14,7 @@ trait Setup
             ? $this->options->values()->toArray()
             : array_values($this->options);
 
-        $this->select ??= $this->options !== [] ? 'label:label|value:value' : $this->select;
+        $this->select ??= 'label:label|value:value';
 
         if (! $this->select || ($this->options !== [] && ! is_array($this->options[0]))) {
             return;
@@ -23,13 +24,15 @@ trait Setup
 
         [$label, $value] = array_map(fn ($item) => explode(':', $item)[1], $select);
 
-        $this->options = collect($this->options)->map(function (array $item) use ($label, $value): array {
+        $component = $this instanceof Native ? 'select.native' : 'select.styled';
+
+        $this->options = collect($this->options)->map(function (array $item) use ($label, $value, $component): array {
             if (! isset($item[$label])) {
-                throw new InvalidArgumentException("The select.styled key [$label] is missing in the options array.");
+                throw new InvalidArgumentException("The $component key [$label] is missing in the options array.");
             }
 
             if (! isset($item[$value])) {
-                throw new InvalidArgumentException("The select.styled [$value] is missing in the options array.");
+                throw new InvalidArgumentException("The $component [$value] is missing in the options array.");
             }
 
             // TODO: test it.
