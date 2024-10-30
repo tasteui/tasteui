@@ -16,7 +16,7 @@ class RatingRuntime extends AbstractRuntime
 
         $this->validate($bind->get('property'));
 
-        return ['entangle' => $entangle === 'null' ? ($this->data['rate'] ?? 'null') : $entangle];
+        return ['entangle' => $entangle === 'null' ? ($this->data('rate') ?? 'null') : $entangle];
     }
 
     /** @throws Exception */
@@ -26,11 +26,13 @@ class RatingRuntime extends AbstractRuntime
             return;
         }
 
-        if ($this->data['static'] === false && ! method_exists($this->livewire, $this->data['evaluateMethod'])) {
-            throw new InvalidArgumentException('The rating ['.$this->data['evaluateMethod'].'] must be a public method of the Livewire component.');
+        $method = $this->data('evaluateMethod');
+
+        if ($this->data('static') === false && ! method_exists($this->livewire, $method)) {
+            throw new InvalidArgumentException('The rating ['.$method.'] must be a public method of the Livewire component.');
         }
 
-        if ($this->data['rate'] !== null) {
+        if ($this->data('rate') !== null) {
             throw new InvalidArgumentException('The rating [rate] can be omitted because you are in Livewire context. You can use `wire:model` instead.');
         }
 

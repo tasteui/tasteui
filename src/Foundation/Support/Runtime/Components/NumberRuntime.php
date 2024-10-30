@@ -11,7 +11,7 @@ class NumberRuntime extends AbstractRuntime
     /** @throws Exception */
     public function runtime(): array
     {
-        $chevron = $this->data['chevron'];
+        $chevron = $this->data('chevron');
 
         [$left, $right] = [
             $chevron ? 'chevron-down' : 'minus',

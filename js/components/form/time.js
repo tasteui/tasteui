@@ -1,4 +1,4 @@
-import {warning, wireChange} from '../../helpers';
+import { wireChange } from '../../helpers';
 import dayjs from 'dayjs';
 
 export default (model, full, times, required, livewire, property, value, change = null) => ({
@@ -25,10 +25,6 @@ export default (model, full, times, required, livewire, property, value, change 
     this.model ??= this.value ?? (required ? dayjs().format('HH:mm A') : null);
     this.empty = this.model === null;
     this.hours = full ? '00' : '01';
-
-    if (!full && this.model && !/(AM|PM)/.test(this.model ?? this.value)) {
-      warning('The time format is not complete. Please, include the interval (AM/PM).');
-    }
 
     if (this.model) this.hydrate();
 
