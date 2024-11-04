@@ -45,7 +45,10 @@
                     <x-tallstack-ui::icon.generic.loading class="{{ $personalize['loading.icon'] }}" wire:loading="{{ $target }}" />
                 @endif
                 @if (!$headerless)
-                    <thead @class(['uppercase', $personalize['table.thead.normal'] => !$striped, $personalize['table.thead.striped'] => $striped])>
+                    <thead @class([
+                            'uppercase', $personalize['table.thead.normal'] => !$striped,
+                            $personalize['table.thead.striped'] => $striped
+                        ])>
                         <tr>
                             @if ($selectable)
                                 <th @class(['w-6', $personalize['table.th']]) wire:key="checkall-{{ implode(',', $ids()) }}">
@@ -60,10 +63,10 @@
                                 @php
                                     $additionalColClass = '';
                                     if(isset($header['addClass'])){
-                                        $additionalColClass = ' '.$header['addClass'];
+                                        $additionalColClass = $header['addClass'];
                                     }
                                 @endphp
-                                <th scope="col" @class($personalize['table.th'] . $additionalColClass)>
+                                <th scope="col" @class([$personalize['table.th'], $additionalColClass])>
                                     <a @if ($livewire && $sortable($header))
                                             class="inline-flex truncate cursor-pointer"
                                             wire:click="$set('sort', {column: '{{ $head($header)['column'] }}', direction: '{{ $head($header)['direction'] }}' })"
@@ -116,15 +119,15 @@
 
                                     $additionalColClass = '';
                                     if(isset($header['addClass'])){
-                                        $additionalColClass = ' '.$header['addClass'];
+                                        $additionalColClass = $header['addClass'];
                                     }
                                 @endphp
                                 @isset(${"column_".$row})
-                                    <td @if ($clickable) x-on:click.prevent="redirect(@js($url), @js($blank))" @endif @class([$personalize['table.td'] . $additionalColClass, 'cursor-pointer' => $clickable])>
+                                    <td @if ($clickable) x-on:click.prevent="redirect(@js($url), @js($blank))" @endif @class([$personalize['table.td'], $additionalColClass, 'cursor-pointer' => $clickable])>
                                         {{ ${"column_".$row}($value) }}
                                     </td>
                                 @else
-                                    <td @if ($clickable) x-on:click.prevent="redirect(@js($url), @js($blank))" @endif @class([$personalize['table.td'] . $additionalColClass, 'cursor-pointer' => $clickable])>
+                                    <td @if ($clickable) x-on:click.prevent="redirect(@js($url), @js($blank))" @endif @class([$personalize['table.td'], $additionalColClass, 'cursor-pointer' => $clickable])>
                                         {{ data_get($value, $header['index']) }}
                                     </td>
                                 @endisset
