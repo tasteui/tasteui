@@ -122,6 +122,7 @@ class Table extends BaseComponent implements Personalization
                 'th' => 'dark:text-dark-200 px-3 py-3.5 text-left text-sm font-semibold text-gray-700',
                 'tbody' => 'dark:bg-dark-700 dark:divide-dark-500/20 divide-y divide-gray-200 bg-white',
                 'td' => 'dark:text-dark-300 whitespace-nowrap px-3 py-4 text-sm text-gray-500',
+                'tr' => '',
                 'thead' => [
                     'normal' => 'bg-gray-50 dark:bg-dark-600',
                     'striped' => 'bg-white dark:bg-dark-700',

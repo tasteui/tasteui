@@ -59,7 +59,7 @@
                             @foreach ($headers as $header)
                                 <th scope="col" @class($personalize['table.th'])>
                                     <a @if ($livewire && $sortable($header))
-                                            class="inline-flex cursor-pointer truncate"
+                                            class="inline-flex truncate cursor-pointer"
                                             wire:click="$set('sort', {column: '{{ $head($header)['column'] }}', direction: '{{ $head($header)['direction'] }}' })"
                                         @endif>
                                         @if ($header['unescaped'] ?? false)
@@ -70,7 +70,7 @@
                                         @if ($livewire && $sortable($header) && $sorted($header))
                                             <x-dynamic-component :component="TallStackUi::component('icon')"
                                                                  :icon="TallStackUi::icon($head($header)['direction'] === 'desc' ? 'chevron-up' : 'chevron-down')"
-                                                                 class="ml-2 h-4 w-4" />
+                                                                 class="w-4 h-4 ml-2" />
                                         @endif
                                     </a>
                                 </th>
@@ -91,7 +91,7 @@
                             $this->loop = $loop;
                             $id = md5(serialize($value).$key);
                         @endphp
-                        <tr @class(['bg-gray-50 dark:bg-dark-800/50' => $striped && $loop->index % 2 === 0]) @if ($livewire) wire:key="{{ $id }}" @endif>
+                        <tr @class([$personalize['table.tr'], 'bg-gray-50 dark:bg-dark-800/50' => $striped && $loop->index % 2 === 0]) @if ($livewire) wire:key="{{ $id }}" @endif>
                             @if ($selectable)
                                 <td @class($personalize['table.td'])>
                                     <x-dynamic-component :component="TallStackUi::component('checkbox')"
