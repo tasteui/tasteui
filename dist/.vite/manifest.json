@@ -1,20 +1,20 @@
 {
   "js/tallstackui.js": {
-    "file": "tallstackui-7617G-7v.js",
+    "file": "tallstackui-4KjyZ54m.js",
     "name": "tallstackui",
     "src": "js/tallstackui.js",
     "isEntry": true,
     "css": [
-      "tippy-BHH8rdGj.css"
+      "tippy-LriLsbSV.css"
     ]
   },
   "node_modules/tippy.js/dist/tippy.css": {
-    "file": "tippy-BHH8rdGj.css",
+    "file": "tippy-LriLsbSV.css",
     "src": "node_modules/tippy.js/dist/tippy.css",
     "isEntry": true
   },
   "src/resources/css/tallstackui.css": {
-    "file": "tallstackui-BBIAbLVB.css",
+    "file": "tallstackui-BuPV4JVC.css",
     "src": "src/resources/css/tallstackui.css",
     "isEntry": true
   }
