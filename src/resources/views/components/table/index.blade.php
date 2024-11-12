@@ -58,7 +58,7 @@
                             @foreach ($headers as $header)
                                 <th scope="col" @class($personalize['table.th'])>
                                     <a @if ($livewire && $sortable($header))
-                                            class="inline-flex truncate cursor-pointer"
+                                            class="inline-flex cursor-pointer truncate"
                                             wire:click="$set('sort', {column: '{{ $head($header)['column'] }}', direction: '{{ $head($header)['direction'] }}' })"
                                         @endif>
                                         @if ($header['unescaped'] ?? false)
@@ -68,7 +68,7 @@
                                         @endif
                                         @if ($livewire && $sortable($header))
                                             <x-dynamic-component :component="TallStackUi::component('icon')"
-                                                                 :icon="TallStackUi::icon($sorted($header) ? ($head($header)['direction'] === 'desc' ? 'chevron-up' : 'chevron-down') : 'chevron-up-down')" 
+                                                                 :icon="TallStackUi::icon($sorted($header) ? ($head($header)['direction'] === 'desc' ? 'chevron-up' : 'chevron-down') : 'chevron-up-down')"
                                                                  @class($personalize['table.sort']) />
                                         @endif
                                     </a>
@@ -90,7 +90,7 @@
                             $this->loop = $loop;
                             $id = md5(serialize($value).$key);
                         @endphp
-                        <tr @class(['bg-gray-50 dark:bg-dark-800/50' => $striped && $loop->index % 2 === 0]) @if ($livewire) wire:key="{{ $id }}" @endif>
+                        <tr @class([$personalize['table.tr'], 'bg-gray-50 dark:bg-dark-800/50' => $striped && $loop->index % 2 === 0]) @if ($livewire) wire:key="{{ $id }}" @endif>
                             @if ($selectable)
                                 <td @class($personalize['table.td'])>
                                     <x-dynamic-component :component="TallStackUi::component('checkbox')"
