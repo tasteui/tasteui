@@ -24,6 +24,7 @@ class TallStackUi
 
     /**
      * Get the component name adding the prefix when set.
+     * TODO: rename this.
      */
     public function component(?string $name = null): ComponentPrefix|string
     {

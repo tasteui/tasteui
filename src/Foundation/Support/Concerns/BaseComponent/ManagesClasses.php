@@ -63,9 +63,7 @@ trait ManagesClasses
             }
         }
 
-        $merge = $scoped === []
-            ? $soft
-            : Arr::only(array_merge($soft, $scoped), array_keys($scoped));
+        $merge = $scoped === [] ? $soft : Arr::only(array_merge($soft, $scoped), array_keys($scoped));
 
         // Here we do a second merge, now with the original classes and the result
         // of the previous operation that will use the scope smooth prioritization

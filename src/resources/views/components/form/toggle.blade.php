@@ -1,4 +1,5 @@
 @php
+    // TODO: maybe we can remove it from here?
     $personalize = $classes(fn (array $personalize) => $error ? array_merge($personalize, ['background.class' => preg_replace('/\bbg-[a-zA-Z0-9-]+/', '', $personalize['background.class'])]) : $personalize);
 @endphp
 
