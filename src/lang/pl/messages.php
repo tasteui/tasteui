@@ -42,12 +42,12 @@ return [
 
     'password' => [
         'rules' => [
-            'title' => 'Expected Password Format:',
+            'title' => 'Oczekiwany format hasła:',
             'formats' => [
-                'min' => 'At least :min characters',
-                'numbers' => 'At least one number',
-                'symbols' => 'At least one symbol (:symbols)',
-                'mixed' => 'At least one uppercase character',
+                'min' => 'Co najmniej :min znaków',
+                'numbers' => 'Co najmniej jedna liczba',
+                'symbols' => 'Co najmniej jeden symbol (:symbols)',
+                'mixed' => 'Co najmniej jedna wielka litera',
             ],
         ],
     ],
