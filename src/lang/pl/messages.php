@@ -14,8 +14,8 @@ return [
     'toast' => [
         'button' => [
             'ok' => 'Ok',
-            'confirm' => 'Confirm',
-            'cancel' => 'Cancel',
+            'confirm' => 'Potwierdzam',
+            'cancel' => 'Anuluj',
         ],
     ],
 
