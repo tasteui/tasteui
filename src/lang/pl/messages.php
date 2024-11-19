@@ -53,18 +53,18 @@ return [
     ],
 
     'upload' => [
-        'placeholder' => 'Choose a file',
-        'size' => 'Size',
-        'upload' => 'Click here to upload',
+        'placeholder' => 'Wybierz plik',
+        'size' => 'Rozmiar',
+        'upload' => 'Kliknij tutaj, aby przesłać plik',
         'uploaded' => [
-            'single' => ':count file send',
-            'multiple' => ':count files send',
+            'single' => ':count wysłany plik',
+            'multiple' => ':count wysyłanie pliki',
         ],
-        'error' => 'Something went wrong. Please, try again.',
+        'error' => 'Coś poszło nie tak. Spróbuj ponownie.',
         'static' => [
             'empty' => [
-                'title' => 'No images.',
-                'description' => 'You don\'t have any image yet.',
+                'title' => 'Brak obrazów.',
+                'description' => 'Nie posiadasz jeszcze żadnego obrazka.',
             ],
         ],
     ],
