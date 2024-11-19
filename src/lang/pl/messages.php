@@ -35,8 +35,8 @@ return [
 
     'clipboard' => [
         'button' => [
-            'copy' => 'Copy',
-            'copied' => 'Copied!',
+            'copy' => 'Kopiuj',
+            'copied' => 'Skopiowane!',
         ],
     ],
 
