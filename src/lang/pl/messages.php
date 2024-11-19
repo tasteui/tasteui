@@ -107,8 +107,8 @@ return [
     ],
 
     'step' => [
-        'next' => 'Next',
-        'previous' => 'Previous',
-        'finish' => 'Finish',
+        'next' => 'Następny',
+        'previous' => 'Poprzedni',
+        'finish' => 'Zakończ',
     ],
 ];
