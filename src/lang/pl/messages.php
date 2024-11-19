@@ -28,9 +28,9 @@ return [
     ],
 
     'table' => [
-        'empty' => 'No results found.',
-        'quantity' => 'Quantity',
-        'search' => 'Search something here',
+        'empty' => 'Nie znaleziono rezultatów',
+        'quantity' => 'Ilość',
+        'search' => 'Szukaj tutaj',
     ],
 
     'clipboard' => [
