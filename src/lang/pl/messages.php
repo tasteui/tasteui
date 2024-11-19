@@ -6,9 +6,9 @@ return [
     ],
 
     'select' => [
-        'default' => 'Select an option',
-        'search' => 'Search something here',
-        'empty' => 'No results found',
+        'default' => 'Wybierz opcję',
+        'search' => 'Szukaj tutaj',
+        'empty' => 'Nie znaleziono rezultatów',
     ],
 
     'toast' => [
