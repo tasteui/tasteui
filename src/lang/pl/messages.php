@@ -103,7 +103,7 @@ return [
     ],
 
     'time' => [
-        'helper' => 'Current Time',
+        'helper' => 'Aktualny czas',
     ],
 
     'step' => [
