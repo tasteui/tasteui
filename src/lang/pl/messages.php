@@ -96,9 +96,9 @@ return [
             ],
         ],
         'helpers' => [
-            'yesterday' => 'Yesterday',
-            'today' => 'Today',
-            'tomorrow' => 'Tomorrow',
+            'yesterday' => 'Wczoraj',
+            'today' => 'Dzisiaj',
+            'tomorrow' => 'Jutro',
         ],
     ],
 
