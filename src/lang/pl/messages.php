@@ -2,7 +2,7 @@
 
 return [
     'errors' => [
-        'title' => 'There are :count validation errors:',
+        'title' => 'Wystąpiły :count błędy walidacji:',
     ],
 
     'select' => [
