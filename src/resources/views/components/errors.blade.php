@@ -14,7 +14,7 @@
             <div @class([$personalize['title.wrapper'], $colors['border']])>
                 <span @class([$personalize['title.text'], $colors['text']])>
                     @if ($icon !== null)
-                        <x-dynamic-component :component="TallStackUi::component('icon')"
+                        <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                              :icon="TallStackUi::icon($icon)"
                                              @class([$personalize['title.icon']])
                                              outline />
@@ -26,7 +26,7 @@
                         class="cursor-pointer"
                         {{ $attributes->only('x-on:close') }}
                         x-on:click="close()">
-                    <x-dynamic-component :component="TallStackUi::component('icon')"
+                    <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('x-mark')"
                                          @class([$personalize['close'], $colors['text']]) />
                 </button>

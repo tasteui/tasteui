@@ -9,7 +9,7 @@
                   '{{ $personalize['circles.circle.border'] }}': parseInt(selected) === item.step && item.completed === true,
                   '{{ $personalize['circles.circle.active'] }}': parseInt(selected) > item.step || parseInt(selected) === item.step && item.completed === true,
               }">
-            <x-dynamic-component :component="TallStackUi::component('icon')"
+            <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                  :icon="TallStackUi::icon('check')"
                                  x-show="parseInt(selected) > item.step && item.completed === false || parseInt(selected) === item.step && item.completed === true"
                                  @class($personalize['circles.check']) />

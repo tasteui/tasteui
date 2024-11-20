@@ -18,7 +18,7 @@
      x-on:livewire-upload-progress="progress = $event.detail.progress"
      class="relative" x-on:click.outside="show = false">
      @if ($static) <p hidden x-ref="placeholder">{{ $placeholder }}</p> @endif
-        <x-dynamic-component :component="TallStackUi::component('input')"
+        <x-dynamic-component :component="TallStackUi::prefix('input')"
                              :value="$placeholder"
                              :$label
                              :$hint
@@ -32,7 +32,7 @@
                              floatable>
                              <x-slot:suffix>
                                 <button type="button" x-on:click="show = !show">
-                                    <x-dynamic-component :component="TallStackUi::component('icon')"
+                                    <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                          :icon="TallStackUi::icon('arrow-up-tray')"
                                                          @class($personalize['icon']) />
                                 </button>
@@ -52,7 +52,7 @@
                  dusk="tallstackui_file_preview_backdrop">
                     <div @class($personalize['preview.wrapper'])>
                         <button @class($personalize['preview.button.wrapper']) x-on:click="preview = false; $nextTick(() => show = true)">
-                            <x-dynamic-component :component="TallStackUi::component('icon')"
+                            <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="TallStackUi::icon('x-mark')"
                                                  :class="$personalize['preview.button.icon']" />
                         </button>
@@ -61,14 +61,14 @@
             </div>
         </template>
     @endif
-     <x-dynamic-component :component="TallStackUi::component('floating')"
+     <x-dynamic-component :component="TallStackUi::prefix('floating')"
                           :floating="$personalize['floating']"
                           class="w-full p-3">
          @if (!$static)
          <div @class(['flex flex-col w-full items-center justify-center', 'mb-2' => $footer->isNotEmpty()])>
              <div @class($personalize['placeholder.wrapper']) :class="{ 'bg-primary-100': dragging }">
                  <div @class($personalize['placeholder.icon.wrapper'])>
-                     <x-dynamic-component :component="TallStackUi::component('icon')"
+                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                           :icon="TallStackUi::icon('cloud-arrow-up')"
                                           @class($personalize['placeholder.icon.class']) />
                      <p @class($personalize['placeholder.title'])>
@@ -114,13 +114,13 @@
                                       @if ($preview) x-on:click="image = @js($file['url']); preview = true; show = false" @endif
                                       @class([$personalize['item.image'], 'cursor-pointer' => $preview])>
                                  @else
-                                     <x-dynamic-component :component="TallStackUi::component('icon')"
+                                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                           :icon="TallStackUi::icon('document-text')"
                                                           :class="$personalize['item.document']" />
                                  @endif
                                  <div class="flex-auto min-w-0">
                                      <p @class($personalize['item.title'])>{{ $file['real_name'] }}</p>
-                                     <x-dynamic-component :component="TallStackUi::component('error')"
+                                     <x-dynamic-component :component="TallStackUi::prefix('error')"
                                                           :property="is_array($value) ? $property . '.' . $key : $property" />
                                      @if ($file['size'] !== null)
                                          <p @class($personalize['item.size'])>
@@ -135,7 +135,7 @@
                                      <button type="button"
                                              {{ $attributes->only('x-on:remove') }}
                                              x-on:click="remove(@js($deleteMethod), @js($file))">
-                                         <x-dynamic-component :component="TallStackUi::component('icon')"
+                                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                               :icon="TallStackUi::icon('trash')"
                                                               @class($personalize['item.delete']) />
                                      </button>
@@ -147,7 +147,7 @@
              </div>
          @elseif ($static === true)
              <div @class($personalize['static.empty.wrapper'])>
-                 <x-dynamic-component :component="TallStackUi::component('icon')"
+                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                       :icon="TallStackUi::icon('photo')"
                                       :class="$personalize['static.empty.icon']" />
                  <h3 @class($personalize['static.empty.title'])>

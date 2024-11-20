@@ -13,23 +13,23 @@
             x-ref="button"
             aria-expanded="show">
         @if ($position === 'left-start')
-            <x-dynamic-component :component="TallStackUi::component('icon')"
+            <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                  :icon="TallStackUi::icon('chevron-left')"
                     @class($personalize['submenu.left']) />
         @endif
         <div @class($personalize['wrapper'])>
             @if ($icon)
-                <x-dynamic-component :component="TallStackUi::component('icon')" :$icon @class($personalize['icon']) />
+                <x-dynamic-component :component="TallStackUi::prefix('icon')" :$icon @class($personalize['icon']) />
             @endif
             {{ $text }}
         </div>
         @if ($position === 'right-start')
-        <x-dynamic-component :component="TallStackUi::component('icon')"
+        <x-dynamic-component :component="TallStackUi::prefix('icon')"
                              :icon="TallStackUi::icon('chevron-right')"
                              @class($personalize['submenu.right']) />
         @endif
     </button>
-    <x-dynamic-component :component="TallStackUi::component('floating')"
+    <x-dynamic-component :component="TallStackUi::prefix('floating')"
                          :floating="$personalize['floating']"
                          :$position
                          offset="8"

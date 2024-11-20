@@ -30,7 +30,7 @@
                             x-on:click="selected--; $refs.buttons.dispatchEvent(new CustomEvent('change', {detail: {step: selected}}));"
                             dusk="tallstackui_step_previous"
                             @class($personalize['button.wrapper'])>
-                        <x-dynamic-component :component="TallStackUi::component('icon')"
+                        <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                              :icon="TallStackUi::icon('chevron-left')"
                                              @class(['mr-1', $personalize['button.icon']]) />
                         {{ trans('tallstack-ui::messages.step.previous') }}
@@ -44,7 +44,7 @@
                         dusk="tallstackui_step_next"
                         @class($personalize['button.wrapper'])>
                     {{ trans('tallstack-ui::messages.step.next') }}
-                    <x-dynamic-component :component="TallStackUi::component('icon')"
+                    <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('chevron-right')"
                                          @class(['ml-1', $personalize['button.icon']]) />
                 </button>

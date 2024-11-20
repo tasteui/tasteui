@@ -9,10 +9,10 @@
         $personalize['border'] => $separator,
     ]) }}>
     @if ($icon && $position === 'left')
-        <x-dynamic-component :component="TallStackUi::component('icon')" :$icon @class($personalize['icon']) />
+        <x-dynamic-component :component="TallStackUi::prefix('icon')" :$icon @class($personalize['icon']) />
     @endif
     {!! $text ?? $slot !!}
     @if ($icon && $position === 'right')
-        <x-dynamic-component :component="TallStackUi::component('icon')" :$icon @class($personalize['icon']) />
+        <x-dynamic-component :component="TallStackUi::prefix('icon')" :$icon @class($personalize['icon']) />
     @endif
 </{{ $tag }}>

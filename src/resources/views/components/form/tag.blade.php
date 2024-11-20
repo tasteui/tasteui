@@ -6,7 +6,7 @@
     <input hidden name="{{ $property }}">
 @endif
 
-<x-dynamic-component :component="TallStackUi::component('wrapper.input')" :$id :$property :$error :$label :$hint :$invalidate>
+<x-dynamic-component :component="TallStackUi::prefix('wrapper.input')" :$id :$property :$error :$label :$hint :$invalidate>
     <div x-data="tallstackui_formTag({!! $entangle !!}, @js($limit), @js($prefix), @js($livewire), @js($property), @js($value))"
          x-cloak
          x-on:click="$refs.input.focus()"
@@ -24,7 +24,7 @@
                 <span @class($personalize['label.base'])>
                     <span x-text="tag"></span>
                     <button type="button" {!! $attributes->only('x-on:remove') !!} x-on:click="remove(index)">
-                        <x-dynamic-component :component="TallStackUi::component('icon')"
+                        <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                              :icon="TallStackUi::icon('x-mark')"
                                              :class="$personalize['label.icon']" />
                     </button>
@@ -53,7 +53,7 @@
                 dusk="tallstackui_tag_erase"
                 @class($personalize['button.wrapper'])
                 {{ $attributes->only('x-on:erase') }}>
-            <x-dynamic-component :component="TallStackUi::component('icon')"
+            <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                  :icon="TallStackUi::icon('x-mark')"
                                  :class="$personalize['button.icon']" />
         </button>

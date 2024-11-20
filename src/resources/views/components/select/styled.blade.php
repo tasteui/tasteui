@@ -27,7 +27,7 @@
     <div hidden x-ref="options">{{ TallStackUi::blade()->json($options) }}</div>
     @if ($request['params'] ?? null) <div hidden x-ref="params">{{ TallStackUi::blade()->json($request['params']) }}</div> @endif
     @if ($label)
-        <x-dynamic-component :component="TallStackUi::component('label')" :$label :$error />
+        <x-dynamic-component :component="TallStackUi::prefix('label')" :$label :$error />
     @endif
     <div class="relative" x-on:click.outside="show = false">
         <button type="button"
@@ -67,7 +67,7 @@
                                     @if (!$disabled)
                                         <div @class($personalize['itens.multiple.icon'])>
                                             <button type="button" x-on:click="$event.stopPropagation(); clear(select)">
-                                                <x-dynamic-component :component="TallStackUi::component('icon')"
+                                                <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                                      :icon="TallStackUi::icon('x-mark')"
                                                                      @class($personalize['itens.multiple.icon']) />
                                             </button>
@@ -87,25 +87,25 @@
                                 id="select-clear"
                                 type="button"
                                 x-on:click="$event.stopPropagation(); clear();">
-                            <x-dynamic-component :component="TallStackUi::component('icon')"
+                            <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="TallStackUi::icon('x-mark')"
                                                  @class([$personalize['buttons.size'], $personalize['buttons.base'] => !$error, $personalize['buttons.error'] => $error]) />
                         </button>
                     </template>
                     @endif
-                    <x-dynamic-component :component="TallStackUi::component('icon')"
+                    <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('chevron-up-down')"
                                          @class([$personalize['buttons.size'], $personalize['buttons.base'] => !$error, $personalize['buttons.error'] => $error]) />
                 </div>
             @endif
         </button>
-        <x-dynamic-component :component="TallStackUi::component('floating')"
+        <x-dynamic-component :component="TallStackUi::prefix('floating')"
                              :floating="$personalize['floating']"
                              class="w-full overflow-auto"
                              x-anchor="$refs.button">
             <template x-if="searchable">
                 <div @class($personalize['box.searchable.wrapper'])>
-                    <x-dynamic-component :component="TallStackUi::component('input')"
+                    <x-dynamic-component :component="TallStackUi::prefix('input')"
                                          :placeholder="data_get($placeholders, 'search')"
                                          x-model.debounce.500ms="search"
                                          x-ref="search"
@@ -115,7 +115,7 @@
                             @class($personalize['box.button.class'])
                             x-on:click="search = ''; $refs.search.focus();"
                             x-show="search?.length > 0">
-                        <x-dynamic-component :component="TallStackUi::component('icon')"
+                        <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                              :icon="TallStackUi::icon('x-mark')"
                                              @class($personalize['box.button.icon']) />
                     </button>
@@ -155,7 +155,7 @@
                                         </div>
                                     </div>
                                     <div @class($personalize['box.list.item.check'])>
-                                        <x-dynamic-component :component="TallStackUi::component('icon')"
+                                        <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                              :icon="TallStackUi::icon('check')"
                                                              x-show="selected(item)"
                                                              @class($personalize['box.list.item.check']) />
@@ -180,7 +180,7 @@
                                 </div>
                             </div>
                             <div @class($personalize['box.list.item.check'])>
-                                <x-dynamic-component :component="TallStackUi::component('icon')"
+                                <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                      :icon="TallStackUi::icon('check')"
                                                      x-show="selected(option)"
                                                      @class($personalize['box.list.item.check']) />
@@ -207,9 +207,9 @@
         </x-dynamic-component>
     </div>
     @if ($hint && !$error)
-        <x-dynamic-component :component="TallStackUi::component('hint')" :$hint />
+        <x-dynamic-component :component="TallStackUi::prefix('hint')" :$hint />
     @endif
     @if ($error)
-        <x-dynamic-component :component="TallStackUi::component('error')" :$property />
+        <x-dynamic-component :component="TallStackUi::prefix('error')" :$property />
     @endif
 </div>

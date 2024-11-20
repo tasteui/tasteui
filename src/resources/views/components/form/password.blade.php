@@ -3,7 +3,7 @@
 @endphp
 
 <div x-data="tallstackui_formPassword({!! $entangle !!}, @js($rules), @js($generator))" class="relative" x-cloak x-on:click.outside="rules = false">
-     <x-dynamic-component :component="TallStackUi::component('input')"
+     <x-dynamic-component :component="TallStackUi::prefix('input')"
                           {{ $attributes->merge($password)->except('autocomplete') }}
                           :$label
                           :$hint
@@ -22,7 +22,7 @@
                  @endif
                  @if ($generator)
                      <button type="button" x-ref="generator" dusk="tallstackui_form_password_generate" x-on:click="generator(); show = true;" {!! $attributes->only('x-on:generate') !!}>
-                         <x-dynamic-component :component="TallStackUi::component('icon')"
+                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                               :icon="TallStackUi::icon('arrow-path')"
                                               :$error
                                  @class($personalize['icon.class']) />
@@ -32,12 +32,12 @@
                          dusk="tallstackui_form_password_reveal"
                          {{ $attributes->only('x-on:reveal') }}
                          x-on:click="toggle()">
-                         <x-dynamic-component :component="TallStackUi::component('icon')"
+                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                               :icon="TallStackUi::icon('eye')"
                                               :$error
                                               x-show="!show"
                                               @class($personalize['icon.class']) />
-                         <x-dynamic-component :component="TallStackUi::component('icon')"
+                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                               :icon="TallStackUi::icon('eye-slash')"
                                               :$error
                                               x-show="show"
@@ -47,7 +47,7 @@
          </x-slot:suffix>
      </x-dynamic-component>
     @if ($rules->isNotEmpty())
-        <x-dynamic-component :component="TallStackUi::component('floating')"
+        <x-dynamic-component :component="TallStackUi::prefix('floating')"
                              :floating="$personalize['floating']"
                              class="w-full p-3"
                              x-show="rules">
@@ -55,11 +55,11 @@
             <div @class($personalize['rules.block'])>
                 @if ($rules->has('min'))
                     <span @class($personalize['rules.items.base'])>
-                            <x-dynamic-component :component="TallStackUi::component('icon')"
+                            <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="$icon['x-circle']"
                                                  :class="$personalize['rules.items.icons.error']"
                                                  x-show="!results.min" />
-                            <x-dynamic-component :component="TallStackUi::component('icon')"
+                            <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="$icon['check-circle']"
                                                  :class="$personalize['rules.items.icons.success']"
                                                  x-show="results.min" />
@@ -68,11 +68,11 @@
                 @endif
                 @if ($rules->has('symbols'))
                     <span @class($personalize['rules.items.base'])>
-                            <x-dynamic-component :component="TallStackUi::component('icon')"
+                            <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="$icon['x-circle']"
                                                  :class="$personalize['rules.items.icons.error']"
                                                  x-show="!results.symbols" />
-                            <x-dynamic-component :component="TallStackUi::component('icon')"
+                            <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="$icon['check-circle']"
                                                  :class="$personalize['rules.items.icons.success']"
                                                  x-show="results.symbols" />
@@ -81,11 +81,11 @@
                 @endif
                 @if ($rules->has('numbers'))
                     <span @class($personalize['rules.items.base'])>
-                            <x-dynamic-component :component="TallStackUi::component('icon')"
+                            <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="$icon['x-circle']"
                                                  :class="$personalize['rules.items.icons.error']"
                                                  x-show="!results.numbers" />
-                            <x-dynamic-component :component="TallStackUi::component('icon')"
+                            <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="$icon['check-circle']"
                                                  :class="$personalize['rules.items.icons.success']"
                                                  x-show="results.numbers" />
@@ -94,11 +94,11 @@
                 @endif
                 @if ($rules->has('mixed'))
                     <span @class($personalize['rules.items.base'])>
-                            <x-dynamic-component :component="TallStackUi::component('icon')"
+                            <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="$icon['x-circle']"
                                                  :class="$personalize['rules.items.icons.error']"
                                                  x-show="!results.mixed" />
-                            <x-dynamic-component :component="TallStackUi::component('icon')"
+                            <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="$icon['check-circle']"
                                                  :class="$personalize['rules.items.icons.success']"
                                                  x-show="results.mixed" />

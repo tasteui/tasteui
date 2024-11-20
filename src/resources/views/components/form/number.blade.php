@@ -2,7 +2,7 @@
     $personalize = $classes();
 @endphp
 
-<x-dynamic-component :component="TallStackUi::component('wrapper.input')" :$id :$property :$error :$label :$hint :$invalidate>
+<x-dynamic-component :component="TallStackUi::prefix('wrapper.input')" :$id :$property :$error :$label :$hint :$invalidate>
     <div @class([
             $personalize['input.wrapper'],
             $personalize['input.color.base'] => !$error,
@@ -37,7 +37,7 @@
                     @disabled($attributes->get('disabled', $attributes->get('readonly', false)))
                     dusk="tallstackui_form_number_decrement"
                     @class([$personalize['buttons.left.base'], 'order-first' => $centralized])>
-                <x-dynamic-component :component="TallStackUi::component('icon')"
+                <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                      :icon="$icons['left']"
                                      @class([$personalize['buttons.left.size'], $personalize['buttons.left.color'] => !$error, $personalize['buttons.left.error'] => $error]) />
             </button>
@@ -52,7 +52,7 @@
                     @disabled($attributes->get('disabled', $attributes->get('readonly', false)))
                     dusk="tallstackui_form_number_increment"
                     @class([$personalize['buttons.right.base'], 'border-l border-gray-200 dark:border-gray-600' => !$centralized])>
-                <x-dynamic-component :component="TallStackUi::component('icon')"
+                <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                      :icon="$icons['right']"
                                      @class([$personalize['buttons.right.size'], $personalize['buttons.right.color'] => !$error, $personalize['buttons.right.error'] => $error]) />
             </button>

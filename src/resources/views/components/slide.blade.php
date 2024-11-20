@@ -64,7 +64,7 @@
                                         @endif>{{ $title }}</h2>
                                 @endif
                                 <button type="button" x-on:click="show = false">
-                                    <x-dynamic-component :component="TallStackUi::component('icon')"
+                                    <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                          :icon="TallStackUi::icon('x-mark')"
                                                          @class($personalize['title.close']) />
                                 </button>

@@ -4,7 +4,7 @@
 
 <div>
     @if ($label)
-        <x-dynamic-component :component="TallStackUi::component('label')" :$label :$error />
+        <x-dynamic-component :component="TallStackUi::prefix('label')" :$label :$error />
     @endif
     <select {{ $attributes->class([
             $personalize['wrapper'],
@@ -36,9 +36,9 @@
         @endforelse
     </select>
     @if ($hint && !$error)
-        <x-dynamic-component :component="TallStackUi::component('hint')" :$hint />
+        <x-dynamic-component :component="TallStackUi::prefix('hint')" :$hint />
     @endif
     @if ($error)
-        <x-dynamic-component :component="TallStackUi::component('error')" :$property />
+        <x-dynamic-component :component="TallStackUi::prefix('error')" :$property />
     @endif
 </div>

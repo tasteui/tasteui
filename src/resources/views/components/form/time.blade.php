@@ -16,7 +16,7 @@
     @js($attributes->get('value')),
     @js($change))"
     x-cloak x-on:click.outside="show = false">
-    <x-dynamic-component :component="TallStackUi::component('input')"
+    <x-dynamic-component :component="TallStackUi::prefix('input')"
                          {{ $attributes->except('name') }}
                          :$label
                          :$hint
@@ -32,21 +32,21 @@
                              <div @class([$personalize['icon.wrapper']])>
                                  @if (!$attributes->has('required'))
                                     <button type="button" x-on:click="clear()" x-show="model">
-                                        <x-dynamic-component :component="TallStackUi::component('icon')"
+                                        <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                              dusk="tallstackui_time_clear"
                                                              :icon="TallStackUi::icon('x-mark')"
                                                              @class([$personalize['icon.size'], $personalize['icon.clear']]) />
                                     </button>
                                  @endif
                                 <button type="button" x-on:click="show = !show">
-                                    <x-dynamic-component :component="TallStackUi::component('icon')"
+                                    <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                          :icon="TallStackUi::icon('clock')"
                                                          @class($personalize['icon.size']) />
                                 </button>
                              </div>
                          </x-slot:suffix>
     </x-dynamic-component>
-    <x-dynamic-component :component="TallStackUi::component('floating')"
+    <x-dynamic-component :component="TallStackUi::prefix('floating')"
                          :floating="$personalize['floating']"
                          class="p-3 w-[18rem]">
         <div @class(['flex flex-col', 'mb-2' => $helper || $footer->isNotEmpty(), 'w-full' => $format === '24'])>
@@ -101,7 +101,7 @@
         @if ($helper || $footer)
             <x-slot:footer>
                 @if ($helper)
-                <x-dynamic-component :component="TallStackUi::component('button')"
+                <x-dynamic-component :component="TallStackUi::prefix('button')"
                                      :text="trans('tallstack-ui::messages.time.helper')"
                                      type="button"
                                      @class([$personalize['helper.button'], 'mt-2' => $format === '24'])

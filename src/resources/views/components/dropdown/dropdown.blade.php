@@ -15,7 +15,7 @@
                         x-on:click="show = !show"
                         aria-controls="dropdown-menu"
                         dusk="tallstackui_open_dropdown">
-                    <x-dynamic-component :component="TallStackUi::component('icon')"
+                    <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('chevron-down')"
                                          @class($personalize['action.icon'])
                                          x-bind:class="{ 'transform rotate-180': animate && show }"/>
@@ -27,7 +27,7 @@
                         x-on:click="show = !show"
                         aria-controls="dropdown-menu"
                         dusk="tallstackui_open_dropdown">
-                    <x-dynamic-component :component="TallStackUi::component('icon')"
+                    <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :$icon
                                          @class($personalize['action.icon'])
                                          x-bind:class="{ 'transform rotate-180': animate && show }" />
@@ -36,7 +36,7 @@
         @else
             {!! $action !!}
         @endif
-        <x-dynamic-component :component="TallStackUi::component('floating')"
+        <x-dynamic-component :component="TallStackUi::prefix('floating')"
                              :floating="$personalize['floating']"
                              offset="5"
                              :$position

@@ -8,7 +8,7 @@
         $colors['background']
     ]) }} type="{{ $attributes->get('type', 'button') }}" @if ($livewire && $loading) wire:loading.attr="disabled" wire:loading.class="!cursor-wait" @endif>
 @if ($icon)
-    <x-dynamic-component :component="TallStackUi::component('icon')"
+    <x-dynamic-component :component="TallStackUi::prefix('icon')"
                          :$icon
                          :attributes="$wireable['icon']"
                          @class([$personalize['icon.sizes.' . $size], $colors['icon']]) />

@@ -31,7 +31,7 @@
                  @if (!$configurations['persistent']) x-on:click.outside="remove(true)" @endif>
                 <div @class($personalize['buttons.close.wrapper'])>
                     <button x-on:click="remove()">
-                        <x-dynamic-component :component="TallStackUi::component('icon')"
+                        <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                              :icon="TallStackUi::icon('x-mark')"
                                              dusk="tallstackui_dialog_close"
                                              @class($personalize['buttons.close.icon']) />
@@ -47,31 +47,31 @@
                             '{{ $colors['icon']['background']['question'] }}': dialog.type === 'question'
                         }">
                         <div x-show="dialog.type === 'success'">
-                            <x-dynamic-component :component="TallStackUi::component('icon')"
+                            <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="TallStackUi::icon('check-circle')"
                                                  outline
                                                  @class([$personalize['icon.size'], $colors['icon']['icon']['success']]) />
                         </div>
                         <div x-show="dialog.type === 'error'">
-                            <x-dynamic-component :component="TallStackUi::component('icon')"
+                            <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="TallStackUi::icon('x-circle')"
                                                  outline
                                                  @class([$personalize['icon.size'], $colors['icon']['icon']['error']]) />
                         </div>
                         <div x-show="dialog.type === 'info'">
-                            <x-dynamic-component :component="TallStackUi::component('icon')"
+                            <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="TallStackUi::icon('information-circle')"
                                                  outline
                                                  @class([$personalize['icon.size'], $colors['icon']['icon']['info']]) />
                         </div>
                         <div x-show="dialog.type === 'warning'">
-                            <x-dynamic-component :component="TallStackUi::component('icon')"
+                            <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="TallStackUi::icon('exclamation-circle')"
                                                  outline
                                                  @class([$personalize['icon.size'], $colors['icon']['icon']['warning']]) />
                         </div>
                         <div x-show="dialog.type === 'question'">
-                            <x-dynamic-component :component="TallStackUi::component('icon')"
+                            <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="TallStackUi::icon('question-mark-circle')"
                                                  outline
                                                  @class([$personalize['icon.size'], $colors['icon']['icon']['question']]) />
@@ -86,7 +86,7 @@
                 </div>
                 <div @class($personalize['buttons.wrapper'])>
                     <div x-show="dialog.options?.cancel">
-                        <x-dynamic-component :component="TallStackUi::component('button')"
+                        <x-dynamic-component :component="TallStackUi::prefix('button')"
                                              :color="$colors['cancel']"
                                              class="w-full text-sm"
                                              x-on:click="reject(dialog, $el)"

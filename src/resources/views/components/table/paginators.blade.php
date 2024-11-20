@@ -61,14 +61,14 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                             @if ($paginator->onFirstPage())
                                 <span aria-disabled="true" aria-label="{{ trans('pagination.previous') }}">
                                     <span class="relative inline-flex items-center px-2 py-2 text-sm font-medium leading-5 text-gray-300 bg-gray-100 border border-gray-300 cursor-default dark:text-dark-500 dark:bg-dark-700 dark:border-transparent rounded-l-md focus:outline-none" aria-hidden="true">
-                                        <x-dynamic-component :component="TallStackUi::component('icon')"
+                                        <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                              :icon="TallStackUi::icon('chevron-left')"
                                                              class="w-5 h-5" />
                                     </span>
                                 </span>
                             @else
                                 <button type="button" wire:click="previousPage('{{ $paginator->getPageName() }}')" x-on:click="{{ $scrollIntoViewJsSnippet }}" dusk="previousPage{{ $paginator->getPageName() == 'page' ? '' : '.' . $paginator->getPageName() }}.after" rel="prev" class="relative inline-flex items-center px-2 py-2 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white border border-gray-300 dark:text-dark-300 dark:bg-dark-600 dark:border-transparent rounded-l-md hover:text-gray-400 focus:z-10 focus:outline-none focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500" aria-label="{{ trans('pagination.previous') }}">
-                                    <x-dynamic-component :component="TallStackUi::component('icon')"
+                                    <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                          :icon="TallStackUi::icon('chevron-left')"
                                                          class="w-5 h-5" />
                                 </button>
@@ -105,14 +105,14 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                             <!-- Next Page Link -->
                             @if ($paginator->hasMorePages())
                                 <button type="button" wire:click="nextPage('{{ $paginator->getPageName() }}')" x-on:click="{{ $scrollIntoViewJsSnippet }}" dusk="nextPage{{ $paginator->getPageName() == 'page' ? '' : '.' . $paginator->getPageName() }}.after" rel="next" class="relative inline-flex items-center px-2 py-2 -ml-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white border border-gray-300 dark:text-dark-300 dark:bg-dark-600 dark:border-transparent rounded-r-md hover:text-gray-400 focus:z-10 focus:outline-none focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500" aria-label="{{ trans('pagination.next') }}">
-                                    <x-dynamic-component :component="TallStackUi::component('icon')"
+                                    <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                          :icon="TallStackUi::icon('chevron-right')"
                                                          class="w-5 h-5" />
                                 </button>
                             @else
                                 <span aria-disabled="true" aria-label="{{ trans('pagination.next') }}">
                                     <span class="relative inline-flex items-center px-2 py-2 -ml-px text-sm font-medium leading-5 text-gray-300 bg-gray-100 border border-gray-300 cursor-default dark:text-dark-500 dark:bg-dark-700 dark:border-transparent rounded-r-md" aria-hidden="true">
-                                        <x-dynamic-component :component="TallStackUi::component('icon')"
+                                        <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                              :icon="TallStackUi::icon('chevron-right')"
                                                              class="w-5 h-5" />
                                     </span>

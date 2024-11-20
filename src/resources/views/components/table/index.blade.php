@@ -17,7 +17,7 @@
             ])>
             @isset ($filter['quantity'])
                 <div @class($personalize['filter.quantity'])>
-                    <x-dynamic-component :component="TallStackUi::component('select.styled')"
+                    <x-dynamic-component :component="TallStackUi::prefix('select.styled')"
                                          :label="$placeholders['quantity']"
                                          :options="$quantity"
                                          wire:model.live="{{ $filter['quantity'] }}"
@@ -27,7 +27,7 @@
             @endisset
             @isset ($filter['search'])
                 <div @class($personalize['filter.search'])>
-                    <x-dynamic-component :component="TallStackUi::component('input')"
+                    <x-dynamic-component :component="TallStackUi::prefix('input')"
                                          :icon="TallStackUi::icon('magnifying-glass')"
                                          wire:model.live.debounce.500ms="{{ $filter['search'] }}"
                                          :placeholder="$placeholders['search']"
@@ -48,7 +48,7 @@
                         <tr>
                             @if ($selectable)
                                 <th @class(['w-6', $personalize['table.th']]) wire:key="checkall-{{ implode(',', $ids()) }}">
-                                    <x-dynamic-component :component="TallStackUi::component('checkbox')"
+                                    <x-dynamic-component :component="TallStackUi::prefix('checkbox')"
                                                          x-ref="checkbox"
                                                          x-on:click="all($el.checked, {{ \Illuminate\Support\Js::from($ids()) }})"
                                                          dusk="tallstackui_table_select_all"
@@ -67,7 +67,7 @@
                                             {{ $header['label'] ?? '' }}
                                         @endif
                                         @if ($livewire && $sortable($header))
-                                            <x-dynamic-component :component="TallStackUi::component('icon')"
+                                            <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                                  :icon="TallStackUi::icon($sorted($header) ? ($head($header)['direction'] === 'desc' ? 'chevron-up' : 'chevron-down') : 'chevron-up-down')"
                                                                  @class($personalize['table.sort']) />
                                         @endif
@@ -93,7 +93,7 @@
                         <tr @class([$personalize['table.tr'], 'bg-gray-50 dark:bg-dark-800/50' => $striped && $loop->index % 2 === 0]) @if ($livewire) wire:key="{{ $id }}" @endif>
                             @if ($selectable)
                                 <td @class($personalize['table.td'])>
-                                    <x-dynamic-component :component="TallStackUi::component('checkbox')"
+                                    <x-dynamic-component :component="TallStackUi::prefix('checkbox')"
                                                          id="checkbox-{{ $key }}"
                                                          :attributes="$modifier()"
                                                          value="{{ data_get($value, $selectableProperty) }}"

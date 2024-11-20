@@ -45,25 +45,25 @@
         @if ($wire)
             <div @class([$personalize['text'], 'flex justify-center items-center gap-2'])>
                 <div x-show="type === 'success'">
-                    <x-dynamic-component :component="TallStackUi::component('icon')"
+                    <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('check-circle')"
                                          outline
                                          @class($personalize['icon']) />
                 </div>
                 <div x-show="type === 'error'">
-                    <x-dynamic-component :component="TallStackUi::component('icon')"
+                    <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('x-circle')"
                                          outline
                                          @class($personalize['icon']) />
                 </div>
                 <div x-show="type === 'info'">
-                    <x-dynamic-component :component="TallStackUi::component('icon')"
+                    <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('information-circle')"
                                          outline
                                          @class($personalize['icon']) />
                 </div>
                 <div x-show="type === 'warning'">
-                    <x-dynamic-component :component="TallStackUi::component('icon')"
+                    <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('exclamation-circle')"
                                          outline
                                          @class($personalize['icon']) />
@@ -76,7 +76,7 @@
             </span>
         @endif
         <button type="button" x-on:click="show = false" x-show="close" dusk="tallstackui_banner_close">
-            <x-dynamic-component :component="TallStackUi::component('icon')"
+            <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                  :icon="TallStackUi::icon('x-mark')"
                                  @class([$personalize['close'], $colors['text'] ?? '' => !$wire])
                                  x-bind:class="{

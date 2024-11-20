@@ -10,7 +10,7 @@
             @if ($icon)
                 <div @class([$personalize['icon.wrapper'] => $icon, 'mt-1' => $icon && $title])>
                     @if ($icon)
-                        <x-dynamic-component :component="TallStackUi::component('icon')"
+                        <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                              :$icon
                                              @class([$personalize['icon.size'], $colors['text']]) />
                     @endif
@@ -26,7 +26,7 @@
         @if ($close)
             <div @class($personalize['close.wrapper'])>
                 <button type="button" dusk="alert-close-button" class="cursor-pointer" x-on:click="show = false">
-                    <x-dynamic-component :component="TallStackUi::component('icon')"
+                    <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('x-mark')"
                                          @class([$personalize['close.size'], $colors['text']]) />
                 </button>

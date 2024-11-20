@@ -14,7 +14,7 @@
     @if ($left)
         {{ $left }}
     @elseif ($icon && $position === 'left')
-        <x-dynamic-component :component="TallStackUi::component('icon')"
+        <x-dynamic-component :component="TallStackUi::prefix('icon')"
                              :$icon
                              @class(['mr-1' => $position === 'left', $personalize['icon'], $colors['icon']]) />
     @endif
@@ -22,7 +22,7 @@
     @if ($right)
         {{ $right }}
     @elseif ($icon && $position === 'right')
-        <x-dynamic-component :component="TallStackUi::component('icon')"
+        <x-dynamic-component :component="TallStackUi::prefix('icon')"
                              :$icon
                              @class(['ml-1' => $position === 'right', $personalize['icon'], $colors['icon']]) />
     @endif
