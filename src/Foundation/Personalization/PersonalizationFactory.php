@@ -192,7 +192,6 @@ class PersonalizationFactory
 
         $parts = $this->parts->toArray();
 
-        // When scoped we need to set the parts as a multidimensional array.
         if ($this->scope) {
             data_set($parts, $this->scope.'.'.$block, $content());
 
@@ -201,7 +200,6 @@ class PersonalizationFactory
             $this->parts->put($block, $content());
         }
 
-        // Flushing
         $this->interactions = collect();
     }
 
