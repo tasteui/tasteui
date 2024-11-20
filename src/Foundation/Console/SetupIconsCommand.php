@@ -88,7 +88,7 @@ class SetupIconsCommand extends Command
         }
 
         foreach (
-            collect(IconGuide::Supported)
+            collect(IconGuide::SUPPORTED_ICON_VENDORS)
                 ->filter(fn (string $type) => ! in_array($type, ['heroicons', $this->data->get('type')]))
                 ->toArray() as $type
         ) {

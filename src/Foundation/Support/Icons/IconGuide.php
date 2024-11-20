@@ -9,7 +9,7 @@ class IconGuide
     /**
      * Supported icon libraries.
      */
-    public const Supported = [
+    public const SUPPORTED_ICON_VENDORS = [
         'heroicons',
         'phosphoricons',
         'google',
@@ -246,7 +246,7 @@ class IconGuide
      */
     public static function supported(string $type): bool
     {
-        return in_array($type, self::Supported);
+        return in_array($type, self::SUPPORTED_ICON_VENDORS);
     }
 
     // https://tabler.io/icons
