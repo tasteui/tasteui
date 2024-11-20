@@ -50,7 +50,7 @@ class TallStackUiServiceProvider extends ServiceProvider
 
     protected function registerComponentPersonalization(): void
     {
-        foreach (__ts_components() as $key => $class) {
+        foreach (__ts_soft_personalization_components() as $key => $class) {
             $this->app->singleton($key, fn () => new PersonalizationFactory($class));
         }
     }

@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use Symfony\Component\Finder\SplFileInfo;
@@ -22,11 +21,11 @@ if (! function_exists('__ts_filter_components_using_attribute')) {
     }
 }
 
-if (! function_exists('__ts_components')) {
+if (! function_exists('__ts_soft_personalization_components')) {
     /**
      * Get all components that use the SoftPersonalization attribute.
      */
-    function __ts_components(): array
+    function __ts_soft_personalization_components(): array
     {
         return __ts_filter_components_using_attribute(SoftPersonalization::class)
             ->mapWithKeys(function (string $component): array {
@@ -49,7 +48,7 @@ if (! function_exists('__ts_search_component')) {
      */
     function __ts_search_component(string $component): string
     {
-        $result = array_search($component, __ts_components());
+        $result = array_search($component, __ts_soft_personalization_components());
 
         if (! $result) {
             throw new Exception("Component [{$component}] is not allowed to be personalized");
@@ -99,28 +98,5 @@ if (! function_exists('__ts_class_collection')) {
         $collect->put('instance', $exists ? new $class : null);
 
         return $collect;
-    }
-}
-
-if (! function_exists('__ts_configuration')) {
-    /**
-     * Creates a collection/array with the configuration values.
-     *
-     * @throws Exception
-     */
-    function __ts_configuration(?string $index = null, bool $collection = true): Collection|array
-    {
-        // Making sure we didn't accidentally add tallstackui.
-        $index = str($index)->remove(['tallstackui', 'tallstackui.'])->value();
-
-        $config = config('tallstackui');
-
-        if ($index !== '' && Arr::has($config, $index) === false) {
-            throw new Exception("Configuration [{$index}] does not exist");
-        }
-
-        $result = $index ? collect(data_get($config, $index)) : collect($config);
-
-        return $collection ? $result : $result->toArray();
     }
 }

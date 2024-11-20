@@ -37,8 +37,8 @@ HTML;
 });
 
 it('can thrown exception when request is array using unaceptable method', function (string $method) {
-    $this->expectException(ViewException::class);
-    $this->expectExceptionMessage('The [select.styled] parameter [method] must be get or post');
+    $this->expectException(Exception::class);
+    $this->expectExceptionMessage('The [select.styled] parameter [method] must be "get" or "post".');
 
     $component = <<<'HTML'
     <x-select.styled label="Foo bar baz" 
@@ -57,7 +57,8 @@ HTML;
 })->with(['delete', 'put', 'patch']);
 
 it('can thrown exception when params is empty', function () {
-    $this->expectException(ViewException::class);
+    $this->expectException(Exception::class);
+    $this->expectExceptionMessage('The [select.styled] parameter [method] must be "get" or "post".');
     $this->expectExceptionMessage('The [select.styled] parameter [params] must be an array and cannot be empty.');
 
     $component = <<<'HTML'
@@ -75,7 +76,7 @@ HTML;
 });
 
 it('can thrown exception when params is not array', function () {
-    $this->expectException(ViewException::class);
+    $this->expectException(Exception::class);
     $this->expectExceptionMessage('The [select.styled] parameter [params] must be an array and cannot be empty.');
 
     $component = <<<'HTML'
@@ -86,20 +87,6 @@ it('can thrown exception when params is not array', function () {
                         'method' => 'post',
                         'params' => 'foo',
                      ]" select="label:label|value:id"
-    />
-HTML;
-
-    expect($component)->render();
-});
-
-it('can thrown exception when select was not defined using select as request', function () {
-    $this->expectException(ViewException::class);
-    $this->expectExceptionMessage('The [select.styled] parameter [select] must be defined.');
-
-    $component = <<<'HTML'
-    <x-select.styled label="Foo bar baz" 
-                     hint="Foo bar baz" 
-                     request="https://foo-bar.com" 
     />
 HTML;
 

@@ -111,7 +111,7 @@ class IconGuideMap
     {
         self::$guide = new IconGuide;
 
-        self::$configuration = __ts_configuration('icons');
+        self::$configuration = collect(config('tallstackui.icons'));
 
         self::$custom = str_contains((string) self::$configuration->get('type'), 'custom:') && self::$configuration->get('custom') !== null;
     }

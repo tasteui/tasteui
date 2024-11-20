@@ -58,7 +58,7 @@ class Password extends TallStackUiComponent implements Personalization
     protected function setup(): void
     {
         $this->rules = collect($this->rules)->reduce(function (Collection $carry, string $value) {
-            $defaults = __ts_configuration('settings.form.password.rules');
+            $defaults = config('tallstackui.settings.form.password.rules');
 
             if (str_contains($value, 'min')) {
                 $carry->put('min', (explode(':', $value)[1] ?? $defaults['min']));

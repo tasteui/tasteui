@@ -29,7 +29,7 @@ class SetupIconsCommand extends Command
     {
         $this->data = collect();
 
-        if (str_contains(__ts_configuration('icons.type'), 'custom:')) {
+        if (str_contains(config('tallstackui.icons.type'), 'custom:')) {
             $this->components->error('You are using custom icons. This command has no effect with custom icons.');
 
             return;

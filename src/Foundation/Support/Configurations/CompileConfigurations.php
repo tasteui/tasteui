@@ -39,7 +39,7 @@ class CompileConfigurations
         // config file and make a direct mapping so there is no need
         // to create a method for each component.
         if (is_string($data)) {
-            $data = __ts_configuration('settings.'.$data)
+            $data = collect(config('tallstackui.settings.'.$data))
                 ->mapWithKeys(fn (string|bool|array $value, string $key) => [$key => $value])
                 ->toArray();
         }
@@ -54,21 +54,19 @@ class CompileConfigurations
      */
     private function color(Color $component): array
     {
-        $configuration = __ts_configuration('settings.form.color');
+        $configuration = collect(config('tallstackui.settings.form.color'));
 
-        $component->colors ??= $configuration->get('colors') ?? [];
+        $component->colors ??= $configuration->get('colors', []);
 
         return collect($component)->only('colors')->toArray();
     }
 
     /**
      * Define the Loading component configurations.
-     *
-     * @throws Exception
      */
     private function loading(Loading $component): array
     {
-        $configuration = __ts_configuration('settings.loading');
+        $configuration = collect(config('tallstackui.settings.loading'));
 
         $component->zIndex ??= $configuration->get('z-index', 'z-50');
         $component->overflow ??= $configuration->get('overflow', false);
@@ -82,12 +80,10 @@ class CompileConfigurations
 
     /**
      * Define the Modal component configurations.
-     *
-     * @throws Exception
      */
     private function modal(Modal $component): array
     {
-        $configuration = __ts_configuration('settings.modal');
+        $configuration = collect(config('tallstackui.settings.modal'));
 
         $component->zIndex ??= $configuration->get('z-index', 'z-50');
         $component->overflow ??= $configuration->get('overflow', false);
@@ -116,12 +112,10 @@ class CompileConfigurations
 
     /**
      * Define the Slide component configurations.
-     *
-     * @throws Exception
      */
     private function slide(Slide $component): array
     {
-        $configuration = __ts_configuration('settings.slide');
+        $configuration = collect(config('tallstackui.settings.slide'));
 
         $component->zIndex ??= $configuration->get('z-index', 'z-50');
         $component->overflow ??= $configuration->get('overflow', false);
