@@ -56,7 +56,7 @@ class CompileConfigurations
     {
         $configuration = collect(config('tallstackui.settings.form.color'));
 
-        $component->colors ??= $configuration->get('colors', []);
+        $component->colors ??= $configuration->get('colors') ?? [];
 
         return collect($component)->only('colors')->toArray();
     }

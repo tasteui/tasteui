@@ -137,16 +137,19 @@ class ColorTest extends BrowserTestCase
         })
             ->waitForText('Color')
             ->click('@tallstackui_form_color_open_close')
+            ->waitFor('@tallstackui_form_color_floating')
             ->clickAtXPath('/html/body/div[3]/div/div[2]/div/div[2]/button[1]')
             ->click('@sync')
             ->waitForTextIn('@selected', '#FF0000')
             ->assertSee('#FF0000')
             ->click('@tallstackui_form_color_open_close')
+            ->waitFor('@tallstackui_form_color_floating')
             ->clickAtXPath('/html/body/div[3]/div/div[2]/div/div[2]/button[2]')
             ->click('@sync')
             ->waitForTextIn('@selected', '#FF5733')
             ->assertSee('#FF5733')
             ->click('@tallstackui_form_color_open_close')
+            ->waitFor('@tallstackui_form_color_floating')
             ->clickAtXPath('/html/body/div[3]/div/div[2]/div/div[2]/button[3]')
             ->click('@sync')
             ->waitForTextIn('@selected', '#D7E021')
@@ -243,11 +246,11 @@ class ColorTest extends BrowserTestCase
         })
             ->waitForText('Color')
             ->click('@tallstackui_form_color_open_close')
+            ->waitFor('@tallstackui_form_color_floating')
             ->clickAtXPath('/html/body/div[3]/div/div[2]/div/div[2]/button[1]')
             ->waitForTextIn('@selected', '#64748b')
             ->click('@tallstackui_form_color_clearable')
-            ->pause(50)
-            ->assertDontSee('#64748b');
+            ->waitUntilMissingText('#64748b');
     }
 
     /** @test */

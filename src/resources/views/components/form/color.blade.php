@@ -62,7 +62,7 @@
                          :floating="$personalize['floating']"
                          class="w-[18rem] overflow-auto"
                          x-on:click.outside="show = false">
-        <div @class($personalize['box.base'])>
+        <div @class($personalize['box.base']) dusk="tallstackui_form_color_floating">
             <div @class($personalize['box.range.wrapper'])>
                 <input type="range"
                        min="1"
@@ -70,7 +70,7 @@
                        x-model="weight"
                        x-show="mode === 'range' && colors.length === 0"
                        dusk="tallstackui_form_range"
-                        @class([$personalize['box.range.base'], $personalize['box.range.thumb']])>
+                       @class([$personalize['box.range.base'], $personalize['box.range.thumb']])>
             </div>
             <div @class($personalize['box.button.wrapper'])>
                 <template x-for="color in palette">
