@@ -15,7 +15,7 @@ export default (
     value,
     limit = null,
     change = null,
-    max = 10,
+    lazy = 10,
 ) => ({
   show: false,
   model: model,
@@ -41,7 +41,7 @@ export default (
   limit: limit,
   image: null,
   index: null,
-  max: max,
+  lazy: lazy,
   async init() {
     if (!this.livewire) {
       if (this.common) {
@@ -490,7 +490,7 @@ export default (
   load() {
     if (this.options.length === this.available.length) return;
 
-    this.max += max;
+    this.lazy += lazy;
   },
   /**
    * Set the input value when is not Livewire.
@@ -535,7 +535,9 @@ export default (
     let available = this.common ? this.options : this.response;
 
     if (this.common) {
-        available = Object.values(available).slice(0, this.max);
+        const values = Object.values(available);
+
+        available = this.lazy ? values.slice(0, this.lazy) : values;
     }
 
     if (this.search === '') return available;
@@ -557,7 +559,9 @@ export default (
     };
 
     if (this.common) {
-        return available.filter(filter).slice(0, this.max);
+        const filter = available.filter(filter);
+
+        return this.lazy ? filter.slice(0, this.lazy) : filter;
     }
 
     return available.filter(filter);
