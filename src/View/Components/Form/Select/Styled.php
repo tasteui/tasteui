@@ -153,7 +153,6 @@ class Styled extends TallStackUiComponent implements Personalization
             throw new InvalidArgumentException('The [select.styled] [options] and [request] cannot be defined at the same time.');
         }
 
-        // TODO: test it.
         if ($this->common && ($this->lazy && $this->lazy < 10)) {
             throw new InvalidArgumentException('The [select.styled] parameter [lazy] must be greater than or equal to 10.');
         }

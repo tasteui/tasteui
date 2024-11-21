@@ -92,3 +92,14 @@ HTML;
 
     expect($component)->render();
 });
+
+it('can thrown exception when lazy is less than 10', function () {
+    $this->expectException(Exception::class);
+    $this->expectExceptionMessage('The [select.styled] parameter [lazy] must be greater than or equal to 10.');
+
+    $component = <<<'HTML'
+    <x-select.styled :options="range(1,10000)" :lazy="9" />
+HTML;
+
+    expect($component)->render();
+});
