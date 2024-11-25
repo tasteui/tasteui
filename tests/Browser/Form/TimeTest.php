@@ -435,4 +435,22 @@ class TimeTest extends BrowserTestCase
             ->assertSee('Time')
             ->assertNotPresent('@tallstackui_time_clear');
     }
+
+    /** @test */
+    public function cannot_use_12_hour_format_without_interval(): void
+    {
+        Livewire::visit(new class extends Component
+        {
+            public ?string $time = '11:30';
+
+            public function render(): string
+            {
+                return <<<'HTML'
+                <div>
+                    <x-time label="Time" wire:model.live="time" />
+                </div>
+                HTML;
+            }
+        })->assertSee('The time format is not 24 and the value does not contain the interval (AM/PM).');
+    }
 }

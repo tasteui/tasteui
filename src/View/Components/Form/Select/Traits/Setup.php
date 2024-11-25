@@ -35,7 +35,6 @@ trait Setup
                 throw new InvalidArgumentException("The $component [$value] is missing in the options array.");
             }
 
-            // TODO: test it.
             $this->grouped = is_array($item[$value]);
 
             return [
