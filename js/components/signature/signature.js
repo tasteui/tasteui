@@ -4,7 +4,7 @@ export default (
   background,
   line, 
   height,
-  extension,
+  jpeg,
 ) => ({
   model: model,
   canvas: null,
@@ -18,7 +18,6 @@ export default (
   background: background,
   line: line,
   height: height,
-  extension: extension,
   init() {
     this.canvas = this.$refs.canvas;
 
@@ -140,9 +139,11 @@ export default (
     this.save();
   },
   /**
-   * Saves the image
+   * Save the image
    */
-  save() { this.model = this.canvas.toDataURL() },
+  save() {
+    this.model = this.canvas.toDataURL(`image/${this.extension}`);
+  },
   /**
    * Saves the current state of the canvas to allow undoing and redoing
    */
@@ -157,18 +158,11 @@ export default (
    * Exports the image
    */
   exportImage() {
-    let dataUrl;
-
-    if (extension === 'jpeg' || extension === 'jpg') {
-        dataUrl = this.canvas.toDataURL('image/jpeg');
-    } else {
-        dataUrl = this.canvas.toDataURL('image/png');
-    }
-
+    const url = this.canvas.toDataURL(`image/${this.extension}`);
     const link = document.createElement('a');
 
-    link.href = dataUrl;
-    link.download = `signature.${extension}`;
+    link.href = url;
+    link.download = `signature.${this.extension}`;
 
     document.body.appendChild(link);
 
@@ -176,13 +170,13 @@ export default (
 
     document.body.removeChild(link);
 
-    this.$el.dispatchEvent(new CustomEvent('export', {detail: {signature: dataUrl}}));
+    this.$el.dispatchEvent(new CustomEvent('export', {detail: {signature: url}}));
   },
   /**
    * Updates the background color of the canvas
    */
   updateBackgroundColor() {
-    if (this.extension === 'jpg' || this.extension === 'jpeg' && this.background === 'transparent') {
+    if (jpeg && this.background === 'transparent') {
       this.background = '#FFFFFF';
     }
 
@@ -222,5 +216,8 @@ export default (
       offsetX: (event.clientX - rect.left) * (this.canvas.width / rect.width),
       offsetY: (event.clientY - rect.top) * (this.canvas.height / rect.height),
     };
+  },
+  get extension() {
+    return jpeg ? 'jpeg' : 'png';
   }
 });
