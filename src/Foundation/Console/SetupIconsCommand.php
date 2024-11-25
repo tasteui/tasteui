@@ -29,7 +29,15 @@ class SetupIconsCommand extends Command
     {
         $this->data = collect();
 
-        if (str_contains(config('tallstackui.icons.type'), 'custom:')) {
+        $config = (string) config('tallstackui.icons.type');
+
+        if (blank($config)) {
+            $this->components->error('Icons are not configured correctly. Please, review the docs.');
+
+            return;
+        }
+
+        if (str_contains($config, 'custom:')) {
             $this->components->error('You are using custom icons. This command has no effect with custom icons.');
 
             return;
@@ -117,10 +125,6 @@ class SetupIconsCommand extends Command
         $config = config('tallstackui');
         $type = data_get($config, 'icons.type');
         $style = data_get($config, 'icons.style');
-
-        if (blank(data_get($config, 'icons')) || blank($type) || blank($style)) {
-            return 'Wrong configuration file. Please, review the docs.';
-        }
 
         if (! IconGuide::supported($type)) {
             return 'Unsupported icon type. Please, review the configuration file.';
