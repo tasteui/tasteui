@@ -38,13 +38,13 @@ export default (
     this.uploading = true;
     this.error = false;
 
-    let abort = null;
+    let abort = true;
 
-    if (typeof window.TallStackUi.upload === 'function') {
+    if (typeof window.TallStackUi?.upload === 'function') {
       abort = window.TallStackUi.upload(this.$refs.files.files);
     }
 
-    if (Boolean(abort) === false) {
+    if (!abort) {
       this.progress = 0;
       this.uploading = false;
 
