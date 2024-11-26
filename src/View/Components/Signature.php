@@ -13,7 +13,7 @@ use TallStackUi\TallStackUiComponent;
 
 #[SoftPersonalization('signature')]
 #[PassThroughRuntime(SignatureRuntime::class)]
-//TODO: tests
+//TODO: test exceptions
 class Signature extends TallStackUiComponent implements Personalization
 {
     public function __construct(
