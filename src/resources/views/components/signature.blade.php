@@ -7,7 +7,7 @@
         <input type="hidden" x-model="model" {!! $attributes->except('x-on:export') !!}>
         <div @class($personalize['wrapper.second'])>
             <div @class($personalize['wrapper.button'])>
-                <button type="button" aria-label="undo" x-on:click="undo">
+                <button type="button" aria-label="undo" x-on:click="undo" dusk="tallstackui_signature_undo">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('arrow-uturn-left')"
                                          @class($personalize['icons']) />
@@ -35,6 +35,7 @@
                 @class($personalize['canvas.base'])
                 :height="height"
                 style="cursor: crosshair; max-height: {{ $height }}px"
+                dusk="tallstackui_signature_canva"
                 x-on:mousedown="startDrawing"
                 x-on:mousemove="draw"
                 x-on:mouseup="stopDrawing"

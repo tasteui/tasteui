@@ -4,6 +4,7 @@ namespace TallStackUi\View\Components;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Arr;
+use InvalidArgumentException;
 use TallStackUi\Foundation\Attributes\PassThroughRuntime;
 use TallStackUi\Foundation\Attributes\SoftPersonalization;
 use TallStackUi\Foundation\Personalization\Contracts\Personalization;
@@ -19,11 +20,10 @@ class Signature extends TallStackUiComponent implements Personalization
         public ?string $label = null,
         public ?string $hint = null,
         public ?bool $invalidate = null,
-        public ?string $color = '#000000', // test
-        public ?string $background = 'transparent', // test
+        public ?string $color = '#000000',
+        public ?string $background = 'transparent',
         public int|float|null $line = 2,
         public ?int $height = 150,
-        // public ?string $extension = 'png', // rename it
         public ?bool $jpeg = null,
     ) {
         //
@@ -48,5 +48,16 @@ class Signature extends TallStackUiComponent implements Personalization
             ],
             'icons' => 'dark:text-dark-400 h-5 w-5 text-gray-500',
         ]);
+    }
+
+    protected function validate(): void
+    {
+        if (is_null($this->line)) {
+            throw new InvalidArgumentException('The signature [line] must be a number.');
+        }
+
+        if ($this->height < 10) {
+            throw new InvalidArgumentException('The signature [height] must be at least 10.');
+        }
     }
 }
