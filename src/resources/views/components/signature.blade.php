@@ -12,12 +12,12 @@
                                          :icon="TallStackUi::icon('arrow-uturn-left')"
                                          @class($personalize['icons']) />
                 </button>
-                <button type="button" aria-label="redo" x-on:click="redo">
+                <button type="button" aria-label="redo" x-on:click="redo" dusk="tallstackui_signature_redo">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('arrow-uturn-right')"
                                          @class($personalize['icons']) />
                 </button>
-                <button type="button" aria-label="clear" x-on:click="clear">
+                <button type="button" aria-label="clear" x-on:click="clear" dusk="tallstackui_signature_clear">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('trash')"
                                          @class($personalize['icons']) />
