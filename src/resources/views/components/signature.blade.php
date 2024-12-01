@@ -25,7 +25,7 @@
                 @endif
             </div>
             @if ($exportable)
-                <button type="button" aria-label="export" x-on:click="download" {{ $attributes->only('x-on:export') }}>
+                <button type="button" aria-label="export" x-on:click="download" dusk="tallstackui_signature_export" {{ $attributes->only('x-on:export') }}>
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('document-arrow-down')"
                                          @class($personalize['icons']) />

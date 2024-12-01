@@ -23,7 +23,7 @@ class IndexTest extends BrowserTestCase
                             <p dusk="signature">{!! $signature !!}</p>
                         @endif
                     
-                        <x-signature wire:model="signature" />
+                        <x-signature wire:model="signature" clearable />
                         
                         <x-button dusk="sync" wire:click="sync">Sync</x-button>
                     </div>
