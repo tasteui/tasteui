@@ -23,7 +23,7 @@
                                          @class($personalize['icons']) />
                 </button>
             </div>
-            <button type="button" aria-label="export" x-on:click="exportImage" {{ $attributes->only('x-on:export') }}>
+            <button type="button" aria-label="export" x-on:click="download" {{ $attributes->only('x-on:export') }}>
                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                      :icon="TallStackUi::icon('document-arrow-down')"
                                      @class($personalize['icons']) />
@@ -36,14 +36,14 @@
                 :height="height"
                 style="cursor: crosshair; max-height: {{ $height }}px"
                 dusk="tallstackui_signature_canva"
-                x-on:mousedown="startDrawing"
+                x-on:mousedown="start"
                 x-on:mousemove="draw"
-                x-on:mouseup="stopDrawing"
-                x-on:mouseleave="stopDrawing"
-                x-on:touchstart="startDrawing"
+                x-on:mouseup="stop"
+                x-on:mouseleave="stop"
+                x-on:touchstart="start"
                 x-on:touchmove="draw"
-                x-on:touchend="stopDrawing"
-                x-on:touchcancel="stopDrawing">
+                x-on:touchend="stop"
+                x-on:touchcancel="stop">
         </canvas>
        </div>
     </div>

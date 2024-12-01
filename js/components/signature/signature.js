@@ -8,12 +8,11 @@ export default (
 ) => ({
   model: model,
   canvas: null,
-  ctx: null,
+  context: null,
   drawing: false,
   lastX: 0,
   lastY: 0,
-  undoStack: [],
-  redoStack: [],
+  stacks: {},
   color: color,
   background: background,
   line: line,
@@ -21,35 +20,42 @@ export default (
   init() {
     this.canvas = this.$refs.canvas;
 
-    this.ctx = this.canvas.getContext('2d', { willReadFrequently: true });
-    this.ctx.line = this.line;
-    this.ctx.lineCap = 'round';
-    this.ctx.lineJoin = 'round';
+    this.context = this.canvas.getContext('2d', { willReadFrequently: true });
+    this.context.line = this.line;
+    this.context.lineCap = 'round';
+    this.context.lineJoin = 'round';
 
-    this.$nextTick(() => this.updateCanvasSize(true));
+    this.stacks = {
+        undo: [],
+        redo: [],
+    }
+
+    this.$nextTick(() => this.size(true));
     
-    window.addEventListener('resize', this.updateCanvasSize.bind(this));
+    window.addEventListener('resize', this.size.bind(this));
   },
   /**
-   * Clears the drawing on the canvas
+   * Clean the drawing on the canvas.
    */
   clear() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.updateBackgroundColor();
-    this.saveState();
+    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+    this.backgroundColor();
+    this.store();
+
     this.model = null;
   },
   /**
-   * Starts drawing on the canvas
+   * Start drawing on the canvas.
    *
    * @param event
    */
-  startDrawing(event) {
+  start(event) {
     event.preventDefault();
 
     this.drawing = true;
 
-    const { offsetX, offsetY } = this.getEventCoordinates(event);
+    const { offsetX, offsetY } = this.coordinates(event);
 
     this.lastX = offsetX;
     this.lastY = offsetY;
@@ -57,18 +63,16 @@ export default (
     this.draw(event);
   },
   /**
-   * Draws on the canvas
+   * Draws on the canvas.
    *
    * @param event
    */
   draw(event) {
-    if (!this.drawing) {
-      return;
-    }
+    if (!this.drawing) return;
 
     event.preventDefault();
 
-    const { offsetX, offsetY } = this.getEventCoordinates(event);
+    const { offsetX, offsetY } = this.coordinates(event);
 
     const distance = Math.sqrt(Math.pow(offsetX - this.lastX, 2) + Math.pow(offsetY - this.lastY, 2));
 
@@ -77,87 +81,86 @@ export default (
     for (let i = 0; i < distance; i += this.line / 3) {
       const x = this.lastX + Math.cos(angle) * i;
       const y = this.lastY + Math.sin(angle) * i;
-      this.drawDot(x, y);
+      this.dots(x, y);
     }
 
     this.lastX = offsetX;
     this.lastY = offsetY;
   },
   /**
-   * Draws a dot on the canvas
+   * Draws dots on the canvas.
    *
-   * @param x
-   * @param y
+   * @param {Number} x
+   * @param {Number} y
+   * @return {void}
    */
-  drawDot(x, y) {
-    this.ctx.beginPath();
-    this.ctx.arc(x, y, this.line / 2, 0, Math.PI * 2);
-    this.ctx.fillStyle = this.color;
-    this.ctx.fill();
-    this.ctx.closePath();
+  dots(x, y) {
+    this.context.beginPath();
+    this.context.arc(x, y, this.line / 2, 0, Math.PI * 2);
+    this.context.fillStyle = this.color;
+    this.context.fill();
+    this.context.closePath();
   },
   /**
    * Stops drawing on the canvas
    *
    * @param event
    */
-  stopDrawing(event) {
-    if (!this.drawing) {
-      return;
-    }
+  stop(event) {
+    if (!this.drawing) return;
 
     event.preventDefault();
 
     this.drawing = false;
 
-    this.saveState();
+    this.store();
   },
   /**
-   * Undoes the last action
+   * Undoes the last action.
    */
   undo() {
-    if (this.undoStack.length > 1) {
-      this.redoStack.push(this.undoStack.pop());
-      this.ctx.putImageData(this.undoStack[this.undoStack.length - 1], 0, 0);
-      this.model = this.canvas.toDataURL();
+    if (this.stacks.undo.length > 1) {
+      this.stacks.redo.push(this.stacks.undo.pop());
+      this.context.putImageData(this.stacks.undo[this.stacks.undo.length - 1], 0, 0);
       this.save();
+
       return;
     }
 
-    this.redoStack.push(this.undoStack.pop());
+    this.stacks.redo.push(this.stacks.undo.pop());
     this.clear();
   },
   /**
-   * Redoes the last undone action
+   * Redoes the last undone action/
    */
   redo() {
-    if (this.redoStack.length > 0) {
-      this.undoStack.push(this.redoStack.pop());
-      this.ctx.putImageData(this.undoStack[this.undoStack.length - 1], 0, 0);
+    if (this.stacks.redo.length > 0) {
+      this.stacks.undo.push(this.stacks.redo.pop());
+      this.context.putImageData(this.stacks.undo[this.stacks.undo.length - 1], 0, 0);
     }
 
     this.save();
   },
   /**
-   * Save the image
+   * Sync canvas to the model.
    */
   save() {
     this.model = this.canvas.toDataURL(`image/${this.extension}`);
   },
   /**
-   * Saves the current state of the canvas to allow undoing and redoing
+   * Store the current state of the canvas to allow the actions of undoing and redoing.
    */
-  saveState() {
-    this.undoStack.push(this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height));
+  store() {
+    this.stacks.undo.push(this.context.getImageData(0, 0, this.canvas.width, this.canvas.height));
 
-    this.redoStack = [];
+    this.stacks.redo = [];
 
     this.save();
   },
   /**
-   * Exports the image
+   * Download the canvas as an image.
    */
-  exportImage() {
+  download() {
     const url = this.canvas.toDataURL(`image/${this.extension}`);
     const link = document.createElement('a');
 
@@ -173,21 +176,21 @@ export default (
     this.$el.dispatchEvent(new CustomEvent('export', {detail: {signature: url}}));
   },
   /**
-   * Updates the background color of the canvas
+   * Updates the background color of the canvas.
    */
-  updateBackgroundColor() {
+  backgroundColor() {
     if (jpeg && this.background === 'transparent') {
       this.background = '#FFFFFF';
     }
 
-    this.ctx.fillStyle = this.background;
+    this.context.fillStyle = this.background;
 
-    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
   },
   /**
    * Updates the size of the canvas
    */
-  updateCanvasSize(clear = false) {
+  size(clear = false) {
     this.canvas.width = this.$refs.canvas.parentElement.clientWidth;
     this.canvas.height = this.height;
 
@@ -201,7 +204,7 @@ export default (
    * @param event
    * @returns {{offsetX: number, offsetY: number}}
    */
-  getEventCoordinates(event) {
+  coordinates(event) {
     const rect = this.canvas.getBoundingClientRect();
     
     if (event.touches && event.touches.length > 0) {
@@ -217,6 +220,11 @@ export default (
       offsetY: (event.clientY - rect.top) * (this.canvas.height / rect.height),
     };
   },
+  /**
+   * Gets the extension of the image.
+   *
+   * @returns {String}
+   */
   get extension() {
     return jpeg ? 'jpeg' : 'png';
   }
