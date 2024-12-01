@@ -26,6 +26,8 @@ class Signature extends TallStackUiComponent implements Personalization
         public int|float|null $line = 2,
         public ?int $height = 150,
         public ?bool $jpeg = null,
+        public ?bool $clearable = null,
+        public ?bool $exportable = null,
     ) {
         //
     }
