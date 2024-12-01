@@ -11,14 +11,14 @@
     "lint:fix": "npx eslint \"js/**\" --fix"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.1.0",
-    "@eslint/js": "^9.15.0",
-    "@tailwindcss/forms": "^0.5.8",
-    "autoprefixer": "^10.4.19",
-    "eslint": "^9.15.0",
-    "globals": "^15.11.0",
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.16.0",
+    "@tailwindcss/forms": "^0.5.9",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.16.0",
+    "globals": "^15.12.0",
     "postcss": "^8.4.49",
-    "postcss-import": "^16.0.1",
+    "postcss-import": "^16.1.0",
     "tailwindcss": "^3.4.15",
     "tippy.js": "^6.3.7",
     "vite": "^5.4.11"
