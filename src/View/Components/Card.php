@@ -78,6 +78,14 @@ class Card extends TallStackUiComponent implements Personalization
                 ],
                 'size' => 'w-full h-64',
             ],
+            'transitions' => [
+                'enter' => 'transition ease-out duration-100',
+                'enter-start' => 'opacity-0 -translate-y-10',
+                'enter-end' => 'opacity-100 translate-y-0',
+                'leave' => 'transition ease-in duration-100',
+                'leave-start' => 'opacity-100 translate-y-0',
+                'leave-end' => 'opacity-0 -translate-y-10',
+            ],
         ]);
     }
 }
