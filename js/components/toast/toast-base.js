@@ -3,6 +3,7 @@ export default (flash) => ({
   toasts: [],
   init () {
     if (flash) window.onload = () => this.add(flash);
+    if (flash) document.addEventListener('livewire:navigated', () => this.add(flash), { once: true });
   },
   add(event) {
     this.$nextTick(() => this.show = true);
@@ -11,7 +12,7 @@ export default (flash) => ({
 
     this.toasts.push(event.detail ?? flash);
   },
-  remove(notification) {
-    this.toasts = this.toasts.filter((element) => element.id !== notification.id);
+  remove(toast) {
+    this.toasts = this.toasts.filter((element) => element.id !== toast.id);
   },
 });

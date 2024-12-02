@@ -4,7 +4,7 @@
 @endphp
 
 <div x-cloak
-     x-data="tallstackui_dialog(@js($flash), @js(__('tallstack-ui::messages.dialog.button')), @js($configurations['overflow'] ?? false))"
+     x-data="tallstackui_dialog(@js($flash), @js(trans('tallstack-ui::messages.dialog.button')), @js($configurations['overflow'] ?? false))"
      x-on:tallstackui:dialog.window="add($event.detail)"
      @class(['relative', $configurations['z-index']])
      aria-labelledby="modal-title"
@@ -34,6 +34,7 @@
                     <button x-on:click="remove()">
                         <x-dynamic-component :component="TallStackUi::component('icon')"
                                              :icon="TallStackUi::icon('x-mark')"
+                                             dusk="tallstackui_dialog_close"
                                              @class($personalize['buttons.close.icon']) />
                     </button>
                 </div>

@@ -2,22 +2,25 @@
 
 namespace TallStackUi\View\Components;
 
+use ArrayAccess;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Contracts\View\View;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use Illuminate\View\ComponentAttributeBag;
 use Illuminate\View\ComponentSlot;
 use InvalidArgumentException;
+use TallStackUi\Foundation\Attributes\RequireLivewireContext;
 use TallStackUi\Foundation\Attributes\SkipDebug;
 use TallStackUi\Foundation\Attributes\SoftPersonalization;
 use TallStackUi\Foundation\Personalization\Contracts\Personalization;
 
+#[RequireLivewireContext]
 #[SoftPersonalization('table')]
 class Table extends BaseComponent implements Personalization
 {
     public function __construct(
-        public ?string $id = null,
         public Collection|array $headers = [],
         public LengthAwarePaginator|Paginator|Collection|array $rows = [],
         public ?bool $headerless = false,
@@ -26,13 +29,18 @@ class Table extends BaseComponent implements Personalization
         public bool|array|null $filter = null,
         public ?bool $loading = false,
         public ?array $quantity = [10, 25, 50, 100],
-        #[SkipDebug]
-        public ?array $placeholders = [],
         public ?bool $paginate = false,
         public ?bool $persistent = false,
+        public ?bool $simplePagination = false,
+        public ?bool $selectable = null,
+        public ?string $selectableProperty = 'id',
+        public ?string $link = null,
+        public ?bool $blank = false,
+        public ?int $onEachSide = 1,
+        #[SkipDebug]
+        public ?array $placeholders = [],
         #[SkipDebug]
         public ?string $paginator = 'tallstack-ui::components.table.paginators',
-        public ?bool $simplePagination = false,
         #[SkipDebug]
         public mixed $loop = null,
         #[SkipDebug]
@@ -40,9 +48,9 @@ class Table extends BaseComponent implements Personalization
         #[SkipDebug]
         public ComponentSlot|string|null $header = null,
         #[SkipDebug]
-        public ComponentSlot|string|null $footer = null,
+        public ComponentSlot|string|null $footer = null
     ) {
-        $this->placeholders = __('tallstack-ui::messages.table');
+        $this->placeholders = trans('tallstack-ui::messages.table');
 
         if (is_bool($filter) && $this->filter === true) {
             $this->filter = ['quantity' => 'quantity', 'search' => 'search'];
@@ -62,12 +70,6 @@ class Table extends BaseComponent implements Personalization
 
         // Imploding to transform into "wire:target="quantity,search""
         $this->target = implode(',', $this->target);
-
-        if ($this->id !== null) {
-            $this->id = str($this->id)->kebab()
-                ->lower()
-                ->value();
-        }
     }
 
     public function blade(): View
@@ -86,6 +88,29 @@ class Table extends BaseComponent implements Personalization
         return ['column' => $header['index'], 'direction' => $direction];
     }
 
+    // Prepare the href link for the row replacing tokens
+    public function href(mixed $row): string
+    {
+        return str($this->link)->replaceMatches('/\{(.*?)\}/', fn (array $match): ?string => data_get($row, $match[1]))->value();
+    }
+
+    public function ids(): array
+    {
+        return $this->rows instanceof ArrayAccess
+            ? $this->rows->pluck($this->selectableProperty)->all() // @phpstan-ignore-line
+            : collect($this->rows)->pluck($this->selectableProperty)->all();
+    }
+
+    // We need this to be applied to the checkbox corresponding
+    // to the line because it is the x-model from here that "pushes"
+    // the selected values, as well as removing them, when clicked.
+    final public function modifier(): ComponentAttributeBag
+    {
+        $modifier = is_string($this->ids()[0] ?? null) ? '' : '.number';
+
+        return new ComponentAttributeBag(['x-model'.$modifier => 'model']);
+    }
+
     public function personalization(): array
     {
         return Arr::dot([
@@ -97,6 +122,7 @@ class Table extends BaseComponent implements Personalization
                 'th' => 'dark:text-dark-200 px-3 py-3.5 text-left text-sm font-semibold text-gray-700',
                 'tbody' => 'dark:bg-dark-700 dark:divide-dark-500/20 divide-y divide-gray-200 bg-white',
                 'td' => 'dark:text-dark-300 whitespace-nowrap px-3 py-4 text-sm text-gray-500',
+                'tr' => '',
                 'thead' => [
                     'normal' => 'bg-gray-50 dark:bg-dark-600',
                     'striped' => 'bg-white dark:bg-dark-700',
@@ -128,7 +154,7 @@ class Table extends BaseComponent implements Personalization
     /** @throws InvalidArgumentException */
     protected function validate(): void
     {
-        $messages = __('tallstack-ui::messages.table');
+        $messages = trans('tallstack-ui::messages.table');
 
         if (blank($messages['empty'] ?? null)) {
             throw new InvalidArgumentException('The table [empty] message cannot be empty.');
@@ -142,8 +168,8 @@ class Table extends BaseComponent implements Personalization
             throw new InvalidArgumentException('The table [search] message cannot be empty.');
         }
 
-        if ($this->persistent && blank($this->id)) {
-            throw new InvalidArgumentException('The table [id] property is required when [persistent] is set.');
+        if ($this->selectable && blank($this->selectableProperty)) {
+            throw new InvalidArgumentException('The table [selectableProperty] property is required when [selectable] is set.');
         }
     }
 }

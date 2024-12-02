@@ -3,6 +3,7 @@
     $text ??= $slot->toHtml();
     $personalize = $classes();
     $flash = session()->pull('tallstackui:banner');
+    $wire = $flash ? true : $wire;
 @endphp
 
 @if ($show)
@@ -49,24 +50,25 @@
                     <x-dynamic-component :component="TallStackUi::component('icon')"
                                          :icon="TallStackUi::icon('check-circle')"
                                          outline
-                                         @class([$personalize['icon']]) />
+                                         @class($personalize['icon']) />
                 </div>
                 <div x-show="type === 'error'">
                     <x-dynamic-component :component="TallStackUi::component('icon')"
                                          :icon="TallStackUi::icon('x-circle')"
                                          outline
-                                         @class([$personalize['icon']]) />
+                                         @class($personalize['icon']) />
                 </div>
                 <div x-show="type === 'info'">
                     <x-dynamic-component :component="TallStackUi::component('icon')"
                                          :icon="TallStackUi::icon('information-circle')"
-                                         outline @class([$personalize['icon']]) />
+                                         outline
+                                         @class($personalize['icon']) />
                 </div>
                 <div x-show="type === 'warning'">
                     <x-dynamic-component :component="TallStackUi::component('icon')"
                                          :icon="TallStackUi::icon('exclamation-circle')"
                                          outline
-                                         @class([$personalize['icon']]) />
+                                         @class($personalize['icon']) />
                 </div>
                 <span class="text-white" x-html="text"></span>
             </div>

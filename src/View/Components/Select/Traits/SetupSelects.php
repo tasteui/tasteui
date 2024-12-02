@@ -4,13 +4,13 @@ namespace TallStackUi\View\Components\Select\Traits;
 
 use Illuminate\Support\Collection;
 
-trait InteractsWithSelectOptions
+trait SetupSelects
 {
-    private function options(): void
+    private function setup(): void
     {
         $this->options = $this->options instanceof Collection
-            ? $this->options->toArray()
-            : $this->options;
+            ? $this->options->values()->toArray()
+            : array_values($this->options);
 
         if (! $this->select || ($this->options !== [] && ! is_array($this->options[0]))) {
             return;
@@ -28,9 +28,6 @@ trait InteractsWithSelectOptions
             'image' => current(array_intersect_key($item, array_flip(['image', 'img', 'img_src']))) ?: null,
         ])->toArray();
 
-        $this->selectable = [
-            'label' => $label,
-            'value' => $value,
-        ];
+        $this->selectable = ['label' => $label, 'value' => $value];
     }
 }

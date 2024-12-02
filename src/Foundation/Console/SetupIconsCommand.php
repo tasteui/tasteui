@@ -64,7 +64,7 @@ class SetupIconsCommand extends Command
         $file = storage_path('app/'.$temp.'.zip');
         file_put_contents($file, $response->body());
 
-        $zip = new ZipArchive();
+        $zip = new ZipArchive;
 
         if (! $zip->open($file)) {
             return 'Failed to extract the .zip file.';
@@ -88,7 +88,7 @@ class SetupIconsCommand extends Command
         foreach (
             collect(array_keys(IconGuide::AVAILABLE))
                 ->mapWithKeys(fn (string $value) => [$value => $value])
-                ->except(['heroicons', $this->data->get('type')]) // Heroicons is always required.
+                ->except(['heroicons', $this->data->get('type')]) // Ignoring heroicons because it is always required.
                 ->toArray() as $type
         ) {
             // Flushing the other unused icons to
@@ -112,8 +112,6 @@ class SetupIconsCommand extends Command
 
     private function setup(): bool|string
     {
-        sleep(1);
-
         $config = config('tallstackui');
         $type = data_get($config, 'icons.type');
         $style = data_get($config, 'icons.style');

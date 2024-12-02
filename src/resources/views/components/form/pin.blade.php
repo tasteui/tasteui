@@ -3,6 +3,7 @@
     $personalize = $classes();
     $hash = $livewire ? $__livewire->getId().'-'.$property : uniqid();
     $value = $attributes->get('value');
+    $required = $attributes->get('required', false);
 @endphp
 
 @if ($livewire)
@@ -56,16 +57,18 @@
                             $personalize['input.color.background'],
                        ]) x-bind:class="{
                            '{{ $personalize['input.color.base'] }}': !error,
-                           '{{ $personalize['input.color.error'] }}': error,
+                           '{{ $personalize['input.color.error'] }}': @js($invalidate ?? false) === false && error,
                        }" maxlength="1"
                        autocomplete="false"
+                       @required($required)
+                       x-on:focus="setTimeout(() => $el.selectionStart = $el.selectionEnd = $el.value.length, 0)"
                        x-on:keyup="keyup(@js($index))"
                        x-on:keyup.left="left(@js($index))"
                        x-on:keyup.right="right(@js($index))"
                        x-on:keyup.up="left(@js($index))"
                        x-on:keyup.down="right(@js($index))"
-                       x-on:keyup.delete="backspace(@js($index))"
-                       x-on:keydown.backspace="backspace(@js($index))" />
+                       x-on:keyup.delete="backspace($event, @js($index))"
+                       x-on:keyup.backspace="backspace($event, @js($index))" />
             @endforeach
             <template x-if="clear && model">
                 <button class="cursor-pointer" x-on:click="erase();" dusk="form_pin_clear">

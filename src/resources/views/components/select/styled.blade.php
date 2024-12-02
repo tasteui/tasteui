@@ -2,6 +2,7 @@
     [$property, $error, $id, $entangle] = $bind($attributes, $errors ?? null, $livewire);
     $personalize = $classes();
     $value = $sanitize($attributes, $property, $livewire);
+    $disabled = (bool) $attributes->get('disabled', $attributes->get('readonly', false)) === true;
 @endphp
 
 @if (!$livewire && $property)
@@ -82,10 +83,11 @@
                 </div>
             </div>
             @if (!$disabled)
-                <div @class($personalize['buttons.wrapper'])>
+                <div @class($personalize['buttons.wrapper']) wire:ignore>
                     @if (!$required)
                     <template x-if="!empty">
                         <button dusk="tallstackui_select_clear"
+                                id="select-clear"
                                 type="button"
                                 x-on:click="$event.stopPropagation(); clear();">
                             <x-dynamic-component :component="TallStackUi::component('icon')"
@@ -101,6 +103,7 @@
             @endif
         </button>
         <x-dynamic-component :component="TallStackUi::component('floating')"
+                             :floating="$personalize['floating']"
                              class="w-full overflow-auto"
                              x-anchor="$refs.button">
             <template x-if="searchable">
@@ -117,7 +120,7 @@
                             x-show="search?.length > 0">
                         <x-dynamic-component :component="TallStackUi::component('icon')"
                                              :icon="TallStackUi::icon('x-mark')"
-                                @class($personalize['box.button.icon']) />
+                                             @class($personalize['box.button.icon']) />
                     </button>
                 </div>
             </template>

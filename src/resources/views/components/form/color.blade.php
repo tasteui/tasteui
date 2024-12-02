@@ -17,7 +17,7 @@
 <div x-data="tallstackui_formColor(
         {!! $entangle !!},
         @js($mode),
-        @js($colors),
+        @js($configurations['colors']),
         @js($livewire),
         @js($property),
         @js($value))"
@@ -56,6 +56,7 @@
         </x-slot:suffix>
     </x-dynamic-component>
     <x-dynamic-component :component="TallStackUi::component('floating')"
+                         :floating="$personalize['floating']"
                          class="w-[18rem] overflow-auto"
                          x-on:click.outside="show = false">
         <div @class($personalize['box.base'])>

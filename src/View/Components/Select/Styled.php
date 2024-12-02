@@ -12,16 +12,17 @@ use TallStackUi\Foundation\Personalization\Contracts\Personalization;
 use TallStackUi\Foundation\Traits\SanitizePropertyValue;
 use TallStackUi\Foundation\Traits\WireChangeEvent;
 use TallStackUi\View\Components\BaseComponent;
+use TallStackUi\View\Components\Floating;
 use TallStackUi\View\Components\Form\Traits\DefaultInputClasses;
-use TallStackUi\View\Components\Select\Traits\InteractsWithSelectOptions;
+use TallStackUi\View\Components\Select\Traits\SetupSelects;
 use Throwable;
 
 #[SoftPersonalization('select.styled')]
 class Styled extends BaseComponent implements Personalization
 {
     use DefaultInputClasses;
-    use InteractsWithSelectOptions;
     use SanitizePropertyValue;
+    use SetupSelects;
     use WireChangeEvent;
 
     /** @throws Throwable */
@@ -29,30 +30,29 @@ class Styled extends BaseComponent implements Personalization
         public ?string $label = null,
         public ?string $hint = null,
         public ?string $placeholder = null,
-        #[SkipDebug]
-        public Collection|array $options = [],
         public string|array|null $request = null,
         public ?bool $multiple = false,
         public ?bool $searchable = false,
         public ?string $select = null,
         public ?array $selectable = [],
-        #[SkipDebug]
-        public ?string $after = null,
-        public ?bool $disabled = false,
-        #[SkipDebug]
-        public ?bool $common = true,
         public ?array $placeholders = null,
         public ?bool $invalidate = null,
         public ?bool $required = false,
         public ?int $limit = null,
+        #[SkipDebug]
+        public Collection|array $options = [],
+        #[SkipDebug]
+        public ?string $after = null,
+        #[SkipDebug]
+        public ?bool $common = true,
     ) {
-        $this->placeholders ??= [...__('tallstack-ui::messages.select')];
+        $this->placeholders ??= [...trans('tallstack-ui::messages.select')];
         $this->placeholder ??= data_get($this->placeholders, 'default');
 
         $this->common = ! filled($this->request);
         $this->searchable = $this->common ? $this->searchable : true;
 
-        $this->options();
+        $this->setup();
 
         if (is_array($this->request)) {
             $this->request['method'] ??= 'get';
@@ -81,6 +81,7 @@ class Styled extends BaseComponent implements Personalization
                 'base' => 'dark:text-dark-400 text-gray-500 hover:text-red-500 dark:hover:text-red-500',
                 'error' => 'text-red-500',
             ],
+            'floating' => collect(app(Floating::class)->personalization())->get('wrapper'),
             'box' => [
                 'button' => [
                     'class' => 'absolute inset-y-0 right-2 flex cursor-pointer items-center px-2',

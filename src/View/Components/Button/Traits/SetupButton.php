@@ -3,6 +3,7 @@
 namespace TallStackUi\View\Components\Button\Traits;
 
 use Illuminate\View\ComponentAttributeBag;
+use TallStackUi\View\Components\Button\Button;
 use TallStackUi\View\Components\Button\Circle;
 
 trait SetupButton
@@ -10,6 +11,8 @@ trait SetupButton
     protected function manipulation(array $classes): array
     {
         return (match (true) {
+            // When the button is a flat style, part of what we need
+            // to do to make the flat work is remove the borders.
             $this->flat => function () use ($classes) {
                 if (isset($classes['wrapper.class'])) {
                     $classes['wrapper.class'] = str_replace('border', '', $classes['wrapper.class']);
@@ -27,6 +30,10 @@ trait SetupButton
     {
         $this->style = $this->outline ? 'outline' : ($this->light ? 'light' : ($this->flat ? 'flat' : 'solid'));
         $this->size = $this->xs ? 'xs' : ($this->sm ? 'sm' : ($this->lg ? 'lg' : 'md'));
+
+        if ($this instanceof Button) {
+            $this->position = $this->position === 'right' ? 'right' : 'left';
+        }
 
         if (! $this instanceof Circle) {
             return;

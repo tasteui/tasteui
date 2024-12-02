@@ -32,7 +32,7 @@ class FindComponentCommand extends Command
     {
         $components = collect(config('tallstackui.components'))
             ->keys()
-            ->filter(fn ($component) => ! in_array($component, self::IGNORES));
+            ->filter(fn (string $component) => ! in_array($component, self::IGNORES));
 
         $original = suggest('Select Component', $components->values()->toArray(), required: true);
         $prefix = config('tallstackui.prefix');
@@ -46,6 +46,8 @@ class FindComponentCommand extends Command
         ]);
 
         try {
+            // This is identical to run() except that an exception is
+            // thrown if the process exits with a non-zero exit code.
             $process->mustRun();
 
             $this->output($process->getOutput(), $original);
@@ -76,13 +78,13 @@ class FindComponentCommand extends Command
             // After that, need to ignore lines that contain
             // </x- because they are closing tags and not the
             // actual component, like examples of </x-modal> and </x-slide>
-            ->filter(fn ($line) => ! str_contains($line, '</x-'));
+            ->filter(fn (string $line) => ! str_contains($line, '</x-'));
 
         $total = $lines->count();
 
         $this->components->info('🎉 '.$total.' occurrences found');
 
-        $lines->each(function (string $line) use (&$rows) {
+        $lines->each(function (string $line) use (&$rows): bool {
             preg_match('/^(.*?):(\d+):(.*)$/', $line, $matches);
 
             if (blank($line) || count($matches) !== 4) {
@@ -93,6 +95,8 @@ class FindComponentCommand extends Command
             $number = $matches[2];
 
             $rows[] = [$path, $number];
+
+            return true;
         });
 
         table(['File', 'Line'], $rows);
