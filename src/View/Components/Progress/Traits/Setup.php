@@ -2,7 +2,7 @@
 
 namespace TallStackUi\View\Components\Progress\Traits;
 
-trait SetupProgress
+trait Setup
 {
     protected function setup(): void
     {

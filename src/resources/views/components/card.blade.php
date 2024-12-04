@@ -44,23 +44,23 @@
         @endif
         <div {{ $attributes->class($personalize['body']) }}
              x-show="!minimize"
-             x-transition:enter="{{ $personalize['transitions.enter'] }}"
-             x-transition:enter-start="{{ $personalize['transitions.enter-start'] }}"
-             x-transition:enter-end="{{ $personalize['transitions.enter-end'] }}"
-             x-transition:leave="{{ $personalize['transitions.leave'] }}"
-             x-transition:leave-start="{{ $personalize['transitions.leave-start'] }}"
-             x-transition:leave-end="{{ $personalize['transitions.leave-end'] }}">
+             x-transition:enter="transition ease-out duration-100"
+             x-transition:enter-start="opacity-0 -translate-y-10"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-100"
+             x-transition:leave-start="opacity-100 translate-y-0"
+             x-transition:leave-end="opacity-0 -translate-y-10">
             {{ $slot }}
         </div>
         @if ($footer)
             <div @class($personalize['footer.wrapper'])
                  x-show="!minimize"
-                 x-transition:enter="{{ $personalize['transitions.enter'] }}"
-                 x-transition:enter-start="{{ $personalize['transitions.enter-start'] }}"
-                 x-transition:enter-end="{{ $personalize['transitions.enter-end'] }}"
-                 x-transition:leave="{{ $personalize['transitions.leave'] }}"
-                 x-transition:leave-start="{{ $personalize['transitions.leave-start'] }}"
-                 x-transition:leave-end="{{ $personalize['transitions.leave-end'] }}">
+                 x-transition:enter="transition ease-out duration-100"
+                 x-transition:enter-start="opacity-0 -translate-y-10"
+                 x-transition:enter-end="opacity-100 translate-y-0"
+                 x-transition:leave="transition ease-in duration-100"
+                 x-transition:leave-start="opacity-100 translate-y-0"
+                 x-transition:leave-end="opacity-0 -translate-y-10">
                 <div @class($personalize['footer.text'])>
                     {{ $footer }}
                 </div>
@@ -69,12 +69,12 @@
         @if ($image && $position === 'bottom')
             <div @class([$personalize['image.wrapper']])
                  x-show="!minimize"
-                 x-transition:enter="{{ $personalize['transitions.enter'] }}"
-                 x-transition:enter-start="{{ $personalize['transitions.enter-start'] }}"
-                 x-transition:enter-end="{{ $personalize['transitions.enter-end'] }}"
-                 x-transition:leave="{{ $personalize['transitions.leave'] }}"
-                 x-transition:leave-start="{{ $personalize['transitions.leave-start'] }}"
-                 x-transition:leave-end="{{ $personalize['transitions.leave-end'] }}">
+                 x-transition:enter="transition ease-out duration-100"
+                 x-transition:enter-start="opacity-0 -translate-y-10"
+                 x-transition:enter-end="opacity-100 translate-y-0"
+                 x-transition:leave="transition ease-in duration-100"
+                 x-transition:leave-start="opacity-100 translate-y-0"
+                 x-transition:leave-end="opacity-0 -translate-y-10">
                 <img src="{{ $image }}" @class([$personalize['image.rounded.bottom'], $personalize['image.size']]) />
             </div>
         @endif
