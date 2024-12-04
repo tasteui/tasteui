@@ -5,7 +5,6 @@
 @if ($errors->isNotEmpty())
     <div @class(['w-full'])
          x-data="{ show : true, close () { this.show = false; this.$el.dispatchEvent(new CustomEvent('close')) } }"
-         x-init="() => Livewire.hook('commit.prepare', () => show = true)"
          x-show="show">
         <div {{ $attributes->class([
                 $personalize['wrapper'],
@@ -22,7 +21,7 @@
                     {{ trans($title, ['count' => $count($errors)]) }}
                 </span>
                 @if ($close)
-                <button dusk="errors-close-button"
+                <button dusk="tallstackui_errors_close_button"
                         class="cursor-pointer"
                         {{ $attributes->only('x-on:close') }}
                         x-on:click="close()">

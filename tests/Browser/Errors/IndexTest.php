@@ -37,45 +37,9 @@ class IndexTest extends BrowserTestCase
             ->assertDontSee('There are 1 validation errors:')
             ->click('@save')
             ->waitForText('There are 1 validation errors:')
-            ->click('@errors-close-button')
+            ->click('@tallstackui_errors_close_button')
             ->waitUntilMissingText('There are 1 validation errors:')
             ->assertDontSee('There are 1 validation errors:');
-    }
-
-    /** @test */
-    public function can_close_and_reopen_if_new_validation_fails(): void
-    {
-        Livewire::visit(new class extends Component
-        {
-            #[Rule('required')]
-            public ?string $name = null;
-
-            public function render(): string
-            {
-                return <<<'HTML'
-                <div>        
-                    <x-errors close />
-                
-                    <x-button dusk="save" wire:click="save">Save</x-button>
-                </div>
-                HTML;
-            }
-
-            public function save(): void
-            {
-                $this->validate();
-            }
-        })
-            ->assertSee('Save')
-            ->assertDontSee('There are 1 validation errors:')
-            ->click('@save')
-            ->waitForText('There are 1 validation errors:')
-            ->click('@errors-close-button')
-            ->waitUntilMissingText('There are 1 validation errors:')
-            ->assertDontSee('There are 1 validation errors:')
-            ->click('@save')
-            ->waitForText('There are 1 validation errors:')
-            ->assertSee('There are 1 validation errors:');
     }
 
     /** @test */
@@ -92,7 +56,7 @@ class IndexTest extends BrowserTestCase
             {
                 return <<<'HTML'
                 <div>        
-                    <x-errors close x-on:close="$wire.set('close', 1)" />
+                    <x-errors close x-on:close="$wire.set('close', true)" />
                     
                     @if ($close)
                         <p dusk="close">1</p>
@@ -112,7 +76,7 @@ class IndexTest extends BrowserTestCase
             ->assertDontSee('There are 1 validation errors:')
             ->click('@save')
             ->waitForText('There are 1 validation errors:')
-            ->click('@errors-close-button')
+            ->click('@tallstackui_errors_close_button')
             ->waitUntilMissingText('There are 1 validation errors:')
             ->assertDontSee('There are 1 validation errors:')
             ->assertVisible('@close');
