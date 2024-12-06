@@ -22,7 +22,7 @@ class TimeRuntime extends AbstractRuntime
             'change' => $this->change(),
         ];
 
-        $value = $this->value($value, $property);
+        $value = $this->value($property, $value);
 
         if (filled($value)) {
             $this->validate($value);

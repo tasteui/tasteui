@@ -1,36 +1,19 @@
-import {warning} from '../../helpers';
-
-export default (value, min, max, delay, step) => ({
-  value: value,
+export default (model, min, max, delay, step) => ({
+  model: model,
   min: min,
   max: max,
   interval: null,
   delay: delay,
   init() {
-    if ((this.min && this.max) && (this.min > this.max || this.max < this.min)) {
-      warning('The number input min and max values are out of the acceptable range.');
-      return;
-    }
-
     if (this.defined) {
-      if (this.min && this.value < this.min) {
-        warning('The min value of the number input must be greater than than the defined in [wire:model] property.');
-        return;
-      }
-
-      if (this.max && this.value > this.max) {
-        warning('The max value of the number input must be less than the defined in [wire:model] property.');
-        return;
-      }
-
       this.disableMinus = this.atMinus;
       this.disablePlus = this.atPlus;
     }
 
-    this.$watch('value', (value) => {
+    this.$watch('model', (value) => {
       if (isNaN(value) || !value) return;
 
-      this.$refs.input.value = this.value = value;
+      this.$refs.input.value = this.model = value;
     });
   },
   increment() {
@@ -40,15 +23,15 @@ export default (value, min, max, delay, step) => ({
         return;
       }
 
-      if ((this.value + step) > this.max) {
-        this.value = this.max;
+      if ((parseInt(this.model) + step) > this.max) {
+        this.model = this.max;
         this.$refs.input.value = this.max;
         this.disablePlus = true;
 
         return;
       }
 
-      this.value ||= this.min;
+      this.model ||= this.min;
       this.$refs.input.value ||= this.min;
     }
 
@@ -63,15 +46,15 @@ export default (value, min, max, delay, step) => ({
         return;
       }
 
-      if ((this.value - step) < this.min) {
-        this.value = this.min;
+      if ((parseInt(this.model) - step) < this.min) {
+        this.model = this.min;
         this.$refs.input.value = this.min;
         this.disableMinus = true;
 
         return;
       }
 
-      this.value ||= this.min;
+      this.model ||= this.min;
       this.$refs.input.value ||= this.min;
     }
 
@@ -80,7 +63,7 @@ export default (value, min, max, delay, step) => ({
     this.update();
   },
   update() {
-    this.value = this.$refs.input.value;
+    this.model = this.$refs.input.value;
 
     if (!this.limiters) {
       return;
@@ -93,24 +76,24 @@ export default (value, min, max, delay, step) => ({
     const value = this.$refs.input.value;
 
     if (this.min !== null && value < this.min) {
-      this.$refs.input.value, this.value = null;
+      this.$refs.input.value = this.model = null;
     }
 
     if (this.max !== null && value > this.max) {
-      this.$refs.input.value, this.value = null;
+      this.$refs.input.value = this.model = null;
     }
 
     this.disablePlus = this.atPlus;
     this.disableMinus = this.atMinus;
   },
   get defined() {
-    return this.value === 0 || Boolean(this.value);
+    return this.model === 0 || Boolean(this.model);
   },
   get atMinus() {
-    return this.min !== null && (this.value <= this.min);
+    return this.min !== null && (this.model <= this.min);
   },
   get atPlus() {
-    return this.max !== null && (this.value >= this.max);
+    return this.max !== null && (this.model >= this.max);
   },
   set disableMinus(disabled) {
     this.$refs.minus.disabled = disabled;

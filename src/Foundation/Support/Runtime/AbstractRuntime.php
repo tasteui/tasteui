@@ -122,11 +122,11 @@ abstract class AbstractRuntime
      * The value of a Livewire component `$property` - when in
      * the context of Livewire, or the `$value` provided.
      */
-    protected function value(mixed $value, ?string $property = null): mixed
+    protected function value(?string $property = null, mixed $value = null): mixed
     {
         return $this->wireable() && ! is_null($property) && property_exists($this->livewire, $property)
             ? data_get($this->livewire, $property)
-            : $value;
+            : ($value ?: $this->data['attributes']->get('value'));
     }
 
     /**
