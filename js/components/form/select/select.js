@@ -1,4 +1,4 @@
-import {error, warning, wireChange} from '../../../helpers';
+import {error, wireChange} from '../../../helpers';
 import {body} from './helpers';
 
 export default (
@@ -51,20 +51,6 @@ export default (
         // for the component to be mounted and then initialize it.
         await this.$nextTick(() => this.initAsVanilla());
       }
-    }
-
-    const label = this.livewire ? 'wire:model' : 'value';
-
-    if (this.multiple && this.model && this.model.constructor !== Array) {
-      return warning(`The [${label}] must be an array when multiple is set`);
-    }
-
-    if (!this.multiple && this.model && this.model.constructor === Array) {
-      return warning(`The [${label}] must not be an array when is not multiple`);
-    }
-
-    if (this.common && (this.dimensional && this.selectable.constructor === Array && this.selectable?.length === 0)) {
-      return warning(`The [${label}] must be defined`);
     }
 
     if (this.common) {

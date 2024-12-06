@@ -4,7 +4,7 @@
 
 <x-dynamic-component :component="TallStackUi::prefix('wrapper.input')" :$id :$property :$error :$label :$hint :$invalidate :floatable="$attributes->get('floatable', false)">
     @if ($icon)
-        <div @class([ $personalize['icon.wrapper'], $personalize['icon.paddings.' . $position]])>
+        <div @class([$personalize['icon.wrapper'], $personalize['icon.paddings.' . $position]])>
             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                  :$icon
                                  :$error
