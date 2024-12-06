@@ -43,11 +43,11 @@ class SelectStyledRuntime extends AbstractRuntime
 
         // TODO tests
         if ($multiple && ! is_array($value)) {
-            throw new InvalidArgumentException("The select.styled [$label] must be an array when multiple is set.");
+            throw new InvalidArgumentException("The [select.styled] [$label] must be an array when multiple is set.");
         }
 
         if (! $multiple && is_array($value)) {
-            throw new InvalidArgumentException("The select.styled [$label] must not be an array when multiple is not set.");
+            throw new InvalidArgumentException("The [select.styled] [$label] must not be an array when multiple is not set.");
         }
     }
 }
