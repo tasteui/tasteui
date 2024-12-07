@@ -10,7 +10,8 @@
         @js($static),
         @js($placeholder),
         @js(trans('tallstack-ui::messages.upload.uploaded')),
-        @js($overflow))"
+        @js($overflow),
+        @js($closeOnUpload))"
      x-cloak
      x-on:livewire-upload-start="uploading = true"
      x-on:livewire-upload-finish="uploading = false"
