@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Browser\Select;
+namespace Tests\Browser\Form\Select;
 
 use Livewire\Component;
 use Livewire\Livewire;
@@ -332,6 +332,58 @@ class StyledSearchableTest extends BrowserTestCase
             ->click('@tallstackui_select_open_close')
             ->click('@sync')
             ->waitForText(['delectus aut autem', 'quis ut nam facilis et officia qui']);
+    }
+
+    /** @test */
+    public function cannot_set_bind_as_array_when_multiple_was_not_set(): void
+    {
+        Livewire::visit(new class extends Component
+        {
+            public array $string = [1];
+
+            public function render(): string
+            {
+                return <<<'HTML'
+                <div>
+                    <x-select.styled wire:model="string" :request="route('searchable.simple')" />
+
+                    <x-button dusk="sync" wire:click="sync">Sync</x-button>
+                </div>
+                HTML;
+            }
+
+            public function sync(): void
+            {
+                // ...
+            }
+        })
+            ->assertSee('The [select.styled] [wire:model] must not be an array when multiple is not set.');
+    }
+
+    /** @test */
+    public function cannot_set_multiple_with_a_non_array_bind(): void
+    {
+        Livewire::visit(new class extends Component
+        {
+            public string $string = 'a';
+
+            public function render(): string
+            {
+                return <<<'HTML'
+                <div>
+                    <x-select.styled wire:model="string" :request="route('searchable.simple')" multiple />
+
+                    <x-button dusk="sync" wire:click="sync">Sync</x-button>
+                </div>
+                HTML;
+            }
+
+            public function sync(): void
+            {
+                // ...
+            }
+        })
+            ->assertSee('The [select.styled] [wire:model] must be an array when multiple is set.');
     }
 }
 

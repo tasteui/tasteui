@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Browser\Select;
+namespace Tests\Browser\Form\Select;
 
 use Illuminate\Support\Collection;
 use Livewire\Component;

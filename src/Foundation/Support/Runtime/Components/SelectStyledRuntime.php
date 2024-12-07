@@ -41,7 +41,6 @@ class SelectStyledRuntime extends AbstractRuntime
         $label = $this->wireable() ? 'wire:model' : 'value';
         $multiple = $this->data('multiple');
 
-        // TODO tests
         if ($multiple && ! is_array($value)) {
             throw new InvalidArgumentException("The [select.styled] [$label] must be an array when multiple is set.");
         }
