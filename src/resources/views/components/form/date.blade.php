@@ -178,7 +178,8 @@
                             'rounded-r-full w-7 h-7': new Date(day.instance).getTime() === new Date(date.end).getTime(),
                             '{{ $personalize['range'] }}': between(day.instance) === true,
                          }">
-                        <button x-text="day.day"
+                        <button type="button" 
+                                x-text="day.day"
                                 {{ $attributes->only('x-on:select') }}
                                 x-on:click="select($event, day.day);"
                                 x-bind:disabled="day.disabled"
