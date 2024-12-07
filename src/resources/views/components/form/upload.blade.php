@@ -11,7 +11,7 @@
         @js($placeholder),
         @js(trans('tallstack-ui::messages.upload.uploaded')),
         @js($overflow),
-        @js($closeOnUpload))"
+        @js($closeAfterUpload))"
      x-cloak
      x-on:livewire-upload-start="uploading = true"
      x-on:livewire-upload-finish="uploading = false"
@@ -64,7 +64,8 @@
     @endif
      <x-dynamic-component :component="TallStackUi::prefix('floating')"
                           :floating="$personalize['floating']"
-                          class="w-full p-3">
+                          class="w-full p-3"
+                          dusk="tallstackui_upload_floating">
          @if (!$static)
          <div @class(['flex flex-col w-full items-center justify-center', 'mb-2' => $footer->isNotEmpty()])>
              <div @class($personalize['placeholder.wrapper']) :class="{ 'bg-primary-100': dragging }">

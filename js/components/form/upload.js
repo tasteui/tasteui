@@ -9,7 +9,7 @@ export default (
     placeholder,
     placeholders,
     overflowing,
-    closeOnUpload
+    closeAfterUpload
 ) => ({
   show: false,
   uploading: false,
@@ -78,7 +78,7 @@ export default (
         (event) => this.progress = event.detail.progress,
     );
 
-    if (closeOnUpload) this.show = false;
+    if (closeAfterUpload) this.show = false;
   },
   /**
    * Upload single file.
@@ -100,7 +100,7 @@ export default (
         (event) => this.progress = event.detail.progress,
     );
 
-    if (closeOnUpload) this.show = false;
+    if (closeAfterUpload) this.show = false;
   },
   /**
    * Remove a file through Livewire component.

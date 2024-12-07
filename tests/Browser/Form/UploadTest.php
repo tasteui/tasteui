@@ -18,6 +18,38 @@ use Tests\Browser\BrowserTestCase;
 class UploadTest extends BrowserTestCase
 {
     /** @test */
+    public function can_close_after_upload(): void
+    {
+        Livewire::visit(new class extends Component
+        {
+            use WithFileUploads;
+
+            public $photo;
+
+            public function render(): string
+            {
+                return <<<'HTML'
+                <div>
+                    @if ($photo)
+                        <p dusk="uploaded">{{ $photo->getClientOriginalName() }}</p>
+                    @endif
+                    
+                    <x-upload label="Document" wire:model.live="photo" close-after-upload />
+                </div>
+                HTML;
+            }
+        })
+            ->assertSee('Document')
+            ->assertMissing('@uploaded')
+            ->click('@tallstackui_upload_input')
+            ->waitForText('Click here to upload')
+            ->attach('@tallstackui_file_select', __DIR__.'/../../Fixtures/test.jpeg')
+            ->waitForTextIn('@uploaded', 'test.jpeg')
+            ->assertSeeIn('@uploaded', 'test.jpeg')
+            ->assertNotVisible('@tallstackui_upload_floating');
+    }
+
+    /** @test */
     public function can_delete_existent_files()
     {
         Artisan::call('storage:link');
