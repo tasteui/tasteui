@@ -293,6 +293,18 @@ class Personalization
         return $this->component(Reaction::class);
     }
 
+    /**
+     * Set the scope for the personalization.
+     *
+     * @param  $name  string
+     */
+    public function scope(string $name): self
+    {
+        $this->scope = $name;
+
+        return $this;
+    }
+
     public function select(?string $component = null, ?string $scope = null): PersonalizationFactory
     {
         $this->scope ??= $scope;
