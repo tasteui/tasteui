@@ -101,7 +101,7 @@ class Personalization
      */
     public function block(string|array $name, string|callable|null $code = null): PersonalizationFactory
     {
-        return $this->instance()->block($name, $code);
+        return $this->forward()->block($name, $code);
     }
 
     public function boolean(?string $scope = null): PersonalizationFactory
@@ -212,7 +212,13 @@ class Personalization
         return $this->component($class);
     }
 
-    public function instance(): PersonalizationFactory
+    /**
+     * The purpose of this function is to forward the execution of
+     * the methods as they are called from auxiliary methods, such
+     * as: "form('input')", where in this example 'form' would be
+     * the method and 'input' the parameter to be injected into the method.
+     */
+    public function forward(): PersonalizationFactory
     {
         if (! $this->component) {
             throw new RuntimeException('No component has been set');

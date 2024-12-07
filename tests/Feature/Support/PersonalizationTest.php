@@ -18,7 +18,7 @@ it('can be instantiated with a component', function () {
 });
 
 it('can instantiate all components', function (string $component) {
-    expect(TallStackUi::personalize($component)->instance())->toBeInstanceOf(PersonalizationFactory::class);
+    expect(TallStackUi::personalize($component)->forward())->toBeInstanceOf(PersonalizationFactory::class);
 })->with('personalizations.keys');
 
 it('can personalize using facade and string', function () {

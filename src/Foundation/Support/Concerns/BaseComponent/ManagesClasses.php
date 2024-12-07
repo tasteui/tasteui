@@ -42,7 +42,7 @@ trait ManagesClasses
         unset($this->attributes['personalize']);
 
         $soft = TallStackUi::personalize($attribute->newInstance()->key)
-            ->instance()
+            ->forward()
             ->toArray();
 
         $scoped = [];
