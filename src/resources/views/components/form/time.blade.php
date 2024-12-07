@@ -47,8 +47,8 @@
                          </x-slot:suffix>
     </x-dynamic-component>
     <x-dynamic-component :component="TallStackUi::prefix('floating')"
-                         :floating="$personalize['floating']"
-                         class="p-3 w-[18rem]">
+                         :floating="$personalize['floating.default']"
+                         :class="$personalize['floating.class']">
         <div @class(['flex flex-col', 'mb-2' => $helper || $footer->isNotEmpty(), 'w-full' => $format === '24'])>
             <div @class($personalize['wrapper'])>
                 <span x-text="formatted.hours" x-ref="hours" @class($personalize['time'])></span>

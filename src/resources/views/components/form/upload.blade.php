@@ -63,8 +63,8 @@
         </template>
     @endif
      <x-dynamic-component :component="TallStackUi::prefix('floating')"
-                          :floating="$personalize['floating']"
-                          class="w-full p-3"
+                          :floating="$personalize['floating.default']"
+                          :class="$personalize['floating.class']"
                           dusk="tallstackui_upload_floating">
          @if (!$static)
          <div @class(['flex flex-col w-full items-center justify-center', 'mb-2' => $footer->isNotEmpty()])>

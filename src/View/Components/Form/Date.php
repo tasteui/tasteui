@@ -72,7 +72,10 @@ class Date extends TallStackUiComponent implements Personalization
             'wrapper' => [
                 'helpers' => 'custom-scrollbar flex items-center justify-between space-x-2 overflow-auto pb-2',
             ],
-            'floating' => collect(app(Floating::class)->personalization())->get('wrapper'),
+            'floating' => [
+                'default' => collect(app(Floating::class)->personalization())->get('wrapper'),
+                'class' => 'p-3 w-[17rem]',
+            ],
             'box' => [
                 'picker' => [
                     'button' => 'text-gray-900 focus:ring-dark-200 flex items-center justify-between rounded-lg px-2 py-1 mb-6 text-sm font-semibold focus:outline-none focus:ring-2 dark:text-white',

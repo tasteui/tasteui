@@ -59,8 +59,8 @@
         </x-slot:suffix>
     </x-dynamic-component>
     <x-dynamic-component :component="TallStackUi::prefix('floating')"
-                         :floating="$personalize['floating']"
-                         class="w-[18rem] overflow-auto"
+                         :floating="$personalize['floating.default']"
+                         :class="$personalize['floating.class']"
                          x-on:click.outside="show = false">
         <div @class($personalize['box.base']) dusk="tallstackui_form_color_floating">
             <div @class($personalize['box.range.wrapper'])>

@@ -48,8 +48,8 @@
      </x-dynamic-component>
     @if ($rules->isNotEmpty())
         <x-dynamic-component :component="TallStackUi::prefix('floating')"
-                             :floating="$personalize['floating']"
-                             class="w-full p-3"
+                             :floating="$personalize['floating.default']"
+                             :class="$personalize['floating.class']"
                              x-show="rules">
             <h3 @class($personalize['rules.title'])>{{ trans('tallstack-ui::messages.password.rules.title') }}</h3>
             <div @class($personalize['rules.block'])>

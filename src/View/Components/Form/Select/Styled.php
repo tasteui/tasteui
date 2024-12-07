@@ -85,7 +85,10 @@ class Styled extends TallStackUiComponent implements Personalization
                 'base' => 'dark:text-dark-400 text-gray-500 hover:text-red-500 dark:hover:text-red-500',
                 'error' => 'text-red-500',
             ],
-            'floating' => collect(app(Floating::class)->personalization())->get('wrapper'),
+            'floating' => [
+                'default' => collect(app(Floating::class)->personalization())->get('wrapper'),
+                'class' => 'w-full overflow-auto',
+            ],
             'box' => [
                 'button' => [
                     'class' => 'absolute inset-y-0 right-2 flex cursor-pointer items-center px-2',

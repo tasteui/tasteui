@@ -50,7 +50,10 @@ class Time extends TallStackUiComponent implements Personalization
                 'clear' => 'hover:text-red-500',
                 'wrapper' => 'flex items-center gap-2',
             ],
-            'floating' => collect(app(Floating::class)->personalization())->get('wrapper'),
+            'floating' => [
+                'default' => collect(app(Floating::class)->personalization())->get('wrapper'),
+                'class' => 'p-3 w-[18rem]',
+            ],
             'time' => 'text-primary-600 dark:text-dark-300 dark:border-dark-700 w-20 rounded-full p-2 text-center text-4xl font-medium transition',
             'separator' => 'dark:text-dark-400 h-14 text-5xl text-gray-300',
             'interval' => [

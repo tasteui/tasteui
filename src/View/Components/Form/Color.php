@@ -46,7 +46,10 @@ class Color extends TallStackUiComponent implements Personalization
             'icon' => [
                 'class' => 'h-5 w-5',
             ],
-            'floating' => collect(app(Floating::class)->personalization())->get('wrapper'),
+            'floating' => [
+                'default' => collect(app(Floating::class)->personalization())->get('wrapper'),
+                'class' => 'w-[18rem] overflow-auto',
+            ],
             'box' => [
                 'base' => 'shadow-xs dark:bg-dark-700 soft-scrollbar max-h-60 overflow-auto rounded-md bg-white py-4',
                 'range' => [

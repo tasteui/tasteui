@@ -68,7 +68,10 @@ class Upload extends TallStackUiComponent implements Personalization
                     'wrapper' => 'inline-flex items-center justify-center space-x-2',
                 ],
             ],
-            'floating' => collect(app(Floating::class)->personalization())->get('wrapper'),
+            'floating' => [
+                'default' => collect(app(Floating::class)->personalization())->get('wrapper'),
+                'class' => 'w-full p-3',
+            ],
             'upload' => [
                 'wrapper' => 'mt-2 flex h-1 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700',
                 'progress' => 'flex flex-col justify-center overflow-hidden whitespace-nowrap rounded-full bg-green-600 text-center text-xs text-white transition duration-500',

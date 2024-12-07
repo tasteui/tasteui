@@ -40,7 +40,10 @@ class Password extends TallStackUiComponent implements Personalization
                 'wrapper' => 'flex items-center',
                 'class' => 'h-5 w-5 cursor-pointer',
             ],
-            'floating' => collect(app(Floating::class)->personalization())->get('wrapper'),
+            'floating' => [
+                'default' => collect(app(Floating::class)->personalization())->get('wrapper'),
+                'class' => 'w-full p-3',
+            ],
             'rules' => [
                 'title' => 'text-md font-semibold text-red-500 dark:text-dark-300',
                 'block' => 'mt-2 flex flex-col',
