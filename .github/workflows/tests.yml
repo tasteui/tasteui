@@ -29,21 +29,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Bun
-        run: |
-          curl -fsSL https://bun.sh/install | bash
-          echo "$HOME/.bun/bin" >> $GITHUB_PATH
-          echo "Bun setup completed"
-          ~/.bun/bin/bun --version
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
 
-      - name: Install Bun Dependencies
-        run: bun install
+      - run: npm install
 
-      - name: Run Bun Lint
-        run: bun lint
+      - run: npm run lint
 
-      - name: Bun Build
-        run: bun build
+      - run: npm run build
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
