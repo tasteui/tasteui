@@ -32,9 +32,9 @@ jobs:
       - name: Setup Bun
         run: |
           curl -fsSL https://bun.sh/install | bash
-          export PATH="$HOME/.bun/bin:$PATH"
+          echo "$HOME/.bun/bin" >> $GITHUB_PATH
           echo "Bun setup completed"
-          bun --version
+          ~/.bun/bin/bun --version
 
       - name: Install Bun Dependencies
         run: bun install
