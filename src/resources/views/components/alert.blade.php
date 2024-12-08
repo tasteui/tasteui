@@ -12,6 +12,7 @@
                     @if ($icon)
                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                              :$icon
+                                             internal
                                              @class([$personalize['icon.size'], $colors['text']]) />
                     @endif
                 </div>
@@ -28,6 +29,7 @@
                 <button type="button" dusk="alert-close-button" class="cursor-pointer" x-on:click="show = false">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('x-mark')"
+                                         internal
                                          @class([$personalize['close.size'], $colors['text']]) />
                 </button>
             </div>

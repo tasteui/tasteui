@@ -19,13 +19,13 @@
     @if ($left)
         {!! $left !!}
     @elseif ($icon && $position === 'left')
-        <x-dynamic-component :component="TallStackUi::prefix('icon')" :$icon @class([$personalize['icon.sizes.' . $size], $colors['icon']]) />
+        <x-dynamic-component :component="TallStackUi::prefix('icon')" internal :$icon @class([$personalize['icon.sizes.' . $size], $colors['icon']]) />
     @endif
     {{ $text ?? $slot }}
     @if ($right)
         {!! $right !!}
     @elseif ($icon && $position === 'right')
-        <x-dynamic-component :component="TallStackUi::prefix('icon')" :$icon @class([$personalize['icon.sizes.' . $size], $colors['icon']]) />
+        <x-dynamic-component :component="TallStackUi::prefix('icon')" internal :$icon @class([$personalize['icon.sizes.' . $size], $colors['icon']]) />
     @endif
     @if ($livewire && $loading && $position === 'right')
         <x-tallstack-ui::icon.generic.loading-button :$loading :$delay @class([

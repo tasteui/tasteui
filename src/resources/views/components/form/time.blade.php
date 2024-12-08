@@ -34,6 +34,7 @@
                                     <button type="button" x-on:click="clear()" x-show="model">
                                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                              dusk="tallstackui_time_clear"
+                                                             internal
                                                              :icon="TallStackUi::icon('x-mark')"
                                                              @class([$personalize['icon.size'], $personalize['icon.clear']]) />
                                     </button>
@@ -41,6 +42,7 @@
                                 <button type="button" x-on:click="show = !show">
                                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                          :icon="TallStackUi::icon('clock')"
+                                                         internal
                                                          @class($personalize['icon.size']) />
                                 </button>
                              </div>

@@ -28,6 +28,7 @@
             <div @class([$personalize['wrapper.third'], $colors['background']])>
                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                      :$icon
+                                     internal
                                      @class($personalize['icon']) />
             </div>
         @endif
@@ -46,10 +47,12 @@
                 @if ($increase)
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon($personalize['slots.right.increase.icon'])"
+                                         internal
                                          @class($personalize['slots.right.increase.class']) />
                 @else
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon($personalize['slots.right.decrease.icon'])"
+                                         internal
                                          @class($personalize['slots.right.decrease.class']) />
                 @endif
             </div>

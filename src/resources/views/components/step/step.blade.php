@@ -32,6 +32,7 @@
                             @class($personalize['button.wrapper'])>
                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                              :icon="TallStackUi::icon('chevron-left')"
+                                             internal
                                              @class(['mr-1', $personalize['button.icon']]) />
                         {{ trans('tallstack-ui::messages.step.previous') }}
                     </button>
@@ -46,6 +47,7 @@
                     {{ trans('tallstack-ui::messages.step.next') }}
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('chevron-right')"
+                                         internal
                                          @class(['ml-1', $personalize['button.icon']]) />
                 </button>
                 @if ($finish)

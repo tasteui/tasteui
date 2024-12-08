@@ -16,6 +16,7 @@
                         type="button">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('clipboard-document')"
+                                         internal
                                          @class($personalize['input.buttons.icon.class']) />
                     <p x-ref="input-{{ $hash }}">{{ $placeholders['button']['copy'] }}</p>
                 </button>
@@ -39,6 +40,7 @@
                         type="button">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('clipboard-document')"
+                                         internal
                                          @class($personalize['input.buttons.icon.class']) />
                     <p x-ref="input-{{ $hash }}">{{ $placeholders['button']['copy'] }}</p>
                 </button>
@@ -48,12 +50,14 @@
             <button x-on:click="copy()" {!! $attributes->only('x-on:copy') !!} @class($personalize['icon.wrapper'])>
                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                      :icon="filled($icons['copy']) ? $icons['copy'] : TallStackUi::icon($personalize['icon.icons.copy.name'])"
+                                     internal
                                      data-hash="{{ $hash }}"
                                      @class($personalize['icon.icons.copy.class'])
                                      dusk="tallstackui_clipboard_icon_copy"
                                      x-show="!notification" />
                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                      :icon="filled($icons['copied']) ? $icons['copied'] : TallStackUi::icon($personalize['icon.icons.copied.name'])"
+                                     internal
                                      @class($personalize['icon.icons.copied.class'])
                                      x-show="notification" />
             </button>

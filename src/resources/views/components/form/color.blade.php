@@ -43,6 +43,7 @@
                     <button type="button" dusk="tallstackui_form_color_clearable" x-show="clearable">
                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                              :icon="TallStackUi::icon('x-mark')"
+                                             internal
                                              x-on:click="clear()"
                                              @class([
                                                  $personalize['clearable.size'],
@@ -53,6 +54,7 @@
                 <button type="button" x-on:click="show = !show" dusk="tallstackui_form_color_open_close">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('swatch')"
+                                         internal
                                          @class($personalize['icon.class']) />
                 </button>
             </div>
@@ -79,6 +81,7 @@
                             <span x-show="color === model" x-bind:class="{'text-white': !check(color), 'text-dark-500': check(color)}">
                                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                      :icon="TallStackUi::icon('check')"
+                                                     internal
                                                      @class($personalize['box.button.icon']) />
                             </span>
                         </div>

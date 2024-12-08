@@ -8,6 +8,7 @@
             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                  :$icon
                                  :$error
+                                 internal
                                  @class([
                                      $personalize['icon.size'],
                                      $personalize['error'] => $error,
@@ -21,6 +22,7 @@
                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                      :icon="TallStackUi::icon('x-mark')"
                                      x-on:click="clear()"
+                                     internal
                                      @class([
                                          $personalize['clearable.size'],
                                          $personalize['clearable.color'] => !$error && !$invalidate,

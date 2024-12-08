@@ -16,6 +16,7 @@
     @elseif ($icon && $position === 'left')
         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                              :$icon
+                             internal
                              @class(['mr-1' => $position === 'left', $personalize['icon'], $colors['icon']]) />
     @endif
     {{ $text ?? $slot }}
@@ -24,6 +25,7 @@
     @elseif ($icon && $position === 'right')
         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                              :$icon
+                             internal
                              @class(['ml-1' => $position === 'right', $personalize['icon'], $colors['icon']]) />
     @endif
 </span>

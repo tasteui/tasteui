@@ -39,6 +39,7 @@
                     @class([$personalize['buttons.left.base'], 'order-first' => $centralized])>
                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                      :icon="$icons['left']"
+                                     internal
                                      @class([$personalize['buttons.left.size'], $personalize['buttons.left.color'] => !$error, $personalize['buttons.left.error'] => $error]) />
             </button>
             <button @if (!$attributes->get('disabled', $attributes->get('readonly', false))) x-on:click="increment()" @endif
@@ -54,6 +55,7 @@
                     @class([$personalize['buttons.right.base'], 'border-l border-gray-200 dark:border-gray-600' => !$centralized])>
                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                      :icon="$icons['right']"
+                                     internal
                                      @class([$personalize['buttons.right.size'], $personalize['buttons.right.color'] => !$error, $personalize['buttons.right.error'] => $error]) />
             </button>
         </div>

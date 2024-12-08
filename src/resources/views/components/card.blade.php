@@ -24,10 +24,12 @@
                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                              :icon="TallStackUi::icon('minus')"
                                              @class($personalize['button.minimize'])
+                                             internal
                                              x-show="!minimize" />
                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                              :icon="TallStackUi::icon('plus')"
                                              @class($personalize['button.maximize'])
+                                             internal
                                              x-show="minimize" />
                     </button>
                     @endif
@@ -36,6 +38,7 @@
                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                              :icon="TallStackUi::icon('x-mark')"
                                              @class($personalize['button.close']) />
+                                             internal
                     </button>
                     @endif
                 </div>

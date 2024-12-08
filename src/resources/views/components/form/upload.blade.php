@@ -35,6 +35,7 @@
                                 <button type="button" x-on:click="show = !show">
                                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                          :icon="TallStackUi::icon('arrow-up-tray')"
+                                                         internal
                                                          @class($personalize['icon']) />
                                 </button>
                              </x-slot:suffix>
@@ -55,6 +56,7 @@
                         <button @class($personalize['preview.button.wrapper']) x-on:click="preview = false; $nextTick(() => show = true)">
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="TallStackUi::icon('x-mark')"
+                                                 internal
                                                  :class="$personalize['preview.button.icon']" />
                         </button>
                         <img x-bind:src="image" @class($personalize['preview.image'])>
@@ -72,6 +74,7 @@
                  <div @class($personalize['placeholder.icon.wrapper'])>
                      <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                           :icon="TallStackUi::icon('cloud-arrow-up')"
+                                          internal
                                           @class($personalize['placeholder.icon.class']) />
                      <p @class($personalize['placeholder.title'])>
                          {{ trans('tallstack-ui::messages.upload.upload') }}
@@ -118,6 +121,7 @@
                                  @else
                                      <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                           :icon="TallStackUi::icon('document-text')"
+                                                          internal
                                                           :class="$personalize['item.document']" />
                                  @endif
                                  <div class="flex-auto min-w-0">
@@ -139,6 +143,7 @@
                                              x-on:click="remove(@js($deleteMethod), @js($file))">
                                          <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                               :icon="TallStackUi::icon('trash')"
+                                                              internal
                                                               @class($personalize['item.delete']) />
                                      </button>
                                  @endif
@@ -151,6 +156,7 @@
              <div @class($personalize['static.empty.wrapper'])>
                  <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                       :icon="TallStackUi::icon('photo')"
+                                      internal
                                       :class="$personalize['static.empty.icon']" />
                  <h3 @class($personalize['static.empty.title'])>
                      {{ trans('tallstack-ui::messages.upload.static.empty.title') }}

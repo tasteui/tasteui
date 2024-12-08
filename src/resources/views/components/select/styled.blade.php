@@ -70,6 +70,7 @@
                                                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                                      :icon="TallStackUi::icon('x-mark')"
                                                                      @class($personalize['itens.multiple.icon']) />
+                                                                     internal
                                             </button>
                                         </div>
                                     @endif
@@ -90,12 +91,14 @@
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="TallStackUi::icon('x-mark')"
                                                  @class([$personalize['buttons.size'], $personalize['buttons.base'] => !$error, $personalize['buttons.error'] => $error]) />
+                                                 internal
                         </button>
                     </template>
                     @endif
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('chevron-up-down')"
                                          @class([$personalize['buttons.size'], $personalize['buttons.base'] => !$error, $personalize['buttons.error'] => $error]) />
+                                         internal
                 </div>
             @endif
         </button>
@@ -118,6 +121,7 @@
                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                              :icon="TallStackUi::icon('x-mark')"
                                              @class($personalize['box.button.icon']) />
+                                             internal
                     </button>
                 </div>
             </template>
@@ -158,6 +162,7 @@
                                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                              :icon="TallStackUi::icon('check')"
                                                              x-show="selected(item)"
+                                                             internal
                                                              @class($personalize['box.list.item.check']) />
                                     </div>
                                 </div>
@@ -183,6 +188,7 @@
                                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                      :icon="TallStackUi::icon('check')"
                                                      x-show="selected(option)"
+                                                     internal
                                                      @class($personalize['box.list.item.check']) />
                             </div>
                         </div>

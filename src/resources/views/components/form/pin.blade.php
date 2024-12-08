@@ -71,6 +71,7 @@
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('x-circle')"
                                          solid
+                                         internal
                                          @class($personalize['button']) />
                 </button>
             </template>

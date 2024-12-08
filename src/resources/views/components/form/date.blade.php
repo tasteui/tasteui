@@ -37,11 +37,13 @@
                 <button type="button" x-on:click="clear()" x-show="quantity > 0" {{ $attributes->only('x-on:clear') }} dusk="tallstackui_date_clear">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('x-mark')"
+                                         internal
                                          @class([$personalize['icon.size'], $personalize['icon.clear']])/>
                 </button>
                 <button type="button" x-on:click="show = !show" dusk="tallstackui_date_open_close">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('calendar')"
+                                         internal
                                          @class($personalize['icon.size']) />
                 </button>
             </div>
@@ -102,6 +104,7 @@
                                         x-on:touchend="if (interval) { clearInterval(interval); interval = null; }">
                                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                          :icon="TallStackUi::icon('chevron-left')"
+                                                         internal
                                                          @class($personalize['icon.navigate']) />
                                 </button>
                                 <button type="button"
@@ -115,6 +118,7 @@
                                         x-on:touchend="if (interval) { clearInterval(interval); interval = null; }">
                                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                          :icon="TallStackUi::icon('chevron-right')"
+                                                         internal
                                                          @class($personalize['icon.navigate']) />
                                 </button>
                             </div>
@@ -142,6 +146,7 @@
                         x-on:touchend="if (interval) { clearInterval(interval); interval = null; }">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('chevron-left')"
+                                         internal
                                          @class($personalize['icon.navigate']) />
                 </button>
                 <button type="button"
@@ -155,6 +160,7 @@
                         x-on:touchend="if (interval) { clearInterval(interval); interval = null; }">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('chevron-right')"
+                                         internal
                                          @class($personalize['icon.navigate']) />
                 </button>
             </div>

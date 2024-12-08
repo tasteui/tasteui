@@ -2,6 +2,7 @@
 
 namespace TallStackUi;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use TallStackUi\Foundation\Console\FindComponentCommand;
@@ -41,7 +42,7 @@ class TallStackUiServiceProvider extends ServiceProvider
         }
 
         $this->commands([
-            SetupIconsCommand::class,
+            // SetupIconsCommand::class,
             SetupPrefixCommand::class,
             FindComponentCommand::class,
             PublishColorsClassCommand::class,
@@ -50,6 +51,8 @@ class TallStackUiServiceProvider extends ServiceProvider
 
     protected function registerComponentPersonalization(): void
     {
+        Blade::component('BladeUI\Icons\Components\Icon', 'blade-ui');
+
         foreach (__ts_soft_personalization_components() as $key => $class) {
             $this->app->singleton($key, fn () => new PersonalizationFactory($class));
         }

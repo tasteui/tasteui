@@ -25,6 +25,7 @@
                          <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                               :icon="TallStackUi::icon('arrow-path')"
                                               :$error
+                                              internal
                                  @class($personalize['icon.class']) />
                      </button>
                  @endif
@@ -35,11 +36,13 @@
                          <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                               :icon="TallStackUi::icon('eye')"
                                               :$error
+                                              internal
                                               x-show="!show"
                                               @class($personalize['icon.class']) />
                          <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                               :icon="TallStackUi::icon('eye-slash')"
                                               :$error
+                                              internal
                                               x-show="show"
                                               @class($personalize['icon.class']) />
                  </button>
@@ -58,10 +61,12 @@
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="$icon['x-circle']"
                                                  :class="$personalize['rules.items.icons.error']"
+                                                 internal
                                                  x-show="!results.min" />
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="$icon['check-circle']"
                                                  :class="$personalize['rules.items.icons.success']"
+                                                 internal
                                                  x-show="results.min" />
                             <p x-bind:class="{ 'line-through' : results.min }">{{ trans('tallstack-ui::messages.password.rules.formats.min', ['min' => $rules->get('min')]) }}</p>
                         </span>
@@ -71,10 +76,12 @@
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="$icon['x-circle']"
                                                  :class="$personalize['rules.items.icons.error']"
+                                                 internal
                                                  x-show="!results.symbols" />
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="$icon['check-circle']"
                                                  :class="$personalize['rules.items.icons.success']"
+                                                 internal
                                                  x-show="results.symbols" />
                             <p x-bind:class="{ 'line-through' : results.symbols }">{{ trans('tallstack-ui::messages.password.rules.formats.symbols', ['symbols' => $rules->get('symbols')]) }}</p>
                         </span>
@@ -84,10 +91,12 @@
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="$icon['x-circle']"
                                                  :class="$personalize['rules.items.icons.error']"
+                                                 internal
                                                  x-show="!results.numbers" />
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="$icon['check-circle']"
                                                  :class="$personalize['rules.items.icons.success']"
+                                                 internal
                                                  x-show="results.numbers" />
                             <p x-bind:class="{ 'line-through' : results.numbers }">{{ trans('tallstack-ui::messages.password.rules.formats.numbers') }}</p>
                         </span>
@@ -97,10 +106,12 @@
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="$icon['x-circle']"
                                                  :class="$personalize['rules.items.icons.error']"
+                                                 internal
                                                  x-show="!results.mixed" />
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="$icon['check-circle']"
                                                  :class="$personalize['rules.items.icons.success']"
+                                                 internal
                                                  x-show="results.mixed" />
                             <p x-bind:class="{ 'line-through' : results.mixed }">{{ trans('tallstack-ui::messages.password.rules.formats.mixed') }}</p>
                         </span>

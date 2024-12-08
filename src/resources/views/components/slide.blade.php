@@ -66,6 +66,7 @@
                                 <button type="button" x-on:click="show = false">
                                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                          :icon="TallStackUi::icon('x-mark')"
+                                                         internal
                                                          @class($personalize['title.close']) />
                                 </button>
                             </div>

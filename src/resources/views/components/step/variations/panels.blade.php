@@ -19,6 +19,7 @@
                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                      :icon="TallStackUi::icon('check')"
                                      x-show="parseInt(selected) > item.step || parseInt(selected) === item.step && item.completed === true"
+                                     internal
                                      @class($personalize['panels.check']) />
             </span>
             <div class="flex flex-col">

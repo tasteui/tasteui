@@ -22,6 +22,7 @@
                   x-bind:class="{ 'opacity-0 duration-100 ease-out': darkTheme === true, 'opacity-100 duration-200 ease-in': darkTheme === false }">
                <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                     :icon="TallStackUi::icon($onlyIcons ? 'moon' : 'sun')"
+                                    internal
                                     @class([
                                         $personalize['colors.moon'] => !$onlyIcons,
                                         $personalize['colors.sun'] => $onlyIcons,
@@ -34,6 +35,7 @@
                   x-bind:class="{ 'opacity-100 duration-200 ease-in': darkTheme === true, 'opacity-0 duration-100 ease-out': darkTheme === false }">
                <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                     :icon="TallStackUi::icon($onlyIcons ? 'sun' : 'moon')"
+                                    internal
                                     @class([
                                         $personalize['colors.sun'] => !$onlyIcons,
                                         $personalize['colors.moon'] => $onlyIcons,

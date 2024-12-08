@@ -15,6 +15,7 @@
                     @if ($icon !== null)
                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                              :icon="TallStackUi::icon($icon)"
+                                             internal
                                              @class([$personalize['title.icon']])
                                              outline />
                     @endif
@@ -27,6 +28,7 @@
                         x-on:click="close()">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('x-mark')"
+                                         internal
                                          @class([$personalize['close'], $colors['text']]) />
                 </button>
                 @endif

@@ -34,6 +34,7 @@
                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                              :icon="TallStackUi::icon('x-mark')"
                                              dusk="tallstackui_dialog_close"
+                                             internal
                                              @class($personalize['buttons.close.icon']) />
                     </button>
                 </div>
@@ -50,30 +51,35 @@
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="TallStackUi::icon('check-circle')"
                                                  outline
+                                                 internal
                                                  @class([$personalize['icon.size'], $colors['icon']['icon']['success']]) />
                         </div>
                         <div x-show="dialog.type === 'error'">
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="TallStackUi::icon('x-circle')"
                                                  outline
+                                                 internal
                                                  @class([$personalize['icon.size'], $colors['icon']['icon']['error']]) />
                         </div>
                         <div x-show="dialog.type === 'info'">
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="TallStackUi::icon('information-circle')"
                                                  outline
+                                                 internal
                                                  @class([$personalize['icon.size'], $colors['icon']['icon']['info']]) />
                         </div>
                         <div x-show="dialog.type === 'warning'">
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="TallStackUi::icon('exclamation-circle')"
                                                  outline
+                                                 internal
                                                  @class([$personalize['icon.size'], $colors['icon']['icon']['warning']]) />
                         </div>
                         <div x-show="dialog.type === 'question'">
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="TallStackUi::icon('question-mark-circle')"
                                                  outline
+                                                 internal
                                                  @class([$personalize['icon.size'], $colors['icon']['icon']['question']]) />
                         </div>
                     </div>

@@ -29,6 +29,7 @@
                 @else
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon($icon)"
+                                         internal
                                          @class($personalize['sizes.' . $size])
                                          x-bind:class="{ '{{ $colors['background'] }}': rate >= index + 1, '{{ $personalize['star'] }}': rate < index + 1 }" />
                 @endunless

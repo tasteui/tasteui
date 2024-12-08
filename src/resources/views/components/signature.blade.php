@@ -9,17 +9,20 @@
                 <button type="button" aria-label="undo" x-on:click="undo" dusk="tallstackui_signature_undo">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('arrow-uturn-left')"
+                                         internal
                                          @class($personalize['icons']) />
                 </button>
                 <button type="button" aria-label="redo" x-on:click="redo" dusk="tallstackui_signature_redo">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('arrow-uturn-right')"
+                                         internal
                                          @class($personalize['icons']) />
                 </button>
                 @if ($clearable)
                     <button type="button" aria-label="clear" x-on:click="clear" dusk="tallstackui_signature_clear">
                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                              :icon="TallStackUi::icon('trash')"
+                                             internal
                                              @class($personalize['icons']) />
                     </button>
                 @endif
@@ -28,6 +31,7 @@
                 <button type="button" aria-label="export" x-on:click="download" dusk="tallstackui_signature_export" {{ $attributes->only('x-on:export') }}>
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('document-arrow-down')"
+                                         internal
                                          @class($personalize['icons']) />
                 </button>
             @endif

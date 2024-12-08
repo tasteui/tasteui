@@ -31,30 +31,35 @@
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="TallStackUi::icon('check-circle')"
                                                  outline
+                                                 internal
                                                  @class([$personalize['icon.size'], $colors['icon']['success']]) />
                         </div>
                         <div x-show="toast.type === 'error'">
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="TallStackUi::icon('x-circle')"
                                                  outline
+                                                 internal
                                                  @class([$personalize['icon.size'], $colors['icon']['error']]) />
                         </div>
                         <div x-show="toast.type === 'info'">
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="TallStackUi::icon('information-circle')"
                                                  outline
+                                                 internal
                                                  @class([$personalize['icon.size'], $colors['icon']['info']]) />
                         </div>
                         <div x-show="toast.type === 'warning'">
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="TallStackUi::icon('exclamation-circle')"
                                                  outline
+                                                 internal
                                                  @class([$personalize['icon.size'], $colors['icon']['warning']]) />
                         </div>
                         <div x-show="toast.type === 'question'">
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="TallStackUi::icon('question-mark-circle')"
                                                  outline
+                                                 internal
                                                  @class([$personalize['icon.size'], $colors['icon']['question']]) />
                         </div>
                     </div>
@@ -85,6 +90,7 @@
                                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                      :icon="TallStackUi::icon('x-mark')"
                                                      dusk="tallstackui_toast_close"
+                                                     internal
                                                      @class($personalize['buttons.close.size']) />
                             </button>
                         </div>
@@ -96,6 +102,7 @@
                                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                      :icon="TallStackUi::icon('chevron-down')"
                                                      @class($personalize['buttons.expand.size']) />
+                                                     internal
                             </button>
                         </div>
                     </div>

@@ -11,6 +11,7 @@
     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                          :$icon
                          :attributes="$wireable['icon']"
+                         internal
                          @class([$personalize['icon.sizes.' . $size], $colors['icon']]) />
 @else
     <span @if ($livewire && $loading) {{ $wireable['text'] }} @endif @class([$personalize['text.sizes.' . $size]])>{{ $text ?? $slot }}</span>

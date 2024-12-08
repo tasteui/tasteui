@@ -12,6 +12,7 @@
             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                  :icon="TallStackUi::icon('check')"
                                  x-show="parseInt(selected) > item.step && item.completed === false || parseInt(selected) === item.step && item.completed === true"
+                                 internal
                                  @class($personalize['circles.check']) />
             <span x-show="parseInt(selected) === item.step && item.completed === false"
                   @class($personalize['circles.highlighter.wrapper'])

@@ -17,6 +17,7 @@
                         dusk="tallstackui_open_dropdown">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('chevron-down')"
+                                         internal
                                          @class($personalize['action.icon'])
                                          x-bind:class="{ 'transform rotate-180': animate && show }"/>
                 </button>
@@ -29,6 +30,7 @@
                         dusk="tallstackui_open_dropdown">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :$icon
+                                         internal
                                          @class($personalize['action.icon'])
                                          x-bind:class="{ 'transform rotate-180': animate && show }" />
                 </button>

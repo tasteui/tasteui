@@ -48,24 +48,28 @@
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('check-circle')"
                                          outline
+                                         internal
                                          @class($personalize['icon']) />
                 </div>
                 <div x-show="type === 'error'">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('x-circle')"
                                          outline
+                                         internal
                                          @class($personalize['icon']) />
                 </div>
                 <div x-show="type === 'info'">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('information-circle')"
                                          outline
+                                         internal
                                          @class($personalize['icon']) />
                 </div>
                 <div x-show="type === 'warning'">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('exclamation-circle')"
                                          outline
+                                         internal
                                          @class($personalize['icon']) />
                 </div>
                 <span class="text-white" x-html="text"></span>
@@ -78,6 +82,7 @@
         <button type="button" x-on:click="show = false" x-show="close" dusk="tallstackui_banner_close">
             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                  :icon="TallStackUi::icon('x-mark')"
+                                 internal
                                  @class([$personalize['close'], $colors['text'] ?? '' => !$wire])
                                  x-bind:class="{
                                     'text-green-50': type === 'success',
