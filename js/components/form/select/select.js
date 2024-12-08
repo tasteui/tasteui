@@ -541,9 +541,9 @@ export default (
     };
 
     if (this.common) {
-        const filter = available.filter(filter);
+        const result = available.filter(filter);
 
-        return this.lazy ? filter.slice(0, this.lazy) : filter;
+        return this.lazy ? result.slice(0, this.lazy) : result;
     }
 
     return available.filter(filter);
