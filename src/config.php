@@ -78,7 +78,7 @@ return [
         |----------------------------------
         | Default and in-use icon type.
         |----------------------------------
-        | Allowed: heroicons or custom (check the docs).
+        | Allowed: heroicons or BladeUI (check the docs).
         */
         'type' => env('TALLSTACKUI_ICON_TYPE', 'heroicons'),
 

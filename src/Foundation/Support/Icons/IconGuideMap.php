@@ -5,7 +5,6 @@ namespace TallStackUi\Foundation\Support\Icons;
 use Exception;
 use Illuminate\Support\Collection;
 use Illuminate\View\Component;
-use TallStackUi\Foundation\Exceptions\InappropriateIconGuideExecution;
 
 class IconGuideMap
 {
@@ -24,7 +23,11 @@ class IconGuideMap
      */
     protected static IconGuide $guide;
 
-    /** @throws Exception|InappropriateIconGuideExecution */
+    /**
+     * Build the icon.
+     *
+     * @throws Exception
+     */
     public static function build(Component $component, ?string $path = null): string
     {
         self::configuration();
@@ -38,8 +41,8 @@ class IconGuideMap
             }
 
             // When some attribute matches one of the keys
-            // available in the supported icons, then we want
-            // to override the style through run time.
+            // available in the supported icons styles, then
+            // we want to override the style through run time.
             $style = $attribute;
         }
 
@@ -47,8 +50,14 @@ class IconGuideMap
 
         $format = fn (?string $name) => str_replace('.', '-', $name);
 
+        // We start by checking if they are custom icons, if the use is internal (called internally by TSUI).
+        // If these requirements are met, we use an algorithm that will filter the icon map to remove nulls
+        // then invert the key to value and finally check if the icon exists in the icon map. If it does,
+        // then it is a custom icon mapped by the configuration.
         if (self::$custom && $component->internal && in_array($name, array_keys(array_filter(self::$configuration->get('custom')['guide'])))) { // @phpstan-ignore-line
             return $format(self::$configuration->get('custom')['guide'][$format($name)]);
+            // Otherwise, if it is customized and not internal, then it is a custom icon
+            // that is not mapped, for manual use purposes, so the dot sign is strategic.
         } elseif (self::$custom && str_contains($name, '.')) {
             return $format($name);
         }
@@ -67,9 +76,6 @@ class IconGuideMap
     {
         self::configuration();
 
-        // We start by returning $icon because when we are
-        // dealing with custom icons and cannot find the
-        // guide for a particular icon, we use the default.
         if (self::$custom) {
             return $key;
         }
@@ -79,8 +85,6 @@ class IconGuideMap
 
     /**
      * Get the configuration for icons and determine if it is custom.
-     *
-     * @throws Exception
      */
     private static function configuration(): void
     {

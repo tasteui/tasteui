@@ -7,7 +7,6 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use TallStackUi\Foundation\Console\FindComponentCommand;
 use TallStackUi\Foundation\Console\PublishColorsClassCommand;
-use TallStackUi\Foundation\Console\SetupIconsCommand;
 use TallStackUi\Foundation\Console\SetupPrefixCommand;
 use TallStackUi\Foundation\Personalization\PersonalizationFactory;
 use TallStackUi\Foundation\Support\Blade\ComponentPrefix;
@@ -42,7 +41,6 @@ class TallStackUiServiceProvider extends ServiceProvider
         }
 
         $this->commands([
-            // SetupIconsCommand::class,
             SetupPrefixCommand::class,
             FindComponentCommand::class,
             PublishColorsClassCommand::class,

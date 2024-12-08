@@ -7,17 +7,6 @@ use Exception;
 class IconGuide
 {
     /**
-     * Supported icon libraries.
-     */
-    public const SUPPORTED_ICON_VENDORS = [
-        'heroicons',
-        'phosphoricons',
-        'google',
-        'tablericons',
-        'lucide',
-    ];
-
-    /**
      * Resolve the given icon from the type and return the icon.
      *
      * @throws Exception
@@ -28,7 +17,7 @@ class IconGuide
     }
 
     // https://heroicons.com/
-    public static function hero(): array
+    public static function heroicons(): array
     {
         return [
             'styles' => ['outline', 'solid'],
@@ -81,7 +70,7 @@ class IconGuide
     public static function resolve(string $type): array
     {
         return match ($type) {
-            'hero', 'heroicons' => self::hero(),
+            'hero', 'heroicons' => self::heroicons(),
             default => throw new Exception("The icon guide [{$type}] is not supported."),
         };
     }
