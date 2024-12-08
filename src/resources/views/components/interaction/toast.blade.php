@@ -101,8 +101,8 @@
                                     @class($personalize['buttons.expand.class'])>
                                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                      :icon="TallStackUi::icon('chevron-down')"
-                                                     @class($personalize['buttons.expand.size']) />
                                                      internal
+                                                     @class($personalize['buttons.expand.size']) />
                             </button>
                         </div>
                     </div>

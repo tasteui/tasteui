@@ -78,7 +78,7 @@ return [
         |----------------------------------
         | Default and in-use icon type.
         |----------------------------------
-        | Allowed: heroicons, phosphoricons, google, tablericons.
+        | Allowed: heroicons or custom (check the docs).
         */
         'type' => env('TALLSTACKUI_ICON_TYPE', 'heroicons'),
 
@@ -86,24 +86,9 @@ return [
         |----------------------------------
         | Default and in-use icon style.
         |----------------------------------
-        | Allowed:
-        |
-        | Heroicons: solid, outline
-        | Phosphoricons: thin, light, regular, bold, duotone
-        | Google: default
-        | Tablericons: default
+        | Allowed: solid, outline (Heroicons only).
         */
         'style' => env('TALLSTACKUI_ICON_STYLE', 'solid'),
-
-        /*
-        |----------------------------------
-        | Flush unused icons pack.
-        |----------------------------------
-        |
-        | To avoid the accumulation of unused files, the icon packs that are
-        | not in use can be deleted automatically when new icons are set.
-        */
-        'flush' => true,
 
         /*
         |----------------------------------
@@ -117,8 +102,8 @@ return [
             |----------------------------------
             |
             | These icons are used internally in the components. When using custom
-            | icons you can optionally change the internal icons to custom icons,
-            | causing this to reflect new icon looks for the internal components.
+            | icons via BladeUi you can optionally change the internal icons to custom
+            | icons, causing this to reflect new icon looks for the internal components.
             */
             'guide' => [
                 'arrow-path' => null,
@@ -155,19 +140,6 @@ return [
                 'x-circle' => null,
                 'x-mark' => null,
             ],
-
-            /*
-            |----------------------------------
-            | Custom icon fallback behavior.
-            |----------------------------------
-            |
-            | When enabling it we will use internal icons (Heroicons) to avoid
-            | exceptions when using a custom icon that doesn't exist. For example,
-            | if you use a "check" icon and don't have a custom one "check" icon,
-            | the Heroicons "check" icon will be used. Preferably you should only
-            | disable this when you are customizing ALL components of the "guide".
-            */
-            'fallback' => true,
         ],
     ],
 

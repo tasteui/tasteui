@@ -26,7 +26,7 @@
                                               :icon="TallStackUi::icon('arrow-path')"
                                               :$error
                                               internal
-                                 @class($personalize['icon.class']) />
+                                              @class($personalize['icon.class']) />
                      </button>
                  @endif
                  <button type="button"

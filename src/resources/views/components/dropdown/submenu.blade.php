@@ -16,13 +16,12 @@
             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                  :icon="TallStackUi::icon('chevron-left')"
                                  internal
-                    @class($personalize['submenu.left']) />
+                                 @class($personalize['submenu.left']) />
         @endif
         <div @class($personalize['wrapper'])>
             @if ($icon)
-                <x-dynamic-component :component="TallStackUi::prefix('icon')"
+                <x-dynamic-component :component="TallStackUi::prefix('icon')" internal :$icon @class($personalize['icon']) />
             @endif
-                                     internal :$icon @class($personalize['icon']) />
             {{ $text }}
         </div>
         @if ($position === 'right-start')

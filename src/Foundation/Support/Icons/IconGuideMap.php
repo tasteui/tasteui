@@ -32,8 +32,6 @@ class IconGuideMap
         $type = self::$configuration->get('type');
         $style = self::$configuration->get('style');
 
-        //        self::validate($type);
-
         foreach (array_keys($component->attributes->getAttributes()) as $attribute) {
             if (self::$custom || ! in_array($attribute, self::$guide::styles($type))) {
                 continue;
@@ -47,15 +45,10 @@ class IconGuideMap
 
         $name = $component->icon ?? $component->name; // @phpstan-ignore-line
 
-        // For phosphoricons when the style is different from
-        // "regular" we need to add the style right after the
-        // name due to the way phosphoricons exports the files.
-        //        if ($type === 'phosphoricons' && $style !== 'regular') {
-        //            $name = $name.'-'.$style;
-        //        }
-
-        if (self::$custom && str_contains($name, '.')) {
-            return self::$configuration->get('custom')['guide'][$name] ?? str_replace('.', '-', $name);
+        if (self::$custom && $component->internal && isset(self::$configuration->get('custom')['guide'][$name])) { // @phpstan-ignore-line
+            return self::$configuration->get('custom')['guide'][$name];
+        } elseif (self::$custom && str_contains($name, '.')) {
+            return str_replace('.', '-', $name);
         }
 
         $component = sprintf('%s.%s.%s', 'heroicons', $style, $name);
@@ -76,10 +69,10 @@ class IconGuideMap
         // dealing with custom icons and cannot find the
         // guide for a particular icon, we use the default.
         if (self::$custom) {
-            $guide = self::$configuration->get('custom')['guide'][$key] ?? null;
+            return $key;
         }
 
-        return $guide ?? self::$guide::get('hero', $key) ?? $key;
+        return self::$configuration->get('custom')['guide'][$key] ?? self::$guide::get('hero', $key) ?? $key;
     }
 
     /**

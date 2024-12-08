@@ -37,8 +37,8 @@
                     <button type="button" @click="show = false" dusk="tallstackui_card_close">
                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                              :icon="TallStackUi::icon('x-mark')"
-                                             @class($personalize['button.close']) />
                                              internal
+                                             @class($personalize['button.close']) />
                     </button>
                     @endif
                 </div>
