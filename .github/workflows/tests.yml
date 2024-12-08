@@ -32,7 +32,10 @@ jobs:
       - name: Setup Bun
         run: |
           curl -fsSL https://bun.sh/install | bash
-          echo "::add-path::$(bun env | grep BUN_BIN_DIR | cut -d'=' -f2 | tr -d '\n')"
+          export BUN_BIN_DIR=$(bun env | grep BUN_BIN_DIR | cut -d'=' -f2 | tr -d '\n')
+          export PATH=$BUN_BIN_DIR:$PATH
+          echo "Bun setup completed"
+          bun --version
 
       - name: Install Bun Dependencies
         run: bun install
