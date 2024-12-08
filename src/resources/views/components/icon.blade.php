@@ -1,7 +1,6 @@
 @if ($left || $right)
     <span class="inline-flex items-center gap-x-1">
 @endif
-        @ray($internal)
     @if ($left)
         {!! $left !!}
     @endif

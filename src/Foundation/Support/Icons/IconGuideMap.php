@@ -45,10 +45,12 @@ class IconGuideMap
 
         $name = $component->icon ?? $component->name; // @phpstan-ignore-line
 
-        if (self::$custom && $component->internal && isset(self::$configuration->get('custom')['guide'][$name])) { // @phpstan-ignore-line
-            return self::$configuration->get('custom')['guide'][$name];
+        $format = fn (?string $name) => str_replace('.', '-', $name);
+
+        if (self::$custom && $component->internal && in_array($name, array_keys(array_filter(self::$configuration->get('custom')['guide'])))) { // @phpstan-ignore-line
+            return $format(self::$configuration->get('custom')['guide'][$format($name)]);
         } elseif (self::$custom && str_contains($name, '.')) {
-            return str_replace('.', '-', $name);
+            return $format($name);
         }
 
         $component = sprintf('%s.%s.%s', 'heroicons', $style, $name);
