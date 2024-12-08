@@ -22,7 +22,7 @@ class Icon extends TallStackUiComponent
         #[SkipDebug]
         public ?string $right = null,
         #[SkipDebug]
-        public ?bool $internal = null,
+        public bool $internal = true,
     ) {
         //
     }
