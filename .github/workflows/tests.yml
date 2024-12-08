@@ -29,16 +29,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18.x
+      - name: Setup Bun
+        run: |
+          curl -fsSL https://bun.sh/install | bash
+          echo "::add-path::$(bun env | grep BUN_BIN_DIR | cut -d'=' -f2 | tr -d '\n')"
 
-      - run: npm install
+      - name: Install Bun Dependencies
+        run: bun install
 
-      - run: npm run lint
+      - name: Run Bun Lint
+        run: bun lint
 
-      - run: npm run build
+      - name: Bun Build
+        run: bun build
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
