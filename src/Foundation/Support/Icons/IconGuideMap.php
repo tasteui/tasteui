@@ -54,7 +54,14 @@ class IconGuideMap
         // If these requirements are met, we use an algorithm that will filter the icon map to remove nulls
         // then invert the key to value and finally check if the icon exists in the icon map. If it does,
         // then it is a custom icon mapped by the configuration.
-        if (self::$custom && $component->internal && in_array($name, array_keys(array_filter(self::$configuration->get('custom')['guide'])))) { // @phpstan-ignore-line
+        if (
+            self::$custom &&
+            $component->internal && // @phpstan-ignore-line
+            collect(self::$configuration->get('custom')['guide'])
+                ->filter()
+                ->keys()
+                ->contains($name)
+        ) {
             return $format(self::$configuration->get('custom')['guide'][$format($name)]);
             // Otherwise, if it is customized and not internal, then it is a custom icon
             // that is not mapped, for manual use purposes, so the dot sign is strategic.
@@ -62,7 +69,7 @@ class IconGuideMap
             return $format($name);
         }
 
-        $component = sprintf('%s.%s.%s', 'heroicons', $style, $name);
+        $component = sprintf('heroicons.%s.%s', $style, $name);
 
         return $path ? $path.$component : $component;
     }
@@ -80,7 +87,7 @@ class IconGuideMap
             return $key;
         }
 
-        return self::$configuration->get('custom')['guide'][$key] ?? self::$guide::get('hero', $key) ?? $key;
+        return self::$configuration->get('custom')['guide'][$key] ?? self::$guide::get('heroicons', $key) ?? $key;
     }
 
     /**
