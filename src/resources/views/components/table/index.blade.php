@@ -19,7 +19,7 @@
             @isset ($filter['quantity'])
                 <div class="w-1/4 sm:w-1/5">
                     <x-dynamic-component :component="TallStackUi::component('select.styled')"
-                                         :label="$placeholders['quantity']"
+                                         :label="data_get($placeholders, 'quantity')"
                                          :options="$quantity"
                                          wire:model.live="{{ $filter['quantity'] }}"
                                          required
@@ -31,7 +31,7 @@
                     <x-dynamic-component :component="TallStackUi::component('input')"
                                          :icon="TallStackUi::icon('magnifying-glass')"
                                          wire:model.live.debounce.500ms="{{ $filter['search'] }}"
-                                         :placeholder="$placeholders['search']"
+                                         :placeholder="data_get($placeholders, 'search')"
                                          type="search"
                                          invalidate />
                 </div>
@@ -82,7 +82,7 @@
                 @if (is_array($rows) && (count($rows) === 1 && empty($rows[0])))
                     <tr>
                         <td @class($personalize['empty']) colspan="100%">
-                            {{ $placeholders['empty'] }}
+                            {{ data_get($placeholders, 'empty') }}
                         </td>
                     </tr>
                 @else
@@ -122,7 +122,7 @@
                     @empty
                         <tr>
                             <td @class($personalize['empty']) colspan="100%">
-                                {{ $placeholders['empty'] }}
+                                {{ data_get($placeholders, 'empty') }}
                             </td>
                         </tr>
                     @endforelse
