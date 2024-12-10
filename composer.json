@@ -62,6 +62,7 @@
         "rector": "php ./vendor/bin/rector process --dry-run --config=rector.php",
         "analyse": "./vendor/bin/phpstan analyse --memory-limit=2G",
         "ci": [
+            "Composer\\Config::disableProcessTimeout",
             "./vendor/bin/pint --test",
             "./vendor/bin/phpstan analyse --memory-limit=2G",
             "php ./vendor/bin/rector process --dry-run --config=rector.php",
