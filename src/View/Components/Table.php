@@ -38,7 +38,7 @@ class Table extends BaseComponent implements Personalization
         public ?bool $blank = false,
         public ?int $onEachSide = 1,
         #[SkipDebug]
-        public ?array $placeholders = [],
+        public ?array $placeholders = null,
         #[SkipDebug]
         public ?string $paginator = 'tallstack-ui::components.table.paginators',
         #[SkipDebug]
@@ -50,7 +50,7 @@ class Table extends BaseComponent implements Personalization
         #[SkipDebug]
         public ComponentSlot|string|null $footer = null
     ) {
-        $this->placeholders = trans('tallstack-ui::messages.table');
+        $this->placeholders ??= trans('tallstack-ui::messages.table');
 
         if (is_bool($filter) && $this->filter === true) {
             $this->filter = ['quantity' => 'quantity', 'search' => 'search'];
