@@ -54,7 +54,7 @@ class Table extends TallStackUiComponent implements Personalization
         #[SkipDebug]
         public ComponentSlot|string|null $footer = null
     ) {
-        $this->placeholders ??= trans('tallstack-ui::messages.table');
+        $this->placeholders = array_merge(trans('tallstack-ui::messages.table'), $this->placeholders ?? []);
 
         if (is_bool($filter) && $this->filter === true) {
             $this->filter = ['quantity' => 'quantity', 'search' => 'search'];

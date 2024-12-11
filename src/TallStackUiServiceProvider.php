@@ -11,6 +11,7 @@ use TallStackUi\Foundation\Console\SetupPrefixCommand;
 use TallStackUi\Foundation\Personalization\PersonalizationFactory;
 use TallStackUi\Foundation\Support\Blade\ComponentPrefix;
 use TallStackUi\Foundation\Support\Blade\Directives;
+use TallStackUi\View\Components\Icon;
 
 include __DIR__.'/helpers.php';
 
@@ -49,7 +50,8 @@ class TallStackUiServiceProvider extends ServiceProvider
 
     protected function registerComponentPersonalization(): void
     {
-        Blade::component('BladeUI\Icons\Components\Icon', 'blade-ui');
+        // This ternary was needed to avoid exceptions when BladeUi is not installed in the base project.
+        Blade::component(class_exists(\BladeUI\Icons\Components\Icon::class) ? 'BladeUI\Icons\Components\Icon' : Icon::class, 'blade-ui');
 
         foreach (__ts_soft_personalization_components() as $key => $class) {
             $this->app->singleton($key, fn () => new PersonalizationFactory($class));
