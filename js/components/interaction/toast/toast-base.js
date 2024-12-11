@@ -5,6 +5,12 @@ export default (flash) => ({
     if (flash) window.onload = () => this.add(flash);
     if (flash) document.addEventListener('livewire:navigated', () => this.add(flash), { once: true });
   },
+  /**
+   * Add a new toast to the list.
+   *
+   * @param {Event} event
+   * @return {void}
+   */
   add(event) {
     this.$nextTick(() => this.show = true);
 
@@ -12,6 +18,12 @@ export default (flash) => ({
 
     this.toasts.push(event.detail ?? flash);
   },
+  /**
+   * Remove a toast from the list.
+   *
+   * @param {Object} toast
+   * @return {void}
+   */
   remove(toast) {
     this.toasts = this.toasts.filter((element) => element.id !== toast.id);
   },

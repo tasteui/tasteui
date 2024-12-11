@@ -175,7 +175,8 @@ export default (model, full, times, required, livewire, property, value, change 
   },
   /**
    * Get the formatted time.
-   * @return {object}
+   *
+   * @return {Object}
    */
   get formatted() {
     this.hours = this.hours.toString();

@@ -2,6 +2,11 @@ export default (color) => ({
   init() {
     this.$nextTick(() => this.resize());
   },
+  /**
+   * Count the quantity of characters.
+   *
+   * @return {void}
+   */
   counter() {
     const max = this.$refs.textarea.maxLength;
     const length = this.$refs.textarea.value.length;
@@ -35,6 +40,11 @@ export default (color) => ({
 
     this.$refs.counter.innerText = length;
   },
+  /**
+   * Resize the textarea.
+   *
+   * @return {void}
+   */
   resize() {
     const textarea = this.$refs.textarea;
 

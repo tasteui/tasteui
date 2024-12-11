@@ -66,6 +66,12 @@ export default (toast) => ({
       });
     });
   },
+  /**
+   * Accept the toast (by confirming).
+   *
+   * @param {Object} toast
+   * @return {void}
+   */
   accept(toast) {
     event('toast:accepted', toast, false);
 
@@ -78,6 +84,12 @@ export default (toast) => ({
 
     this.hide();
   },
+  /**
+   * Reject the toast (by cancelling).
+   *
+   * @param {Object} toast
+   * @return {void}
+   */
   reject(toast) {
     event('toast:rejected', toast, false);
 
@@ -93,8 +105,8 @@ export default (toast) => ({
   /**
    * Hide the toast.
    *
-   * @param immediately {Boolean}
-   * @param internal {Boolean}
+   * @param {Boolean} immediately
+   * @param {Boolean} internal
    * @return {void}
    */
   hide(immediately = true, internal = true) {

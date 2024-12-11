@@ -14,7 +14,9 @@ export default (flash, texts, overflowing) => ({
     this.$watch('show', (value) => overflow(value, 'dialog', overflowing));
   },
   /**
-   * @param dialog {Object}
+   * Add a new dialog.
+   *
+   * @param {Object} dialog
    * @return {void}
    */
   add(dialog) {
@@ -23,8 +25,10 @@ export default (flash, texts, overflowing) => ({
     this.show = true;
   },
   /**
-   * @param dismissed {Boolean}
-   * @param internal {Boolean}
+   * Remove the dialog.
+   *
+   * @param {Boolean} dismissed
+   * @param {Boolean} internal
    * @return {void}
    */
   remove(dismissed = false, internal = false) {
@@ -39,8 +43,10 @@ export default (flash, texts, overflowing) => ({
     event('dialog:dismissed', this.dialog, false);
   },
   /**
-   * @param dialog {Object}
-   * @param element {HTMLElement}
+   * Accept the dialog (by confirming).
+   *
+   * @param {Object} dialog
+   * @param {HTMLElement} element
    * @return {void}
    */
   accept(dialog, element) {
@@ -67,8 +73,10 @@ export default (flash, texts, overflowing) => ({
     this.remove(false, true);
   },
   /**
-   * @param dialog {Object}
-   * @param element {HTMLElement}
+   * Reject the dialog (by cancelling).
+   *
+   * @param {Object} dialog
+   * @param {HTMLElement} element
    * @return {void}
    */
   reject(dialog, element) {

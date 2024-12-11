@@ -36,6 +36,8 @@ export default (
   },
   /**
    * Clean the drawing on the canvas.
+   *
+   * @return {void}
    */
   clear() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -48,7 +50,8 @@ export default (
   /**
    * Start drawing on the canvas.
    *
-   * @param event
+   * @param {Event} event
+   * @return {void}
    */
   start(event) {
     event.preventDefault();
@@ -65,7 +68,8 @@ export default (
   /**
    * Draws on the canvas.
    *
-   * @param event
+   * @param {Event} event
+   * @return {void}
    */
   draw(event) {
     if (!this.drawing) return;
@@ -104,7 +108,8 @@ export default (
   /**
    * Stops drawing on the canvas
    *
-   * @param event
+   * @param {Event} event
+   * @return {void}
    */
   stop(event) {
     if (!this.drawing) return;
@@ -117,6 +122,8 @@ export default (
   },
   /**
    * Undoes the last action.
+   *
+   * @return {void}
    */
   undo() {
     if (this.stacks.undo.length > 1) {
@@ -132,6 +139,8 @@ export default (
   },
   /**
    * Redoes the last undone action/
+   *
+   * @return {void}
    */
   redo() {
     if (this.stacks.redo.length > 0) {
@@ -143,12 +152,16 @@ export default (
   },
   /**
    * Sync canvas to the model.
+   *
+   * @return {void}
    */
   save() {
     this.model = this.canvas.toDataURL(`image/${this.extension}`);
   },
   /**
    * Store the current state of the canvas to allow the actions of undoing and redoing.
+   *
+   * @return {void}
    */
   store() {
     this.stacks.undo.push(this.context.getImageData(0, 0, this.canvas.width, this.canvas.height));
@@ -159,6 +172,8 @@ export default (
   },
   /**
    * Download the canvas as an image.
+   *
+   * @return {void}
    */
   download() {
     const url = this.canvas.toDataURL(`image/${this.extension}`);
@@ -177,6 +192,8 @@ export default (
   },
   /**
    * Updates the background color of the canvas.
+   *
+   * @return {void}
    */
   backgroundColor() {
     if (jpeg && this.background === 'transparent') {
@@ -189,6 +206,9 @@ export default (
   },
   /**
    * Updates the size of the canvas
+   *
+   * @param {Boolean} clear
+   * @return {void}
    */
   size(clear = false) {
     this.canvas.width = this.$refs.canvas.parentElement.clientWidth;
