@@ -34,13 +34,16 @@ it('can render with rules', function () {
         ->toContain(trans('tallstack-ui::messages.password.rules.formats.mixed'));
 });
 
-it('cannot render with generator and without rules', function () {
-    $this->expectException(ViewException::class);
-    $this->expectExceptionMessage('The password [generator] requires the [rules] of the password.');
-
+it('can render with rules using default', function () {
     $component = <<<'HTML'
     <x-password generator />
     HTML;
 
-    expect($component)->render();
+    expect($component)
+        ->render()
+        ->toContain(trans('tallstack-ui::messages.password.rules.title'))
+        ->toContain(trans('tallstack-ui::messages.password.rules.formats.min', ['min' => config('tallstackui.settings.form.password.rules')['min']]))
+        ->toContain(trans('tallstack-ui::messages.password.rules.formats.symbols', ['symbols' => '!@#$%^&amp;*()_+-=']))
+        ->toContain(trans('tallstack-ui::messages.password.rules.formats.numbers'))
+        ->toContain(trans('tallstack-ui::messages.password.rules.formats.mixed'));
 });
