@@ -45,32 +45,32 @@
                         <span x-text="quantity"></span>
                     </div>
                     <div x-show="empty || !multiple">
-                        <div @class($personalize['itens.placeholder.wrapper'])>
-                            <img x-bind:src="image" @class($personalize['itens.image']) x-show="image" />
+                        <div @class($personalize['items.placeholder.wrapper'])>
+                            <img x-bind:src="image" @class($personalize['items.image']) x-show="image" />
                             <span @class(['text-red-500 dark:text-red-500' => $error])
                                 x-bind:class="{
-                                    '{{ $personalize['itens.placeholder.text'] }}': empty,
-                                    '{{ $personalize['itens.single'] }}': !empty
+                                    '{{ $personalize['items.placeholder.text'] }}': empty,
+                                    '{{ $personalize['items.single'] }}': !empty
                                 }" x-text="placeholder"></span>
                         </div>
                     </div>
-                    <div wire:ignore @class($personalize['itens.wrapper']) x-show="multiple && quantity > 0">
+                    <div wire:ignore @class($personalize['items.wrapper']) x-show="multiple && quantity > 0">
                         <template x-for="(select, index) in selects" :key="index">
                             <a class="cursor-pointer">
-                                <div @class($personalize['itens.multiple.item'])>
-                                    <div @class($personalize['itens.multiple.label.wrapper'])>
+                                <div @class($personalize['items.multiple.item'])>
+                                    <div @class($personalize['items.multiple.label.wrapper'])>
                                         <template x-if="select.image">
-                                            <img x-bind:src="select.image" @class($personalize['itens.multiple.image']) />
+                                            <img x-bind:src="select.image" @class($personalize['items.multiple.image']) />
                                         </template>
-                                        <span @class($personalize['itens.multiple.label']) x-text="select[selectable.label] ?? select"></span>
+                                        <span @class($personalize['items.multiple.label']) x-text="select[selectable.label] ?? select"></span>
                                     </div>
                                     @if (!$disabled)
-                                        <div @class($personalize['itens.multiple.icon'])>
+                                        <div @class($personalize['items.multiple.icon'])>
                                             <button type="button" x-on:click="$event.stopPropagation(); clear(select)">
                                                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                                      :icon="TallStackUi::icon('x-mark')"
                                                                      internal
-                                                                     @class($personalize['itens.multiple.icon']) />
+                                                                     @class($personalize['items.multiple.icon']) />
                                             </button>
                                         </div>
                                     @endif

@@ -130,7 +130,7 @@ class Styled extends TallStackUiComponent implements Personalization
                     'wrapper' => 'relative px-2 my-2',
                 ],
             ],
-            'itens' => [
+            'items' => [
                 'wrapper' => 'truncate',
                 'placeholder' => [
                     'text' => 'dark:text-dark-400 truncate leading-6 text-gray-400',
