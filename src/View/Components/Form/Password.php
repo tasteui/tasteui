@@ -60,7 +60,10 @@ class Password extends TallStackUiComponent implements Personalization
 
     protected function setup(): void
     {
-        $this->rules = collect($this->rules ?? config('tallstackui.settings.form.password.rules'))->mapWithKeys(function (string $value, ?string $key = null): array {
+        $default = config('tallstackui.settings.form.password.rules');
+
+        $this->rules = collect($this->rules ?? $default)->mapWithKeys(function (string $value, ?string $key = null) use ($default): array {
+            // When $this->rules is null, we interact with default values.
             if (is_null($this->rules)) {
                 return match ($key) {
                     'min' => ['min' => $value],
@@ -71,10 +74,12 @@ class Password extends TallStackUiComponent implements Personalization
                 };
             }
 
+            $rescued = rescue(fn () => explode(':', $value)[1], report: false);
+
             return match (true) {
-                str_contains($value, 'min') => ['min' => explode(':', $value)[1]],
+                str_contains($value, 'min') => ['min' => $rescued ?? data_get($default, 'min', 8)],
                 str_contains($value, 'numbers') => ['numbers' => true],
-                str_contains($value, 'symbols') => ['symbols' => explode(':', $value)[1]],
+                str_contains($value, 'symbols') => ['symbols' => $rescued ?? data_get($default, 'symbols', '!@#$%^&*()_+-=')],
                 str_contains($value, 'mixed') => ['mixed' => true],
                 default => [],
             };
