@@ -25,7 +25,7 @@ class Password extends TallStackUiComponent implements Personalization
         public ?bool $generator = false,
         public ?bool $invalidate = null
     ) {
-        $this->rules = collect($this->rules);
+        //
     }
 
     public function blade(): View
@@ -60,33 +60,31 @@ class Password extends TallStackUiComponent implements Personalization
 
     protected function setup(): void
     {
-        $this->rules = collect($this->rules)->reduce(function (Collection $carry, string $value) {
-            $defaults = config('tallstackui.settings.form.password.rules');
-
-            if (str_contains($value, 'min')) {
-                $carry->put('min', (explode(':', $value)[1] ?? $defaults['min']));
+        $this->rules = collect($this->rules ?? config('tallstackui.settings.form.password.rules'))->mapWithKeys(function (string $value, ?string $key = null): array {
+            if (is_null($this->rules)) {
+                return match ($key) {
+                    'min' => ['min' => $value],
+                    'numbers' => ['numbers' => (bool) $value],
+                    'mixed' => ['mixed' => (bool) $value],
+                    'symbols' => ['symbols' => $value],
+                    default => [],
+                };
             }
 
-            if (str_contains($value, 'numbers')) {
-                $carry->put('numbers', true);
-            }
-
-            if (str_contains($value, 'symbols')) {
-                $carry->put('symbols', (explode(':', $value)[1] ?? $defaults['symbols']));
-            }
-
-            if (str_contains($value, 'mixed')) {
-                $carry->put('mixed', true);
-            }
-
-            return $carry;
-        }, collect());
+            return match (true) {
+                str_contains($value, 'min') => ['min' => explode(':', $value)[1]],
+                str_contains($value, 'numbers') => ['numbers' => true],
+                str_contains($value, 'symbols') => ['symbols' => explode(':', $value)[1]],
+                str_contains($value, 'mixed') => ['mixed' => true],
+                default => [],
+            };
+        });
     }
 
     /** @throws Exception */
     protected function validate(): void
     {
-        if ($this->generator && (! $this->rules || $this->rules->isEmpty())) {
+        if ($this->generator && $this->rules->isEmpty()) {
             throw new Exception('The password [generator] requires the [rules] of the password.');
         }
     }

@@ -192,6 +192,8 @@ return [
             'password' => [
                 'rules' => [
                     'min' => '8',
+                    'mixed' => true,
+                    'numbers' => true,
                     'symbols' => '!@#$%^&*()_+-=',
                 ],
             ],
