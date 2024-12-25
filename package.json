@@ -16,7 +16,7 @@
     "@tailwindcss/forms": "^0.5.9",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.16.0",
-    "globals": "^15.13.0",
+    "globals": "^15.14.0",
     "postcss": "^8.4.49",
     "postcss-import": "^16.1.0",
     "tailwindcss": "^3.4.17",
