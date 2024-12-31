@@ -1,3 +1,4 @@
+@if ($mobileOnly)
 <div class="relative z-50 md:hidden" role="dialog" aria-modal="true" x-show="tallStackUiMenuMobile">
     <div x-transition:enter="transition-opacity ease-linear duration-300"
          x-transition:enter-start="opacity-0"
@@ -42,14 +43,17 @@
         </div>
     </div>
 </div>
-<div class="hidden md:fixed md:inset-y-0 md:z-50 md:flex md:w-72 md:flex-col">
-    <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4">
-        <div class="mt-16 flex h-16 shrink-0 items-center">
-            <nav class="flex h-16 flex-1 flex-col">
-                <ul role="list" class="flex flex-1 flex-col gap-y-7">
-                    {{ $slot }}
-                </ul>
-            </nav>
+@endif
+@if ($desktopOnly)
+    <div class="hidden md:fixed md:inset-y-0 md:z-50 md:flex md:w-72 md:flex-col">
+        <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4">
+            <div class="mt-16 flex h-16 shrink-0 items-center">
+                <nav class="flex h-16 flex-1 flex-col">
+                    <ul role="list" class="flex flex-1 flex-col gap-y-7">
+                        {{ $slot }}
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
-</div>
+@endif
