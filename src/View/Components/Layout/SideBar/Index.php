@@ -12,8 +12,11 @@ use TallStackUi\TallStackUiComponent;
 #[SoftPersonalization('layout.side-bar')]
 class Index extends TallStackUiComponent implements Personalization
 {
-    public function __construct(public ?ComponentSlot $header = null)
-    {
+    public function __construct(
+        public ?ComponentSlot $header = null,
+        public ?bool $desktopOnly = null,
+        public ?bool $mobileOnly = null,
+    ) {
         //
     }
 

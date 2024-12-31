@@ -1,14 +1,17 @@
-<div @if ($sidebar->isNotEmpty()) x-data="{ mobile : false }" @endif>
+<div @if ($sidebar->isNotEmpty()) x-data="{ tallStackUiMenuMobile : false }" @endif>
+    @if ($top)
+        {{ $top }}
+    @endif
     @if ($sidebar->isNotEmpty())
         {{ $sidebar }}
     @endif
     <div class="min-h-full">
-        <div class="lg:pl-72">
+        <div class="md:pl-72">
             @if ($header)
                 {{ $header }}
             @endif
-            <main class="max-w-full mx-auto sm:px-6 lg:px-8 py-10">
-                <div class="px-4 sm:px-6 lg:px-8">
+            <main class="max-w-full mx-auto px-6 py-10">
+                <div class="px-4">
                     {{ $slot }}
                 </div>
             </main>
