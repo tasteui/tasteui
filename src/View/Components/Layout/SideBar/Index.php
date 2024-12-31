@@ -13,7 +13,7 @@ use TallStackUi\TallStackUiComponent;
 class Index extends TallStackUiComponent implements Personalization
 {
     public function __construct(
-        public ?ComponentSlot $header = null,
+        public ?ComponentSlot $brand = null,
         public ?bool $desktopOnly = null,
         public ?bool $mobileOnly = null,
     ) {

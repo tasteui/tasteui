@@ -23,9 +23,9 @@
                                          class="w-6 h-6 shrink-0 text-gray-400" />
                 @endif
                 {{ $label }}
-                <x-tallstack-ui::icon.generic.chevron-right class="ml-auto w-4 h-4 shrink-0 text-gray-400"
+                <x-tallstack-ui::icon.generic.chevron-down class="ml-auto w-4 h-4 shrink-0 text-gray-400 transition-all"
                                                             x-bind:class="{
-                                                                'rotate-90 text-gray-500': show,
+                                                                'rotate-180 text-gray-500': show,
                                                                 'text-gray-400': !show
                                                             }" />
             </button>

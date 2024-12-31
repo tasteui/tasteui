@@ -50,8 +50,8 @@
 @if ($desktopOnly)
     <div class="hidden md:fixed md:inset-y-0 md:z-50 md:flex md:w-72 md:flex-col">
         <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4">
-            @if ($header)
-                {{ $header }}
+            @if ($brand)
+                {{ $brand }}
             @endif
             <div class="mt-10 flex h-16 shrink-0 items-center">
                 <nav class="flex h-16 flex-1 flex-col">

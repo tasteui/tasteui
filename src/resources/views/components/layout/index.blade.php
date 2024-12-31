@@ -2,7 +2,16 @@
     @if ($top)
         {{ $top }}
     @endif
-    @if ($sidebar->isNotEmpty())
+    @if ($sidebar->isNotEmpty() && $sidebar->attributes->has('wrapped'))
+        <x-dynamic-component :component="TallStackUi::prefix('layout.sidebar')" desktop-only>
+            @if ($brand)
+                <x-slot:brand>
+                    {{ $brand }}
+                </x-slot:brand>
+            @endif
+            {{ $sidebar }}
+        </x-dynamic-component>
+    @elseif ($sidebar->isNotEmpty())
         {{ $sidebar }}
     @endif
     <div class="min-h-full">
