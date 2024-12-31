@@ -1,4 +1,4 @@
-<div @if ($sidebar->isNotEmpty())) x-data="{ mobile : false }" @endif>
+<div @if ($sidebar->isNotEmpty()) x-data="{ mobile : false }" @endif>
     @if ($sidebar->isNotEmpty())
         {{ $sidebar }}
     @endif
