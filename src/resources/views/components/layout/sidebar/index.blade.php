@@ -32,7 +32,10 @@
                 </button>
             </div>
             <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4" x-on:click.outside="tallStackUiMenuMobile = false">
-                <div class="mt-16 flex h-16 shrink-0 items-center">
+                @if ($header)
+                    {{ $header }}
+                @endif
+                <div class="mt-10 flex h-16 shrink-0 items-center">
                     <nav class="flex h-16 flex-1 flex-col">
                         <ul role="list" class="flex flex-1 flex-col gap-y-7">
                             {{ $slot }}
@@ -47,7 +50,10 @@
 @if ($desktopOnly)
     <div class="hidden md:fixed md:inset-y-0 md:z-50 md:flex md:w-72 md:flex-col">
         <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4">
-            <div class="mt-16 flex h-16 shrink-0 items-center">
+            @if ($header)
+                {{ $header }}
+            @endif
+            <div class="mt-10 flex h-16 shrink-0 items-center">
                 <nav class="flex h-16 flex-1 flex-col">
                     <ul role="list" class="flex flex-1 flex-col gap-y-7">
                         {{ $slot }}
