@@ -311,6 +311,7 @@ return [
         'icon' => Components\Icon::class,
         'input' => Components\Form\Input::class,
         'label' => Components\Form\Label::class,
+        'layout' => Components\Layout\Index::class,
         'link' => Components\Link::class,
         'loading' => Components\Loading::class,
         'modal' => Components\Modal::class,
