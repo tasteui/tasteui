@@ -23,11 +23,15 @@
                                          class="w-6 h-6 shrink-0 text-gray-400" />
                 @endif
                 {{ $label }}
+                @if ($collapseIcon instanceof \Illuminate\View\ComponentSlot)
+                    {{ $collapseIcon }}
+                @else
                 <x-tallstack-ui::icon.generic.chevron-down class="ml-auto w-4 h-4 shrink-0 text-gray-400 transition-all"
                                                             x-bind:class="{
                                                                 'rotate-180 text-gray-500': show,
                                                                 'text-gray-400': !show
                                                             }" />
+                @endif
             </button>
             <ul x-show="show" class="mt-1 px-2">
                 {{ $slot }}
