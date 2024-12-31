@@ -1,6 +1,6 @@
 <?php
 
-namespace TallStackUi\View\Components\Layout;
+namespace TallStackUi\View\Components\Layout\SideBar;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Arr;
@@ -9,20 +9,22 @@ use TallStackUi\Foundation\Attributes\SoftPersonalization;
 use TallStackUi\Foundation\Personalization\Contracts\Personalization;
 use TallStackUi\TallStackUiComponent;
 
-#[SoftPersonalization('layout.index')]
-class Index extends TallStackUiComponent implements Personalization
+#[SoftPersonalization('layout.side-bar.item')]
+class Item extends TallStackUiComponent implements Personalization
 {
     public function __construct(
-        public ?ComponentSlot $header,
-        public ?ComponentSlot $sidebar,
-        public ?ComponentSlot $footer,
+        public ?string $label = null,
+        public ?string $route = null,
+        public ?string $icon = null,
+        public ?bool $activated = null,
+        public ?bool $grouped = null,
     ) {
         //
     }
 
     public function blade(): View
     {
-        return view('tallstack-ui::components.layout.index');
+        return view('tallstack-ui::components.layout.sidebar.item');
     }
 
     public function personalization(): array
