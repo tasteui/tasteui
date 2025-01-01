@@ -2,7 +2,7 @@
     $personalize = $classes();
 @endphp
 
-<div @class($personalize['wrapper.first'])
+<div class="{{ $personalize['wrapper.first'] }}"
      x-data="tallstackui_dropdown(@js(!$static))"
      role="button" 
      aria-haspopup="true" 

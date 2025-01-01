@@ -6,7 +6,7 @@
      x-data="{ show : true }"
      x-show="show">
     <div @class([$personalize['content.wrapper'], 'items-start' => $title !== null])>
-        <div @class([$personalize['content.base']])>
+        <div class="{{ $personalize['content.base'] }}">
             @if ($icon)
                 <div @class([$personalize['icon.wrapper'] => $icon, 'mt-1' => $icon && $title])>
                     @if ($icon)
