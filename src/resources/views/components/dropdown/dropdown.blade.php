@@ -18,7 +18,7 @@
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('chevron-down')"
                                          internal
-                                         @class($personalize['action.icon'])
+                                         class="{{ $personalize['action.icon'] }}"
                                          x-bind:class="{ 'transform rotate-180': animate && show }"/>
                 </button>
             </div>
@@ -31,7 +31,7 @@
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :$icon
                                          internal
-                                         @class($personalize['action.icon'])
+                                         class="{{ $personalize['action.icon'] }}"
                                          x-bind:class="{ 'transform rotate-180': animate && show }" />
                 </button>
             </div>

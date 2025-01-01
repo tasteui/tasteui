@@ -16,11 +16,11 @@
             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                  :icon="TallStackUi::icon('chevron-left')"
                                  internal
-                                 @class($personalize['submenu.left']) />
+                                 class="{{ $personalize['submenu.left'] }}" />
         @endif
-        <div @class($personalize['wrapper'])>
+        <div class="{{ $personalize['wrapper'] }}">
             @if ($icon)
-                <x-dynamic-component :component="TallStackUi::prefix('icon')" internal :$icon @class($personalize['icon']) />
+                <x-dynamic-component :component="TallStackUi::prefix('icon')" internal :$icon class="{{ $personalize['icon'] }}" />
             @endif
             {{ $text }}
         </div>
@@ -28,7 +28,7 @@
         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                              :icon="TallStackUi::icon('chevron-right')"
                              internal
-                             @class($personalize['submenu.right']) />
+                             class="{{ $personalize['submenu.right'] }}" />
         @endif
     </button>
     <x-dynamic-component :component="TallStackUi::prefix('floating')"

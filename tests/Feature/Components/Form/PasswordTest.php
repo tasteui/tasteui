@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\View\ViewException;
-
 it('can render')
     ->expect('<x-password />')
     ->render()

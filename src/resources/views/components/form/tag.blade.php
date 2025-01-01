@@ -19,9 +19,9 @@
             $personalize['input.color.disabled'] => $attributes->get('disabled') || $attributes->get('readonly'),
             $personalize['error'] => $error
          ])>
-        <div @class($personalize['wrapper'])>
+        <div class="{{ $personalize['wrapper'] }}">
             <template x-for="(tag, index) in (model ?? [])" :key="index">
-                <span @class($personalize['label.base'])>
+                <span class="{{ $personalize['label.base'] }}">
                     <span x-text="tag"></span>
                     <button type="button" {!! $attributes->only('x-on:remove') !!} x-on:click="remove(index)">
                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
@@ -52,7 +52,7 @@
                 x-on:click.prevent="erase()"
                 x-show="model?.length > 0"
                 dusk="tallstackui_tag_erase"
-                @class($personalize['button.wrapper'])
+                class="{{ $personalize['button.wrapper'] }}"
                 {{ $attributes->only('x-on:erase') }}>
             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                  :icon="TallStackUi::icon('x-mark')"

@@ -29,7 +29,7 @@
                          dusk="tallstackui_time_input"
                          class="cursor-pointer caret-transparent">
                          <x-slot:suffix>
-                             <div @class([$personalize['icon.wrapper']])>
+                             <div class="{{ $personalize['icon.wrapper'] }}">
                                  @if (!$attributes->has('required'))
                                     <button type="button" x-on:click="clear()" x-show="model">
                                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
@@ -43,7 +43,7 @@
                                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                          :icon="TallStackUi::icon('clock')"
                                                          internal
-                                                         @class($personalize['icon.size']) />
+                                                         class="{{ $personalize['icon.size'] }}" />
                                 </button>
                              </div>
                          </x-slot:suffix>
@@ -53,16 +53,16 @@
                          :class="$personalize['floating.class']">
         <div @class(['flex flex-col', 'mb-2' => $helper || $footer->isNotEmpty(), 'w-full' => $format === '24'])>
             <div @class($personalize['wrapper'])>
-                <span x-text="formatted.hours" x-ref="hours" @class($personalize['time'])></span>
-                <span @class($personalize['separator'])>:</span>
-                <span x-text="formatted.minutes" x-ref="minutes" @class($personalize['time'])></span>
+                <span x-text="formatted.hours" x-ref="hours" class="{{ $personalize['time'] }}"></span>
+                <span class="{{ $personalize['separator'] }}">:</span>
+                <span x-text="formatted.minutes" x-ref="minutes" class="{{ $personalize['time'] }}"></span>
                 @if ($format === '12')
-                    <div @class($personalize['interval.wrapper'])>
-                        <p @class($personalize['interval.text']) x-text="interval"></p>
+                    <div class="{{ $personalize['interval.wrapper'] }}">
+                        <p class="{{ $personalize['interval.text'] }}" x-text="interval"></p>
                     </div>
                 @endif
             </div>
-            <div wire:ignore.self @class($personalize['helper.wrapper'])>
+            <div wire:ignore.self class="{{ $personalize['helper.wrapper'] }}">
                 <input type="range"
                        min="{{ $format === '12' ? 1 : 0 }}"
                        max="{{ $format === '12' ? 12 : 23 }}"
@@ -88,14 +88,14 @@
                        @class(['focus:outline-none', $personalize['range.base'], $personalize['range.thumb']])>
             </div>
             @if ($format === '12')
-                <div x-ref="format" {{ $attributes->only('x-on:interval') }} @class($personalize['interval.buttons.wrapper'])>
+                <div x-ref="format" {{ $attributes->only('x-on:interval') }} class="{{ $personalize['interval.buttons.wrapper'] }}">
                     <button type="button"
                             x-on:click="select('AM')"
-                            @class($personalize['interval.buttons.am'])
+                            class="{{ $personalize['interval.buttons.am'] }}"
                             dusk="tallstackui_time_am">AM</button>
                     <button type="button"
                             x-on:click="select('PM')"
-                            @class($personalize['interval.buttons.pm'])
+                            class="{{ $personalize['interval.buttons.pm'] }}"
                             dusk="tallstackui_time_pm">PM</button>
                 </div>
             @endif

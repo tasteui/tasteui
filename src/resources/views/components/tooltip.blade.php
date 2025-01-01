@@ -3,7 +3,7 @@
 @endphp
 
 @unless(blank($sentence))
-    <div @class($personalize['wrapper']) x-data>
+    <div class="{{ $personalize['wrapper'] }}" x-data>
         <x-dynamic-component :component="$raw('tallstack-ui::icon.')"
                              data-position="{{ $position }}"
                              x-tooltip="{!! $sentence !!}"

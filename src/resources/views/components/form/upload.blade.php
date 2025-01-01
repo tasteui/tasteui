@@ -36,7 +36,7 @@
                                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                          :icon="TallStackUi::icon('arrow-up-tray')"
                                                          internal
-                                                         @class($personalize['icon']) />
+                                                         class="{{ $personalize['icon'] }}" />
                                 </button>
                              </x-slot:suffix>
         </x-dynamic-component>
@@ -50,16 +50,16 @@
                  x-transition:leave="ease-in duration-200"
                  x-transition:leave-start="opacity-100"
                  x-transition:leave-end="opacity-0"
-                 @class($personalize['preview.backdrop'])
+                 class="{{ $personalize['preview.backdrop'] }}"
                  dusk="tallstackui_file_preview_backdrop">
-                    <div @class($personalize['preview.wrapper'])>
-                        <button @class($personalize['preview.button.wrapper']) x-on:click="preview = false; $nextTick(() => show = true)">
+                    <div class="{{ $personalize['preview.wrapper'] }}">
+                        <button class="{{ $personalize['preview.button.wrapper'] }}" x-on:click="preview = false; $nextTick(() => show = true)">
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="TallStackUi::icon('x-mark')"
-                                                 internal
-                                                 :class="$personalize['preview.button.icon']" />
+                                                 class="{{ $personalize['preview.button.icon'] }}"
+                                                 internal />
                         </button>
-                        <img x-bind:src="image" @class($personalize['preview.image'])>
+                        <img x-bind:src="image" class="{{ $personalize['preview.image'] }}">
                     </div>
             </div>
         </template>
@@ -70,25 +70,25 @@
                           dusk="tallstackui_upload_floating">
          @if (!$static)
          <div @class(['flex flex-col w-full items-center justify-center', 'mb-2' => $footer->isNotEmpty()])>
-             <div @class($personalize['placeholder.wrapper']) :class="{ 'bg-primary-100': dragging }">
-                 <div @class($personalize['placeholder.icon.wrapper'])>
+             <div class="{{ $personalize['placeholder.wrapper'] }}" :class="{ 'bg-primary-100': dragging }">
+                 <div class="{{ $personalize['placeholder.icon.wrapper'] }}">
                      <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                           :icon="TallStackUi::icon('cloud-arrow-up')"
                                           internal
-                                          @class($personalize['placeholder.icon.class']) />
-                     <p @class($personalize['placeholder.title'])>
+                                          class="{{ $personalize['placeholder.icon.class'] }}" />
+                     <p class="{{ $personalize['placeholder.title'] }}">
                          {{ trans('tallstack-ui::messages.upload.upload') }}
                      </p>
                  </div>
                  @if (is_string($tip))
-                     <p @class($personalize['placeholder.tip'])>{{ $tip }}</p>
+                     <p class="{{ $personalize['placeholder.tip'] }}">{{ $tip }}</p>
                  @else
                      {{ $tip }}
                  @endif
                  <input id="{{ $property }}"
                         type="file"
                         dusk="tallstackui_file_select"
-                        @if (!app()->runningUnitTests()) @class($personalize['placeholder.input']) @endif
+                        @if (!app()->runningUnitTests()) class="{{ $personalize['placeholder.input'] }}" @endif
                         x-ref="files"
                         {{ $attributes->only(['accept', 'x-on:upload']) }}
                         x-on:change="upload()"
@@ -100,16 +100,16 @@
          </div>
          @endif
          <div @class([$personalize['error.wrapper'], 'mb-2' => $footer->isNotEmpty()]) x-show="@js($error) && error">
-             <p @class($personalize['error.message']) x-text="warning"></p>
+             <p class="{{ $personalize['error.message'] }}" x-text="warning"></p>
          </div>
          <div x-show="uploading"
               role="progressbar"
               @class([$personalize['upload.wrapper'], 'mb-2' => $footer->isNotEmpty()])>
-             <div @class($personalize['upload.progress']) x-bind:style="'width: ' + progress + '%'"></div>
+             <div class="{{ $personalize['upload.progress'] }}" x-bind:style="'width: ' + progress + '%'"></div>
          </div>
          @if ($value)
-             <div @class($personalize['item.wrapper']) x-ref="items">
-                 <ul role="list" @class($personalize['item.ul'])>
+             <div class="{{ $personalize['item.wrapper'] }}" x-ref="items">
+                 <ul role="list" class="{{ $personalize['item.ul'] }}">
                      @foreach($adapter($value) as $key => $file)
                          <li @class([$personalize['item.li'], 'py-2' => is_array($value) && count($value) > 1])>
                              <div class="flex min-w-0 gap-x-4">
@@ -125,11 +125,11 @@
                                                           :class="$personalize['item.document']" />
                                  @endif
                                  <div class="flex-auto min-w-0">
-                                     <p @class($personalize['item.title'])>{{ $file['real_name'] }}</p>
+                                     <p class="{{ $personalize['item.title'] }}">{{ $file['real_name'] }}</p>
                                      <x-dynamic-component :component="TallStackUi::prefix('error')"
                                                           :property="is_array($value) ? $property . '.' . $key : $property" />
                                      @if ($file['size'] !== null)
-                                         <p @class($personalize['item.size'])>
+                                         <p class="{{ $personalize['item.size'] }}">
                                              <span>{{ trans('tallstack-ui::messages.upload.size') }}: </span>
                                              <span>{{ $file['size'] }}</span>
                                          </p>
@@ -143,8 +143,8 @@
                                              x-on:click="remove(@js($deleteMethod), @js($file))">
                                          <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                               :icon="TallStackUi::icon('trash')"
-                                                              internal
-                                                              @class($personalize['item.delete']) />
+                                                              class="{{ $personalize['item.delete'] }}"
+                                                              internal />
                                      </button>
                                  @endif
                              </div>
@@ -153,15 +153,15 @@
                  </ul>
              </div>
          @elseif ($static === true)
-             <div @class($personalize['static.empty.wrapper'])>
+             <div class="{{ $personalize['static.empty.wrapper'] }}">
                  <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                       :icon="TallStackUi::icon('photo')"
                                       internal
-                                      :class="$personalize['static.empty.icon']" />
-                 <h3 @class($personalize['static.empty.title'])>
+                                      class="{{ $personalize['static.empty.icon'] }}" />
+                 <h3 class="{{ $personalize['static.empty.title'] }}">
                      {{ trans('tallstack-ui::messages.upload.static.empty.title') }}
                  </h3>
-                 <p @class($personalize['static.empty.description'])>
+                 <p class="{{ $personalize['static.empty.description'] }}">
                      {{ trans('tallstack-ui::messages.upload.static.empty.description') }}
                  </p>
              </div>

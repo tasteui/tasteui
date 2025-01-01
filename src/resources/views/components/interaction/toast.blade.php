@@ -24,8 +24,8 @@
                  'md:items-start' => $configurations['position'] === 'top-left' || $configurations['position'] === 'bottom-left',
                  'md:items-end' => $configurations['position'] === 'top-right' || $configurations['position'] === 'bottom-right'
              ])>
-            <div @class($personalize['wrapper.third'])>
-                <div @class($personalize['wrapper.fourth'])>
+            <div class="{{ $personalize['wrapper.third'] }}">
+                <div class="{{ $personalize['wrapper.fourth'] }}">
                     <div class="flex-shrink-0">
                         <div x-show="toast.type === 'success'">
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
@@ -63,16 +63,16 @@
                                                  @class([$personalize['icon.size'], $colors['icon']['question']]) />
                         </div>
                     </div>
-                    <div @class($personalize['content.wrapper'])>
-                        <p @class($personalize['content.text']) x-bind:class="{ 'font-medium' : !toast.confirm, 'font-semibold' : toast.confirm }"
+                    <div class="{{ $personalize['content.wrapper'] }}">
+                        <p class="{{ $personalize['content.text'] }}" x-bind:class="{ 'font-medium' : !toast.confirm, 'font-semibold' : toast.confirm }"
                            x-html="toast.title"></p>
-                        <p @class($personalize['content.description'])
+                        <p class="{{ $personalize['content.description'] }}"
                            x-html="toast.description"
                            x-show="!toast.expandable"
                            x-bind:class="{ 'truncate': toast.expandable }"
                            x-collapse.min.20px></p>
                         <template x-if="toast.options && (toast.options.confirm?.text || toast.options.cancel?.text)">
-                            <div @class($personalize['buttons.wrapper.first']) x-bind:class="{ 'gap-x-2' : toast.options.confirm && toast.options.cancel }">
+                            <div class="{{ $personalize['buttons.wrapper.first'] }}" x-bind:class="{ 'gap-x-2' : toast.options.confirm && toast.options.cancel }">
                                 <button dusk="tallstackui_toast_confirmation" @class([$personalize['buttons.confirm'], $colors['text']['confirm']])
                                         x-on:click="accept(toast)"
                                         x-text="toast.options?.confirm?.text"></button>
@@ -84,31 +84,31 @@
                             </div>
                         </template>
                     </div>
-                    <div @class($personalize['buttons.wrapper.second'])>
-                        <div @class($personalize['buttons.close.wrapper'])>
-                            <button x-on:click="hide(true, false)" type="button" @class($personalize['buttons.close.class'])>
+                    <div class="{{ $personalize['buttons.wrapper.second'] }}">
+                        <div class="{{ $personalize['buttons.close.wrapper'] }}">
+                            <button x-on:click="hide(true, false)" type="button" class="{{ $personalize['buttons.close.class'] }}">
                                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                      :icon="TallStackUi::icon('x-mark')"
                                                      dusk="tallstackui_toast_close"
                                                      internal
-                                                     @class($personalize['buttons.close.size']) />
+                                                     class="{{ $personalize['buttons.close.size'] }}" />
                             </button>
                         </div>
-                        <div x-show="toast.expandable && toast.description" @class($personalize['buttons.expand.wrapper'])>
+                        <div x-show="toast.expandable && toast.description" class="{{ $personalize['buttons.expand.wrapper'] }}">
                             <button dusk="tallstackui_toast_expandable"
                                     x-on:click="toast.expandable = !toast.expandable"
                                     type="button"
-                                    @class($personalize['buttons.expand.class'])>
+                                    class="{{ $personalize['buttons.expand.class'] }}">
                                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                      :icon="TallStackUi::icon('chevron-down')"
                                                      internal
-                                                     @class($personalize['buttons.expand.size']) />
+                                                     class="{{ $personalize['buttons.expand.size'] }}" />
                             </button>
                         </div>
                     </div>
                 </div>
                 @if ($configurations['progress'])
-                    <div x-show="!toast.persistent" @class($personalize['progress.wrapper'])>
+                    <div x-show="!toast.persistent" class="{{ $personalize['progress.wrapper'] }}">
                         <span x-ref="progress" x-bind:style="`animation-duration:${toast.timeout * 1000}ms`" @class(['animate-progress', $personalize['progress.bar']]) x-cloak></span>
                     </div>
                 @endif

@@ -49,28 +49,28 @@
                                          :icon="TallStackUi::icon('check-circle')"
                                          outline
                                          internal
-                                         @class($personalize['icon']) />
+                                         class="{{ $personalize['icon'] }}" />
                 </div>
                 <div x-show="type === 'error'">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('x-circle')"
                                          outline
                                          internal
-                                         @class($personalize['icon']) />
+                                         class="{{ $personalize['icon'] }}" />
                 </div>
                 <div x-show="type === 'info'">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('information-circle')"
                                          outline
                                          internal
-                                         @class($personalize['icon']) />
+                                         class="{{ $personalize['icon'] }}" />
                 </div>
                 <div x-show="type === 'warning'">
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('exclamation-circle')"
                                          outline
                                          internal
-                                         @class($personalize['icon']) />
+                                         class="{{ $personalize['icon'] }}" />
                 </div>
                 <span class="text-white" x-html="text"></span>
             </div>
