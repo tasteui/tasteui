@@ -1,5 +1,5 @@
 @if ($grouped)
-    <li x-data="{ show : false }">
+    <li x-data="{ show : @js($opened ?? false) }">
         <button x-on:click="show = !show"
                 type="button"
                 class="flex w-full items-center gap-x-3 rounded-md p-2 text-left text-sm/6 font-semibold text-gray-700 hover:bg-gray-100 transition-all">
@@ -22,20 +22,29 @@
                                                            }" />
             @endif
         </button>
-        <ul x-show="show" class="mt-1 px-2">
+        <ul x-show="show" class="mt-1 px-2 space-y-1">
             {{ $slot }}
         </ul>
     </li>
 @else
     <li>
-        <a @if ($route) href="{{ $route }}" @endif class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-100 transition-all">
+        <a @if ($route) href="{{ $route }}" @endif
+            @class([
+                'group flex gap-x-3 rounded-md p-2 text-sm font-semibold transition-all',
+                'text-gray-700 hover:text-primary-500 hover:bg-primary-50' => ! $activated,
+                'text-primary-500 bg-primary-50' => $activated,
+            ])>
             @if ($icon instanceof \Illuminate\View\ComponentSlot)
                 {{ $icon }}
             @elseif ($icon)
                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                      :icon="TallStackUi::icon($icon)"
                                      internal
-                                     class="w-6 h-6 shrink-0 text-gray-400" />
+                                     @class([
+                                        'w-6 h-6 shrink-0 group-hover:text-primary-500 transition-all',
+                                        'text-gray-400' => ! $activated,
+                                        'text-primary-500' => $activated,
+                                    ]) />
             @endif
             {{ $label ?? $slot }}
         </a>
