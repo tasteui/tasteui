@@ -7,10 +7,10 @@
      role="button" 
      aria-haspopup="true" 
      x-bind:aria-expanded="show">
-    <div @class($personalize['wrapper.second']) x-on:click.outside="show = false" x-ref="dropdown">
+    <div class="{{ $personalize['wrapper.second'] }}" x-on:click.outside="show = false" x-ref="dropdown">
         @if ($text)
-            <div @class($personalize['action.wrapper'])>
-                <span @class($personalize['action.text'])>{{ $text }}</span>
+            <div class="{{ $personalize['action.wrapper'] }}">
+                <span class="{{ $personalize['action.text'] }}">{{ $text }}</span>
                 <button type="button" 
                         x-on:click="show = !show"
                         aria-controls="dropdown-menu"
@@ -23,7 +23,7 @@
                 </button>
             </div>
         @elseif ($icon)
-            <div @class($personalize['action.wrapper'])>
+            <div class="{{ $personalize['action.wrapper'] }}">
                 <button type="button" 
                         x-on:click="show = !show"
                         aria-controls="dropdown-menu"
@@ -48,11 +48,11 @@
                 {!! $transitions() !!}
             </x-slot:transition>
             @if ($header)
-                <div @class($personalize['header.wrapper'])>
+                <div class="{{ $personalize['header.wrapper'] }}">
                     {!! $header !!}
                 </div>
             @endif
-            <div @class($personalize['slot.wrapper'])>
+            <div class="{{ $personalize['slot.wrapper'] }}">
                 {!! $slot !!}
             </div>
         </x-dynamic-component>
