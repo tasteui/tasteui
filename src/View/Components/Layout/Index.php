@@ -29,6 +29,12 @@ class Index extends TallStackUiComponent implements Personalization
 
     public function personalization(): array
     {
-        return Arr::dot([]);
+        return Arr::dot([
+            'wrapper' => [
+                'first' => 'min-h-full',
+                'second' => 'md:pl-72',
+            ],
+            'main' => 'max-w-full mx-auto p-10',
+        ]);
     }
 }

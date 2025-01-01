@@ -1,28 +1,29 @@
+@php
+    $personalize = $classes();
+@endphp
+
 @if ($grouped)
     <li x-data="{ show : @js($opened ?? false) }">
         <button x-on:click="show = !show"
                 type="button"
-                class="flex w-full items-center gap-x-3 rounded-md p-2 text-left text-sm/6 font-semibold text-gray-700 hover:bg-gray-100 transition-all">
+                class="{{ $personalize['grouped.button'] }}">
             @if ($icon instanceof \Illuminate\View\ComponentSlot)
                 {{ $icon }}
             @elseif ($icon)
                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                      :icon="TallStackUi::icon($icon)"
                                      internal
-                                     class="w-6 h-6 shrink-0 text-gray-400" />
+                                     class="{{ $personalize['grouped.icon.base'] }}" />
             @endif
             {{ $label }}
             @if ($collapseIcon instanceof \Illuminate\View\ComponentSlot)
                 {{ $collapseIcon }}
             @else
-                <x-tallstack-ui::icon.generic.chevron-down class="ml-auto w-4 h-4 shrink-0 text-gray-400 transition-all"
-                                                           x-bind:class="{
-                                                                'rotate-180 text-gray-500': show,
-                                                                'text-gray-400': !show
-                                                           }" />
+                <x-tallstack-ui::icon.generic.chevron-down class="{{ $personalize['grouped.icon.collapse.base'] }}"
+                                                           x-bind:class="{ '{{ $personalize['grouped.icon.collapse.rotate'] }}': show }" />
             @endif
         </button>
-        <ul x-show="show" class="mt-1 px-2 space-y-1">
+        <ul x-show="show" class="{{ $personalize['grouped.group'] }}">
             {{ $slot }}
         </ul>
     </li>
@@ -30,9 +31,9 @@
     <li>
         <a @if ($route) href="{{ $route }}" @endif
             @class([
-                'group flex gap-x-3 rounded-md p-2 text-sm font-semibold transition-all',
-                'text-gray-700 hover:text-primary-500 hover:bg-primary-50' => ! $activated,
-                'text-primary-500 bg-primary-50' => $activated,
+                $personalize['normal.state.base'],
+                $personalize['normal.state.deactivated'] => ! $activated,
+                $personalize['normal.state.activated'] => $activated,
             ])>
             @if ($icon instanceof \Illuminate\View\ComponentSlot)
                 {{ $icon }}
@@ -41,9 +42,9 @@
                                      :icon="TallStackUi::icon($icon)"
                                      internal
                                      @class([
-                                        'w-6 h-6 shrink-0 group-hover:text-primary-500 transition-all',
-                                        'text-gray-400' => ! $activated,
-                                        'text-primary-500' => $activated,
+                                        $personalize['normal.icon.base'],
+                                        $personalize['normal.icon.deactivated'] => ! $activated,
+                                        $personalize['normal.icon.activated'] => $activated,
                                     ]) />
             @endif
             {{ $label ?? $slot }}

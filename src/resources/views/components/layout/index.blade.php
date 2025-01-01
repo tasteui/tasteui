@@ -1,9 +1,13 @@
+@php
+    $personalize = $classes();
+@endphp
+
 <div @if ($sidebar->isNotEmpty()) x-data="{ tallStackUiMenuMobile : false }" @endif>
     @if ($top)
         {{ $top }}
     @endif
     @if ($sidebar->isNotEmpty() && $sidebar->attributes->has('wrapped'))
-        <x-dynamic-component :component="TallStackUi::prefix('layout.sidebar')" desktop-only>
+        <x-dynamic-component :component="TallStackUi::prefix('layout.sidebar')">
             @if ($brand)
                 <x-slot:brand>
                     {{ $brand }}
@@ -14,15 +18,13 @@
     @elseif ($sidebar->isNotEmpty())
         {{ $sidebar }}
     @endif
-    <div class="min-h-full">
-        <div class="md:pl-72">
+    <div class="{{ $personalize['wrapper.first'] }}">
+        <div class="{{ $personalize['wrapper.second'] }}">
             @if ($header)
                 {{ $header }}
             @endif
-            <main class="max-w-full mx-auto px-6 py-10">
-                <div class="px-4">
-                    {{ $slot }}
-                </div>
+            <main class="{{ $personalize['main'] }}">
+                {{ $slot }}
             </main>
         </div>
     </div>
