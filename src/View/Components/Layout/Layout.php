@@ -13,11 +13,11 @@ use TallStackUi\TallStackUiComponent;
 class Layout extends TallStackUiComponent implements Personalization
 {
     public function __construct(
-        public ?ComponentSlot $top = null,
-        public ?ComponentSlot $header = null,
-        public ?ComponentSlot $brand = null,
-        public ?ComponentSlot $sideBar = null,
-        public ?ComponentSlot $footer = null,
+        public ComponentSlot|string|null $top = null,
+        public ComponentSlot|string|null $header = null,
+        public ComponentSlot|string|null $brand = null,
+        public ComponentSlot|string|null $sideBar = null,
+        public ComponentSlot|string|null $footer = null,
     ) {
         //
     }

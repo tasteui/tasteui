@@ -40,6 +40,7 @@ use TallStackUi\View\Components\Form\Toggle;
 use TallStackUi\View\Components\Form\Upload;
 use TallStackUi\View\Components\Interaction\Dialog;
 use TallStackUi\View\Components\Interaction\Toast;
+use TallStackUi\View\Components\Layout\Header;
 use TallStackUi\View\Components\Layout\Layout;
 use TallStackUi\View\Components\Layout\SideBar\Item as SideBarItem;
 use TallStackUi\View\Components\Layout\SideBar\SideBar;
@@ -256,6 +257,7 @@ class Personalization
 
         $class = match ($component) {
             'index' => Layout::class,
+            'header' => Header::class,
             'side-bar' => SideBar::class,
             'side-bar.item' => SideBarItem::class,
             default => $component,

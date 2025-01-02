@@ -312,6 +312,7 @@ return [
         'input' => Components\Form\Input::class,
         'label' => Components\Form\Label::class,
         'layout' => Components\Layout\Layout::class,
+        'layout.header' => Components\Layout\Header::class,
         'layout.side-bar' => Components\Layout\SideBar\SideBar::class,
         'layout.side-bar.item' => Components\Layout\SideBar\Item::class,
         'link' => Components\Link::class,
