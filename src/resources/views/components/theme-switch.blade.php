@@ -17,7 +17,7 @@
                 $personalize['simple.icons.sizes.' . $size] => $onlyIcons,
               ])
               @if (!$onlyIcons) x-bind:class="{ '{{ $personalize['switch.translate.' . $size] }}': darkTheme === true, 'translate-x-0': darkTheme === false }" @endif>
-            <span @class($personalize['wrapper'])
+            <span class="{{ $personalize['wrapper'] }}"
                   aria-hidden="true"
                   x-bind:class="{ 'opacity-0 duration-100 ease-out': darkTheme === true, 'opacity-100 duration-200 ease-in': darkTheme === false }">
                <x-dynamic-component :component="TallStackUi::prefix('icon')"
@@ -30,7 +30,7 @@
                                         $personalize['simple.icons.sizes.' . $size] => $onlyIcons
                                     ]) />
             </span>
-            <span @class($personalize['wrapper'])
+            <span class="{{ $personalize['wrapper'] }}"
                   aria-hidden="true"
                   x-bind:class="{ 'opacity-100 duration-200 ease-in': darkTheme === true, 'opacity-0 duration-100 ease-out': darkTheme === false }">
                <x-dynamic-component :component="TallStackUi::prefix('icon')"

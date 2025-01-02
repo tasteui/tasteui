@@ -15,7 +15,6 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
 @if ($paginator->hasPages())
     <div class="mt-4">
         <nav role="navigation" aria-label="Pagination Navigation">
-            <!-- Mobile Buttons -->
             <div @class(['flex flex-1 gap-x-2 mb-4', 'justify-end' => $simplePagination, 'justify-between sm:hidden' => !$simplePagination])>
                 <span>
                     @if ($paginator->onFirstPage())

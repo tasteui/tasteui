@@ -2,11 +2,10 @@
     $personalize = $classes();
 @endphp
 
-<div @class($personalize['wrapper'])
-  x-data="tallstackui_rating({!! $entangle !!}, @js($quantity))">
+<div class="{{ $personalize['wrapper'] }}" x-data="tallstackui_rating({!! $entangle !!}, @js($quantity))">
     @if ($position === 'right')
         @if ($text)
-        <p @class($personalize['text'])>
+        <p class="{{ $personalize['text'] }}">
             {{ $text }}
         </p>
         @else
@@ -16,7 +15,7 @@
     <template x-for="(star, index) in Array.from({ length: quantity })" :key="index">
         <button type="button" @if ($livewire && !$static) x-on:click.prevent="evaluate('{{ $evaluateMethod }}', index + 1);" @endif
                 {{ $attributes->only('x-on:evaluate') }}
-                @class($personalize['button'])>
+                class="{{ $personalize['button'] }}">
                 @unless($icon)
                     <svg xmlns="http://www.w3.org/2000/svg"
                          aria-hidden="true"
@@ -37,7 +36,7 @@
     </template>
     @if ($position === 'left')
         @if ($text)
-            <p @class($personalize['text'])>
+            <p class="{{ $personalize['text'] }}">
                 {{ $text }}
             </p>
         @else

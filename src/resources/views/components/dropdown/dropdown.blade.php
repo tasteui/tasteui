@@ -2,15 +2,15 @@
     $personalize = $classes();
 @endphp
 
-<div @class($personalize['wrapper.first'])
+<div class="{{ $personalize['wrapper.first'] }}"
      x-data="tallstackui_dropdown(@js(!$static))"
      role="button" 
      aria-haspopup="true" 
      x-bind:aria-expanded="show">
-    <div @class($personalize['wrapper.second']) x-on:click.outside="show = false" x-ref="dropdown">
+    <div class="{{ $personalize['wrapper.second'] }}" x-on:click.outside="show = false" x-ref="dropdown">
         @if ($text)
-            <div @class($personalize['action.wrapper'])>
-                <span @class($personalize['action.text'])>{{ $text }}</span>
+            <div class="{{ $personalize['action.wrapper'] }}">
+                <span class="{{ $personalize['action.text'] }}">{{ $text }}</span>
                 <button type="button" 
                         x-on:click="show = !show"
                         aria-controls="dropdown-menu"
@@ -18,12 +18,12 @@
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('chevron-down')"
                                          internal
-                                         @class($personalize['action.icon'])
+                                         class="{{ $personalize['action.icon'] }}"
                                          x-bind:class="{ 'transform rotate-180': animate && show }"/>
                 </button>
             </div>
         @elseif ($icon)
-            <div @class($personalize['action.wrapper'])>
+            <div class="{{ $personalize['action.wrapper'] }}">
                 <button type="button" 
                         x-on:click="show = !show"
                         aria-controls="dropdown-menu"
@@ -31,7 +31,7 @@
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :$icon
                                          internal
-                                         @class($personalize['action.icon'])
+                                         class="{{ $personalize['action.icon'] }}"
                                          x-bind:class="{ 'transform rotate-180': animate && show }" />
                 </button>
             </div>
@@ -48,11 +48,11 @@
                 {!! $transitions() !!}
             </x-slot:transition>
             @if ($header)
-                <div @class($personalize['header.wrapper'])>
+                <div class="{{ $personalize['header.wrapper'] }}">
                     {!! $header !!}
                 </div>
             @endif
-            <div @class($personalize['slot.wrapper'])>
+            <div class="{{ $personalize['slot.wrapper'] }}">
                 {!! $slot !!}
             </div>
         </x-dynamic-component>
