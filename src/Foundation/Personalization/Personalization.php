@@ -252,6 +252,8 @@ class Personalization
     {
         $component ??= 'index';
 
+        $this->scope ??= $scope;
+
         $class = match ($component) {
             'index' => Layout::class,
             'side-bar' => SideBar::class,
