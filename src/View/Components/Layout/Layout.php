@@ -9,8 +9,8 @@ use TallStackUi\Foundation\Attributes\SoftPersonalization;
 use TallStackUi\Foundation\Personalization\Contracts\Personalization;
 use TallStackUi\TallStackUiComponent;
 
-#[SoftPersonalization('layout.index')]
-class Index extends TallStackUiComponent implements Personalization
+#[SoftPersonalization('layout')]
+class Layout extends TallStackUiComponent implements Personalization
 {
     public function __construct(
         public ?ComponentSlot $top = null,
@@ -24,7 +24,7 @@ class Index extends TallStackUiComponent implements Personalization
 
     public function blade(): View
     {
-        return view('tallstack-ui::components.layout.index');
+        return view('tallstack-ui::components.layout.layout');
     }
 
     public function personalization(): array
