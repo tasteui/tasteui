@@ -40,6 +40,10 @@ use TallStackUi\View\Components\Form\Toggle;
 use TallStackUi\View\Components\Form\Upload;
 use TallStackUi\View\Components\Interaction\Dialog;
 use TallStackUi\View\Components\Interaction\Toast;
+use TallStackUi\View\Components\Layout\Header;
+use TallStackUi\View\Components\Layout\Layout;
+use TallStackUi\View\Components\Layout\SideBar\Item as SideBarItem;
+use TallStackUi\View\Components\Layout\SideBar\SideBar;
 use TallStackUi\View\Components\Link;
 use TallStackUi\View\Components\Loading;
 use TallStackUi\View\Components\Modal;
@@ -114,6 +118,8 @@ class Personalization
     public function button(?string $component = null, ?string $scope = null): PersonalizationFactory
     {
         $component ??= 'button';
+
+        $this->scope ??= $scope;
 
         $class = match ($component) {
             'button' => Button::class,
@@ -241,6 +247,23 @@ class Personalization
         }
 
         return call_user_func([$this, $main], $main === $secondary ?: $secondary);
+    }
+
+    public function layout(?string $component = null, ?string $scope = null): PersonalizationFactory
+    {
+        $component ??= 'index';
+
+        $this->scope ??= $scope;
+
+        $class = match ($component) {
+            'index' => Layout::class,
+            'header' => Header::class,
+            'side-bar' => SideBar::class,
+            'side-bar.item' => SideBarItem::class,
+            default => $component,
+        };
+
+        return $this->component($class);
     }
 
     public function link(?string $scope = null): PersonalizationFactory
