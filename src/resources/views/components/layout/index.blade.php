@@ -2,7 +2,10 @@
     $personalize = $classes();
 @endphp
 
-<div @if ($sidebar->isNotEmpty()) x-data="{ tallStackUiMenuMobile : false }" @endif>
+<div @if ($sidebar->isNotEmpty())
+         x-data="{ tallStackUiMenuMobile : false }"
+         x-on:tallstackui-menu-mobile.window="tallStackUiMenuMobile = $event.detail.status"
+    @endif>
     @if ($top)
         {{ $top }}
     @endif
