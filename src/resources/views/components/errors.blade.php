@@ -3,7 +3,7 @@
 @endphp
 
 @if ($errors->isNotEmpty())
-    <div @class(['w-full'])
+    <div class="w-full"
          x-data="{ show : true, close () { this.show = false; this.$el.dispatchEvent(new CustomEvent('close')) } }"
          x-show="show">
         <div {{ $attributes->class([
@@ -16,7 +16,7 @@
                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                              :icon="TallStackUi::icon($icon)"
                                              internal
-                                             @class([$personalize['title.icon']])
+                                             class="{{ $personalize['title.icon'] }}"
                                              outline />
                     @endif
                     {{ trans($title, ['count' => $count($errors)]) }}
@@ -33,7 +33,7 @@
                 </button>
                 @endif
             </div>
-            <div @class($personalize['body.wrapper'])>
+            <div class="{{ $personalize['body.wrapper'] }}">
                 <ul @class([$personalize['body.list'], $colors['text']])>
                     @foreach ($messages($errors) as $message)
                         <li>{{ head($message) }}</li>
@@ -41,7 +41,7 @@
                 </ul>
             </div>
             @if (is_string($footer))
-                <p @class($personalize['slots.footer'])>{{ $footer }}</p>
+                <p class="{{ $personalize['slots.footer'] }}">{{ $footer }}</p>
             @else
                 {{ $footer }}
             @endif

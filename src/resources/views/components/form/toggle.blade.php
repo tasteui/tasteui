@@ -3,7 +3,7 @@
 @endphp
 
 <x-dynamic-component :component="TallStackUi::prefix('wrapper.radio')" :$id :$property :$error :$label :$position :$alignment :$invalidate>
-    <div @class($personalize['wrapper'])>
+    <div class="{{ $personalize['wrapper'] }}">
         <input @if ($id) id="{{ $id }}" @endif type="checkbox" {{ $attributes->class([
             $personalize['input.class'],
             $personalize['input.sizes.' . $size],

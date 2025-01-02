@@ -17,9 +17,9 @@
          x-transition:leave="ease-in duration-200"
          x-transition:leave-start="opacity-100"
          x-transition:leave-end="opacity-0"
-         @class($personalize['background'])></div>
+         class="{{ $personalize['background'] }}"></div>
     <div @class([$personalize['wrapper.first'], 'backdrop-blur-sm' => $configurations['blur']])>
-        <div @class($personalize['wrapper.second'])>
+        <div class="{{ $personalize['wrapper.second'] }}">
             <div x-show="show"
                  x-transition:enter="ease-out duration-300"
                  x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
@@ -27,19 +27,19 @@
                  x-transition:leave="ease-in duration-200"
                  x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
                  x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                 @class($personalize['wrapper.third'])
+                 class="{{ $personalize['wrapper.third'] }}"
                  @if (!$configurations['persistent']) x-on:click.outside="remove(true)" @endif>
-                <div @class($personalize['buttons.close.wrapper'])>
+                <div class="{{ $personalize['buttons.close.wrapper'] }}">
                     <button x-on:click="remove()">
                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                              :icon="TallStackUi::icon('x-mark')"
                                              dusk="tallstackui_dialog_close"
                                              internal
-                                             @class($personalize['buttons.close.icon']) />
+                                             class="{{ $personalize['buttons.close.icon'] }}" />
                     </button>
                 </div>
                 <div>
-                    <div @class($personalize['icon.wrapper'])
+                    <div class="{{ $personalize['icon.wrapper'] }}"
                          x-bind:class="{
                             '{{ $colors['icon']['background']['success'] }}': dialog.type === 'success',
                             '{{ $colors['icon']['background']['error'] }}': dialog.type === 'error',
@@ -83,14 +83,14 @@
                                                  @class([$personalize['icon.size'], $colors['icon']['icon']['question']]) />
                         </div>
                     </div>
-                    <div @class($personalize['text.wrapper'])>
-                        <h3 @class($personalize['text.title']) x-html="dialog.title"></h3>
-                        <div @class($personalize['text.description.wrapper'])>
-                            <p @class($personalize['text.description.text']) x-html="dialog.description"></p>
+                    <div class="{{ $personalize['text.wrapper'] }}">
+                        <h3 class="{{ $personalize['text.title'] }}" x-html="dialog.title"></h3>
+                        <div class="{{ $personalize['text.description.wrapper'] }}">
+                            <p class="{{ $personalize['text.description.text'] }}" x-html="dialog.description"></p>
                         </div>
                     </div>
                 </div>
-                <div @class($personalize['buttons.wrapper'])>
+                <div class="{{ $personalize['buttons.wrapper'] }}">
                     <div x-show="dialog.options?.cancel">
                         <x-dynamic-component :component="TallStackUi::prefix('button')"
                                              :color="$colors['cancel']"
@@ -99,7 +99,7 @@
                                              x-text="dialog.options?.cancel?.text"
                                              dusk="tallstackui_dialog_rejection" />
                     </div>
-                    <button @class($personalize['buttons.confirm']) x-bind:class="{
+                    <button class="{{ $personalize['buttons.confirm'] }}" x-bind:class="{
                             'sm:w-auto' : dialog.options?.cancel,
                             'col-span-full' : !dialog.options?.cancel,
                             '{{ $colors['confirm']['success'] }}': dialog.type === 'success',

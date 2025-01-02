@@ -21,7 +21,7 @@
                     ])->merge(['rows' => 3]) }}>{{ $attributes->get('value', $slot) }}</textarea>
         </div>
         @if ($count)
-            <span @class($personalize['count.base']) x-ref="counter"></span>
+            <span class="{{ $personalize['count.base'] }}" x-ref="counter"></span>
         @endif
     </div>
 </x-dynamic-component>

@@ -25,7 +25,7 @@
              @js($attributes->get('value')),
              @js($change))"
          x-on:paste="pasting = true; paste($event)" x-cloak wire:ignore>
-        <div @class($personalize['wrapper']) x-ref="wrapper" {{ $attributes->only(['x-on:filled', 'x-on:clear']) }}>
+        <div class="{{ $personalize['wrapper'] }}" x-ref="wrapper" {{ $attributes->only(['x-on:filled', 'x-on:clear']) }}>
             @if ($prefix)
                 <input type="text"
                        value="{{ $prefix }}"
@@ -72,7 +72,7 @@
                                          :icon="TallStackUi::icon('x-circle')"
                                          solid
                                          internal
-                                         @class($personalize['button']) />
+                                         class="{{ $personalize['button'] }}" />
                 </button>
             </template>
         </div>

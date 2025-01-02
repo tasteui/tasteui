@@ -18,18 +18,18 @@
             </template>
         </ul>
     </nav>
-    <div @class($personalize['content'])>
+    <div class="{{ $personalize['content'] }}">
         {{ $slot }}
     </div>
     @if ($helpers)
-        <div @class($personalize['helpers.wrapper']) {{ $attributes->only('x-on:change') }} x-ref="buttons">
+        <div class="{{ $personalize['helpers.wrapper'] }}" {{ $attributes->only('x-on:change') }} x-ref="buttons">
             <div>
                 @if ($navigatePrevious)
                     <button type="button"
                             x-show="selected > 1"
                             x-on:click="selected--; $refs.buttons.dispatchEvent(new CustomEvent('change', {detail: {step: selected}}));"
                             dusk="tallstackui_step_previous"
-                            @class($personalize['button.wrapper'])>
+                            class="{{ $personalize['button.wrapper'] }}">
                         <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                              :icon="TallStackUi::icon('chevron-left')"
                                              internal
@@ -43,7 +43,7 @@
                         x-show="selected < steps.length"
                         x-on:click="selected++; $refs.buttons.dispatchEvent(new CustomEvent('change', {detail: {step: selected}}));"
                         dusk="tallstackui_step_next"
-                        @class($personalize['button.wrapper'])>
+                        class="{{ $personalize['button.wrapper'] }}">
                     {{ trans('tallstack-ui::messages.step.next') }}
                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                          :icon="TallStackUi::icon('chevron-right')"
@@ -61,7 +61,7 @@
                                 x-on:click="$el.dispatchEvent(new CustomEvent('finish', {detail: {step: selected}}))"
                                 dusk="tallstackui_step_finish"
                                 {{ $attributes->only('x-on:finish') }}
-                                @class($personalize['button.wrapper'])>
+                                class="{{ $personalize['button.wrapper'] }}">
                             {{ trans('tallstack-ui::messages.step.finish') }}
                         </button>
                     @endif
