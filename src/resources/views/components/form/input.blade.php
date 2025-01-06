@@ -37,7 +37,11 @@
             $personalize['input.color.disabled'] => $attributes->get('disabled') || $attributes->get('readonly'),
             $personalize['error'] => $error
         ])>
-        @if ($prefix)
+        @if ($prefix instanceof \Illuminate\View\ComponentSlot)
+            <div class="{{ $personalize['input.slot'] }}">
+                {{ $prefix }}
+            </div>
+        @elseif (is_string($prefix))
             <span @class(['ml-2 mr-1', $personalize['input.slot'], $personalize['error'] => $error])>{{ $prefix }}</span>
         @endif
         <input @if ($id) id="{{ $id }}" @endif
@@ -52,7 +56,11 @@
                     $personalize['input.paddings.right'] => $icon && $position === 'right' || $icon && $clearable,
                     $personalize['input.paddings.clearable'] => $icon && $clearable && $position === 'right',
                 ]) }}>
-        @if ($suffix)
+        @if ($suffix instanceof \Illuminate\View\ComponentSlot)
+            <div class="{{ $personalize['input.slot'] }}">
+                {{ $suffix }}
+            </div>
+        @elseif (is_string($suffix))
             <span @class(['ml-1 mr-2', $personalize['input.slot'], $personalize['error'] => $error])>{{ $suffix }}</span>
         @endif
     </div>

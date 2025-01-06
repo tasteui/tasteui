@@ -4,6 +4,7 @@ namespace TallStackUi\View\Components\Form;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Arr;
+use Illuminate\View\ComponentSlot;
 use TallStackUi\Foundation\Attributes\PassThroughRuntime;
 use TallStackUi\Foundation\Attributes\SkipDebug;
 use TallStackUi\Foundation\Attributes\SoftPersonalization;
@@ -25,11 +26,11 @@ class Input extends TallStackUiComponent implements Personalization
         public ?bool $clearable = null,
         public ?bool $invalidate = null,
         #[SkipDebug]
-        public ?string $prefix = null,
-        #[SkipDebug]
-        public ?string $suffix = null,
-        #[SkipDebug]
         public ?string $position = 'left',
+        #[SkipDebug]
+        public ComponentSlot|string|null $prefix = null,
+        #[SkipDebug]
+        public ComponentSlot|string|null $suffix = null,
     ) {
         $this->position = $this->position === 'left' ? 'left' : 'right';
     }
