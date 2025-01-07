@@ -13,8 +13,12 @@ use TallStackUi\TallStackUiComponent;
 #[PassThroughRuntime(LabelRuntime::class)]
 class Label extends TallStackUiComponent implements Personalization
 {
-    public function __construct(public ?string $id = null, public ?string $label = null, public ?bool $error = false, public ?bool $invalidate = null)
-    {
+    public function __construct(
+        public ?string $id = null,
+        public ?string $label = null,
+        public ?bool $error = false,
+        public ?bool $invalidate = null
+    ) {
         //
     }
 
