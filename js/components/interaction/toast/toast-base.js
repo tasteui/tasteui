@@ -14,9 +14,20 @@ export default (flash) => ({
   add(event) {
     this.$nextTick(() => this.show = true);
 
-    if (event.detail) event.detail.id = event.timeStamp;
+    if (flash) {
+      // Since flash tends to be something to be
+      // displayed later, we clear the array before
+      // sending to prevent duplication.
+      this.toasts = [];
 
-    this.toasts.push(event.detail ?? flash);
+      this.toasts.push(flash);
+    }
+
+    if (event.detail) {
+      event.detail.id = event.timeStamp;
+
+      this.toasts.push(event.detail);
+    }
   },
   /**
    * Remove a toast from the list.
