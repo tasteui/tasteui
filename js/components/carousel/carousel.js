@@ -1,4 +1,4 @@
-export default (images, cover = 1, autoplay, interval) => ({
+export default (images, cover = 1, autoplay, interval, withoutLoop) => ({
     images: images,
     time: interval,
     current: cover,
@@ -39,6 +39,9 @@ export default (images, cover = 1, autoplay, interval) => ({
      * @returns {void}
      */
     next() {
+        if (withoutLoop && this.current === this.images.length) {
+            return;
+        }
 
         if (this.current < this.images.length) {
             this.current = this.current + 1
@@ -58,6 +61,10 @@ export default (images, cover = 1, autoplay, interval) => ({
      * @returns {void}
      */
     previous() {
+        if (withoutLoop && this.current === 1) {
+            return;
+        }
+
         if (this.current > 1) {
             this.current = this.current - 1
 

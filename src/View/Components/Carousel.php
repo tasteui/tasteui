@@ -19,6 +19,7 @@ class Carousel extends TallStackUiComponent implements Personalization
         public ?int $cover = null,
         public ?bool $autoplay = null,
         public ?int $interval = 3,
+        public ?bool $withoutLoop = null,
         public ?bool $withoutIndicators = null,
         public ?bool $stopOnHover = null,
         public ?bool $round = null,
