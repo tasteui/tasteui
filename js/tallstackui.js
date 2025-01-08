@@ -1,5 +1,6 @@
 import './globals/globals';
 import banner from './components/banner/banner';
+import carousel from './components/carousel/carousel';
 import card from './components/card/card';
 import color from './components/form/color';
 import clipboard from './components/clipboard/clipboard';
@@ -31,6 +32,7 @@ import upload from './components/form/upload';
 document.addEventListener('alpine:init', () => {
   Alpine.plugin(tooltip);
   Alpine.data('tallstackui_banner', banner);
+  Alpine.data('tallstackui_carousel', carousel);
   Alpine.data('tallstackui_card', card);
   Alpine.data('tallstackui_clipboard', clipboard);
   Alpine.data('tallstackui_formColor', color);

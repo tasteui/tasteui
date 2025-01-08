@@ -293,6 +293,7 @@ return [
         'boolean' => Components\Boolean::class,
         'button' => Components\Button\Button::class,
         'button.circle' => Components\Button\Circle::class,
+        'carousel' => Components\Carousel::class,
         'card' => Components\Card::class,
         'checkbox' => Components\Form\Checkbox::class,
         'color' => Components\Form\Color::class,
