@@ -59,6 +59,48 @@ class IndexTest extends BrowserTestCase
     }
 
     /** @test */
+    public function can_navigate_automatically(): void
+    {
+        Livewire::visit(new class extends Component
+        {
+            public bool $next = false;
+
+            public function render(): string
+            {
+                return <<<'HTML'
+                <div>
+                    @if ($next)
+                        <p dusk="next">next</p>
+                    @endif
+                
+                    <x-carousel :images="[
+                        [
+                            'src' => 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-1.webp',
+                            'title' => '1-foo',
+                            'description' => '1-bar',
+                        ],
+                        [
+                            'src' => 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-2.webp',
+                            'title' => '2-foo',
+                            'description' => '2-bar',
+                        ],
+                        [
+                            'src' => 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-3.webp',
+                            'title' => '3-foo',
+                            'description' => '3-bar',
+                        ],
+                    ]" autoplay interval="1" x-on:next="$wire.set('next', true)" />
+                </div>
+            HTML;
+            }
+        })
+            ->waitForText('1-foo')
+            ->assertSee('1-foo')
+            ->assertSee('1-bar')
+            ->assertPresent('@next');
+    }
+
+    /** @test */
     public function can_navigate_next(): void
     {
         Livewire::visit(new class extends Component
