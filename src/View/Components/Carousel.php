@@ -51,7 +51,7 @@ class Carousel extends TallStackUiComponent implements Personalization
             'images' => [
                 'wrapper' => [
                     'first' => 'absolute inset-0',
-                    'second' => 'lg:px-32 lg:py-14 absolute inset-0 z-10 flex flex-col items-center justify-end gap-2 bg-gradient-to-t from-slate-900/85 to-transparent px-16 py-12 text-center',
+                    'second' => 'lg:px-32 lg:py-14 absolute inset-0 z-10 flex flex-col items-center justify-end gap-2 bg-gradient-to-t from-primary-900/85 dark:from-dark-900/85 to-transparent px-16 py-12 text-center',
                 ],
                 'content' => [
                     'title' => 'w-full text-balance text-2xl lg:text-3xl font-bold text-white',
@@ -61,20 +61,20 @@ class Carousel extends TallStackUiComponent implements Personalization
             ],
             'buttons' => [
                 'left' => [
-                    'base' => 'absolute left-5 top-1/2 z-20 flex rounded-full -translate-y-1/2 items-center justify-center bg-white/40 p-2 text-slate-700 transition hover:bg-white/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 active:outline-offset-0 dark:bg-slate-900/40 dark:text-slate-300 dark:hover:bg-slate-900/60 dark:focus-visible:outline-blue-600',
+                    'base' => 'absolute left-5 top-1/2 z-20 flex rounded-full -translate-y-1/2 items-center justify-center bg-white/40 p-2 text-slate-700 transition hover:bg-white/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 active:outline-offset-0 dark:bg-dark-900/40 dark:text-dark-300 dark:hover:bg-dark-900/60 dark:focus-visible:outline-blue-600',
                     'icon.size' => 'w-6 h-6 pr-0.5',
                 ],
                 'right' => [
-                    'base' => 'absolute right-5 top-1/2 z-20 flex rounded-full -translate-y-1/2 items-center justify-center bg-white/40 p-2 text-slate-700 transition hover:bg-white/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 active:outline-offset-0 dark:bg-slate-900/40 dark:text-slate-300 dark:hover:bg-slate-900/60 dark:focus-visible:outline-blue-600',
+                    'base' => 'absolute right-5 top-1/2 z-20 flex rounded-full -translate-y-1/2 items-center justify-center bg-white/40 p-2 text-slate-700 transition hover:bg-white/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 active:outline-offset-0 dark:bg-dark-900/40 dark:text-dark-300 dark:hover:bg-dark-900/60 dark:focus-visible:outline-blue-600',
                     'icon.size' => 'w-6 h-6 pl-0.5',
                 ],
             ],
             'indicators' => [
-                'wrapper' => 'absolute rounded-xl bottom-3 md:bottom-5 left-1/2 z-20 flex -translate-x-1/2 gap-4 md:gap-3 bg-white/75 px-1.5 py-1 md:px-2 dark:bg-slate-900/75',
+                'wrapper' => 'absolute rounded-xl bottom-3 md:bottom-5 left-1/2 z-20 flex -translate-x-1/2 gap-4 md:gap-3 bg-white/75 px-1.5 py-1 md:px-2 dark:bg-dark-900/75',
                 'buttons' => [
-                    'base' => 'size-2 cursor-pointer rounded-full transition bg-slate-700 dark:bg-slate-300',
-                    'current' => 'bg-slate-700 dark:bg-slate-300',
-                    'inactive' => 'bg-slate-700/50 dark:bg-slate-300/50',
+                    'base' => 'size-2 cursor-pointer rounded-full transition bg-dark-700 dark:bg-dark-300',
+                    'current' => 'bg-dark-700 dark:bg-dark-300',
+                    'inactive' => 'bg-dark-700/50 dark:bg-dark-300/50',
                 ],
             ],
         ]);
