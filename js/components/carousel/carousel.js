@@ -7,6 +7,11 @@ export default (images, cover = 1, autoplay, interval) => ({
     init() {
         if (autoplay) this.play();
     },
+    /**
+     * Start the carousel automation.
+     *
+     * @returns {void}
+     */
     play() {
         this.interval = setInterval(() => {
             if (!this.paused) {
@@ -14,6 +19,11 @@ export default (images, cover = 1, autoplay, interval) => ({
             }
         }, this.time)
     },
+    /**
+     * Reset the carousel automation.
+     *
+     * @returns {void}
+     */
     reset() {
         if (!autoplay) return;
 
@@ -23,6 +33,11 @@ export default (images, cover = 1, autoplay, interval) => ({
 
         this.play()
     },
+    /**
+     * Advance to the next carousel image.
+     *
+     * @returns {void}
+     */
     next() {
 
         if (this.current < this.images.length) {
@@ -37,6 +52,11 @@ export default (images, cover = 1, autoplay, interval) => ({
 
         this.event('next');
     },
+    /**
+     * Back to the previous carousel image.
+     *
+     * @returns {void}
+     */
     previous() {
         if (this.current > 1) {
             this.current = this.current - 1
@@ -51,11 +71,12 @@ export default (images, cover = 1, autoplay, interval) => ({
         this.event('previous');
     },
     /**
-     * Dispatch event
+     * Dispatch events.
+     *
      * @param {String} type
      */
     event(type) {
-        this.$refs.carousel.dispatchEvent(new CustomEvent(`x-on:${type}`, {
+        this.$refs.carousel.dispatchEvent(new CustomEvent(type, {
             detail : { current: this.current, image: this.images[this.current] }
         }))
     }
