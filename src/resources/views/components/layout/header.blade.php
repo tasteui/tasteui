@@ -14,7 +14,7 @@
         @if (!$withoutMobileButton)
         <button x-on:click="tallStackUiMenuMobile = !tallStackUiMenuMobile" type="button" class="{{ $personalize['button.class'] }}">
             <x-dynamic-component :component="TallStackUi::prefix('icon')"
-                                 :icon="TallStackUi::icon($personalize['button.icon.name'])"
+                                 :icon="TallStackUi::icon('bars-4')"
                                  internal
                                  class="{{ $personalize['button.icon.size'] }}" />
         </button>

@@ -28,6 +28,7 @@ class IconGuide
                 'arrow-trending-up' => 'arrow-trending-up',
                 'arrow-trending-down' => 'arrow-trending-down',
                 'arrow-up-tray' => 'arrow-up-tray',
+                'bars-4' => 'bars-4',
                 'calendar' => 'calendar',
                 'check' => 'check',
                 'check-circle' => 'check-circle',

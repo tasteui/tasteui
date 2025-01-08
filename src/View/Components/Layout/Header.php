@@ -34,10 +34,7 @@ class Header extends TallStackUiComponent implements Personalization
             ],
             'button' => [
                 'class' => 'md:hidden',
-                'icon' => [
-                    'name' => 'bars-4',
-                    'size' => 'h-6 w-6',
-                ],
+                'icon.size' => 'h-6 w-6',
             ],
             'slots' => [
                 'left' => 'flex items-center gap-2',

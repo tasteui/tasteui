@@ -110,6 +110,7 @@ return [
                 'arrow-trending-up' => null,
                 'arrow-trending-down' => null,
                 'arrow-up-tray' => null,
+                'bars-4' => null,
                 'calendar' => null,
                 'check' => null,
                 'check-circle' => null,

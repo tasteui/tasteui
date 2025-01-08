@@ -72,7 +72,7 @@ class Carousel extends TallStackUiComponent implements Personalization
             'indicators' => [
                 'wrapper' => 'absolute rounded-xl bottom-3 md:bottom-5 left-1/2 z-20 flex -translate-x-1/2 gap-4 md:gap-3 bg-white/75 px-1.5 py-1 md:px-2 dark:bg-dark-900/75',
                 'buttons' => [
-                    'base' => 'size-2 cursor-pointer rounded-full transition bg-dark-700 dark:bg-dark-300',
+                    'base' => 'w-2 h-2 cursor-pointer rounded-full transition bg-dark-700 dark:bg-dark-300',
                     'current' => 'bg-dark-700 dark:bg-dark-300',
                     'inactive' => 'bg-dark-700/50 dark:bg-dark-300/50',
                 ],
