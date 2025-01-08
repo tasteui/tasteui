@@ -12,6 +12,7 @@
         @if (!$autoplay)
             <button type="button"
                     class="{{ $personalize['buttons.left.base'] }}"
+                    dusk="tallstackui_carousel_previous"
                     x-on:click="previous()">
                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                      :icon="TallStackUi::icon('chevron-left')"
@@ -20,6 +21,7 @@
             </button>
             <button type="button"
                     class="{{ $personalize['buttons.right.base'] }}"
+                    dusk="tallstackui_carousel_next"
                     x-on:click="next()">
                 <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                      :icon="TallStackUi::icon('chevron-right')"
