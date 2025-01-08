@@ -12,6 +12,7 @@ use TallStackUi\View\Components\Boolean;
 use TallStackUi\View\Components\Button\Button;
 use TallStackUi\View\Components\Button\Circle;
 use TallStackUi\View\Components\Card;
+use TallStackUi\View\Components\Carousel;
 use TallStackUi\View\Components\Clipboard;
 use TallStackUi\View\Components\Dropdown\Dropdown;
 use TallStackUi\View\Components\Dropdown\Items as DropdownItems;
@@ -135,6 +136,13 @@ class Personalization
         $this->scope ??= $scope;
 
         return $this->component(Card::class);
+    }
+
+    public function carousel(?string $scope = null): PersonalizationFactory
+    {
+        $this->scope ??= $scope;
+
+        return $this->component(Carousel::class);
     }
 
     public function clipboard(?string $scope = null): PersonalizationFactory
