@@ -5,6 +5,7 @@ namespace TallStackUi\View\Components;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use Illuminate\View\ComponentSlot;
 use InvalidArgumentException;
 use TallStackUi\Foundation\Attributes\SoftPersonalization;
 use TallStackUi\Foundation\Personalization\Contracts\Personalization;
@@ -21,6 +22,8 @@ class Carousel extends TallStackUiComponent implements Personalization
         public ?bool $withoutIndicators = null,
         public ?bool $stopOnHover = null,
         public ?string $wrapper = null,
+        public ?ComponentSlot $header = null,
+        public ?ComponentSlot $footer = null,
     ) {
         $this->images = collect($this->images);
 
