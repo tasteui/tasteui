@@ -31,21 +31,24 @@
         ])>
             <template x-for="(image, index) in images" :key="index">
                 <div x-show="current == index + 1" class="absolute inset-0" x-transition.opacity.duration.1000ms>
-
-                    <template x-if="image.title">
-                        <div class="lg:px-32 lg:py-14 absolute inset-0 z-10 flex flex-col items-center justify-end gap-2 bg-gradient-to-t from-slate-900/85 to-transparent px-16 py-12 text-center">
-                            <h3 class="w-full text-balance text-2xl lg:text-3xl font-bold text-white" x-text="image.title"></h3>
-                            <p class="text-sm text-white" x-text="image.description"></p>
-                        </div>
-                    </template>
-
-                    <img class="absolute w-full h-full inset-0 object-cover text-slate-700 dark:text-slate-300"
-                         x-bind:src="image.src"
-                         x-bind:alt="image.alt"
-                         @if ($autoplay && $stopOnHover)
-                             x-on:mouseover="(paused = !paused), reset()"
-                         x-on:mouseleave="(paused = !paused), reset()"
-                            @endif />
+                    <a x-bind:href="image.url ?? '#'" x-bind:target="image.target">
+                        <template x-if="image.title">
+                            <div @class([
+                                'lg:px-32 lg:py-14 absolute inset-0 z-10 flex flex-col items-center justify-end gap-2 bg-gradient-to-t from-slate-900/85 to-transparent px-16 py-12 text-center',
+                                'rounded-xl' => $round,
+                            ])>
+                                <h3 class="w-full text-balance text-2xl lg:text-3xl font-bold text-white" x-text="image.title"></h3>
+                                <p class="text-sm text-white" x-text="image.description"></p>
+                            </div>
+                        </template>
+                        <img @class(['absolute w-full h-full inset-0 object-cover text-slate-700 dark:text-slate-300', 'rounded-xl' => $round])
+                             x-bind:src="image.src"
+                             x-bind:alt="image.alt"
+                             @if ($autoplay && $stopOnHover)
+                                 x-on:mouseover="(paused = !paused), reset()"
+                             x-on:mouseleave="(paused = !paused), reset()"
+                                @endif />
+                    </a>
                 </div>
             </template>
         </div>
