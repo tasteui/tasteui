@@ -11,7 +11,6 @@ use TallStackUi\Foundation\Attributes\SoftPersonalization;
 use TallStackUi\Foundation\Personalization\Contracts\Personalization;
 use TallStackUi\TallStackUiComponent;
 
-// TODO: tests
 #[SoftPersonalization('carousel')]
 class Carousel extends TallStackUiComponent implements Personalization
 {

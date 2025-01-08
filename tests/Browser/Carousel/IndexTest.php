@@ -219,4 +219,21 @@ class IndexTest extends BrowserTestCase
             ->assertDontSee('3-foo')
             ->assertDontSee('3-bar');
     }
+
+    /** @test */
+    public function cannot_render_with_empty_images(): void
+    {
+        Livewire::visit(new class extends Component
+        {
+            public function render(): string
+            {
+                return <<<'HTML'
+                <div>
+                    <x-carousel />
+                </div>
+            HTML;
+            }
+        })
+            ->assertSee('The [carousel] images attribute is required.');
+    }
 }
