@@ -6,8 +6,8 @@
     @if ($top)
         {{ $top }}
     @endif
-    @if ($sideBar?->isNotEmpty() && $sideBar?->attributes->has('wrapped'))
-        <x-dynamic-component :component="TallStackUi::prefix('layout.side-bar')">
+    @if ($sideBar?->isNotEmpty() && ! $sideBar?->attributes->has('raw'))
+        <x-dynamic-component :component="TallStackUi::prefix('side-bar')">
             @if ($brand)
                 <x-slot:brand>
                     {{ $brand }}
@@ -15,7 +15,7 @@
             @endif
             {{ $sideBar }}
         </x-dynamic-component>
-    @elseif ($sideBar?->isNotEmpty())
+    @elseif ($sideBar?->attributes->has('raw'))
         {{ $sideBar }}
     @endif
     <div class="{{ $personalize['wrapper.first'] }}">

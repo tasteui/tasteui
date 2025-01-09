@@ -31,7 +31,7 @@
         </ul>
     </li>
 @else
-    <li>
+    <li class="border-l px-2 py-0.5 border-outline">
         <a @if ($route) href="{{ $route }}" @endif
             @class([
                 $personalize['normal.state.base'],

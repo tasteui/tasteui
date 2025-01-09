@@ -35,7 +35,7 @@ class Item extends TallStackUiComponent implements Personalization
     {
         return Arr::dot([
             'grouped' => [
-                'button' => 'flex w-full items-center gap-x-3 rounded-md p-2 text-left text-sm font-semibold text-gray-700 hover:bg-gray-100 transition-all',
+                'button' => 'flex w-full items-center gap-x-3 rounded-md p-2 text-left text-sm font-semibold text-gray-700 hover:bg-primary-50/50 transition-all',
                 'icon' => [
                     'base' => 'w-6 h-6 shrink-0 text-gray-400',
                     'collapse' => [
@@ -43,18 +43,18 @@ class Item extends TallStackUiComponent implements Personalization
                         'rotate' => 'rotate-180 text-gray-500',
                     ],
                 ],
-                'group' => 'mt-1 px-2 space-y-1',
+                'group' => 'mt-1 px-2',
             ],
             'normal' => [
                 'state' => [
-                    'base' => 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold transition-all',
-                    'deactivated' => 'text-gray-700 hover:text-primary-500 hover:bg-primary-50',
+                    'base' => 'group flex items-center gap-x-3 rounded-md p-2 text-sm font-semibold transition-all',
                     'activated' => 'text-primary-500 bg-primary-50',
+                    'deactivated' => 'text-gray-600 hover:text-primary-500 hover:bg-primary-50/50',
                 ],
                 'icon' => [
                     'base' => 'w-6 h-6 shrink-0 group-hover:text-primary-500 transition-all',
-                    'deactivated' => 'text-gray-400',
                     'activated' => 'text-primary-500',
+                    'deactivated' => 'text-gray-400',
                 ],
             ],
         ]);
