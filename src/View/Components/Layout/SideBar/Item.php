@@ -20,6 +20,8 @@ class Item extends TallStackUiComponent implements Personalization
         public ?bool $current = null,
         public ?bool $opened = null,
         public ?bool $grouped = null,
+        public ?bool $navigate = null,
+        public ?bool $navigateHover = null
     ) {
         //
     }

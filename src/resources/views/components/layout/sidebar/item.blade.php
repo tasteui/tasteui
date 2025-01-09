@@ -37,7 +37,7 @@
                 $personalize['normal.state.base'],
                 $personalize['normal.state.deactivated'] => ! $current,
                 $personalize['normal.state.activated'] => $current,
-            ])>
+            ]) @if ($navigate) wire:navigate @elseif ($navigateHover) wire:navigate.hover @endif>
             @if ($icon instanceof \Illuminate\View\ComponentSlot)
                 {{ $icon }}
             @elseif ($icon)
