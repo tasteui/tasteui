@@ -34,28 +34,25 @@ class Item extends TallStackUiComponent implements Personalization
     public function personalization(): array
     {
         return Arr::dot([
-            'grouped' => [
-                'button' => 'flex w-full items-center gap-x-3 rounded-md p-2 text-left text-sm font-semibold text-gray-700 hover:bg-primary-50/50 transition-all',
+            'group' => [
+                'button' => 'flex w-full items-center gap-x-3 rounded-md p-2 text-left text-sm font-semibold text-primary-500 hover:bg-primary-50/50 transition-all',
                 'icon' => [
-                    'base' => 'w-6 h-6 shrink-0 text-gray-400',
+                    'base' => 'w-6 h-6 shrink-0 text-primary-500',
                     'collapse' => [
-                        'base' => 'ml-auto w-4 h-4 shrink-0 text-gray-400 transition-all',
-                        'rotate' => 'rotate-180 text-gray-500',
+                        'base' => 'ml-auto w-4 h-4 shrink-0 text-primary-500 transition-all',
+                        'rotate' => 'rotate-180 text-primary-500',
                     ],
                 ],
-                'group' => 'mt-1 px-2',
+                'group' => 'mt-1 px-2 pl-5',
             ],
-            'normal' => [
+            'item' => [
+                'wrapper' => 'border-l pl-2 py-0.5 border-outline',
                 'state' => [
                     'base' => 'group flex items-center gap-x-3 rounded-md p-2 text-sm font-semibold transition-all',
-                    'activated' => 'text-primary-500 bg-primary-50',
-                    'deactivated' => 'text-gray-600 hover:text-primary-500 hover:bg-primary-50/50',
+                    'current' => 'text-primary-500 bg-primary-50',
+                    'normal' => 'text-primary-500 hover:bg-primary-50/50',
                 ],
-                'icon' => [
-                    'base' => 'w-6 h-6 shrink-0 group-hover:text-primary-500 transition-all',
-                    'activated' => 'text-primary-500',
-                    'deactivated' => 'text-gray-400',
-                ],
+                'icon' => 'w-6 h-6 shrink-0 text-primary-500 transition-all',
             ],
         ]);
     }
