@@ -20,7 +20,7 @@ class Password extends TallStackUiComponent implements Personalization
     public function __construct(
         public ?string $label = null,
         public ?string $hint = null,
-        public Collection|array|null $rules = null,
+        public Collection|array|bool|null $rules = null,
         public ?bool $mixedCase = false,
         public ?bool $generator = false,
         public ?bool $invalidate = null
@@ -60,9 +60,13 @@ class Password extends TallStackUiComponent implements Personalization
 
     protected function setup(): void
     {
+        if (blank($this->rules)) {
+            return;
+        }
+
         $default = config('tallstackui.settings.form.password.rules');
 
-        $this->rules = collect($this->rules ?? $default)->mapWithKeys(function (string $value, ?string $key = null) use ($default): array {
+        $this->rules = collect(is_bool($this->rules) ? $default : $this->rules)->mapWithKeys(function (string $value, ?string $key = null) use ($default): array {
             // When $this->rules is null, we interact with default values.
             if (is_null($this->rules)) {
                 return match ($key) {

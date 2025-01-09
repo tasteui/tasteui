@@ -38,7 +38,7 @@
             $personalize['error'] => $error
         ])>
         @if ($prefix instanceof \Illuminate\View\ComponentSlot)
-            <div class="{{ $personalize['input.slot'] }}">
+            <div {{ $prefix->attributes->merge(['class' => $personalize['input.slot']]) }}>
                 {{ $prefix }}
             </div>
         @elseif (is_string($prefix))
@@ -57,7 +57,7 @@
                     $personalize['input.paddings.clearable'] => $icon && $clearable && $position === 'right',
                 ]) }}>
         @if ($suffix instanceof \Illuminate\View\ComponentSlot)
-            <div class="{{ $personalize['input.slot'] }}">
+            <div {{ $suffix->attributes->merge(['class' => $personalize['input.slot']]) }}>
                 {{ $suffix }}
             </div>
         @elseif (is_string($suffix))

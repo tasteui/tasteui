@@ -2,7 +2,7 @@
     $personalize = $classes();
 @endphp
 
-<div x-data="tallstackui_formPassword({!! $entangle !!}, @js($rules), @js($generator))" class="relative" x-cloak x-on:click.outside="rules = false">
+<div x-data="tallstackui_formPassword({!! $entangle !!}, @js($rules ?? []), @js($generator))" class="relative" x-cloak x-on:click.outside="rules = false">
      <x-dynamic-component :component="TallStackUi::prefix('input')"
                           {{ $attributes->merge($password)->except('autocomplete') }}
                           :$label
@@ -13,7 +13,7 @@
                           autocomplete="{{ $attributes->get('autocomplete', 'off') }}"
                           x-on:keydown="indicator($event)"
                           x-on:keyup="indicator($event)">
-         <x-slot:suffix>
+         <x-slot:suffix class="ml-1 mr-2">
              <div @class([$personalize['icon.wrapper'], 'justify-between gap-2']) x-cloak>
                  @if (!$mixedCase)
                      <div x-show="caps">
@@ -49,7 +49,7 @@
              </div>
          </x-slot:suffix>
      </x-dynamic-component>
-    @if ($rules->isNotEmpty())
+    @if ($rules?->isNotEmpty())
         <x-dynamic-component :component="TallStackUi::prefix('floating')"
                              :floating="$personalize['floating.default']"
                              :class="$personalize['floating.class']"
