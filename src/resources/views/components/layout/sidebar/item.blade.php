@@ -19,8 +19,11 @@
             @if ($collapseIcon instanceof \Illuminate\View\ComponentSlot)
                 {{ $collapseIcon }}
             @else
-                <x-tallstack-ui::icon.generic.chevron-down class="{{ $personalize['grouped.icon.collapse.base'] }}"
-                                                           x-bind:class="{ '{{ $personalize['grouped.icon.collapse.rotate'] }}': show }" />
+                <x-dynamic-component :component="TallStackUi::prefix('icon')"
+                                     :icon="TallStackUi::icon('chevron-down')"
+                                     internal
+                                     class="{{ $personalize['grouped.icon.collapse.base'] }}"
+                                     x-bind:class="{ '{{ $personalize['grouped.icon.collapse.rotate'] }}': show }" />
             @endif
         </button>
         <ul x-show="show" class="{{ $personalize['grouped.group'] }}">
