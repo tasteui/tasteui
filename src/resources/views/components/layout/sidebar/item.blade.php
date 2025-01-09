@@ -2,7 +2,7 @@
     $personalize = $classes();
 @endphp
 
-@if ($grouped)
+@if ($slot->isNotEmpty())
     <li x-data="{ show : @js($opened ?? false) }">
         <button x-on:click="show = !show"
                 type="button"
@@ -15,7 +15,7 @@
                                      internal
                                      class="{{ $personalize['grouped.icon.base'] }}" />
             @endif
-            {{ $label }}
+            {{ $text }}
             @if ($collapseIcon instanceof \Illuminate\View\ComponentSlot)
                 {{ $collapseIcon }}
             @else
@@ -35,8 +35,8 @@
         <a @if ($route) href="{{ $route }}" @endif
             @class([
                 $personalize['normal.state.base'],
-                $personalize['normal.state.deactivated'] => ! $activated,
-                $personalize['normal.state.activated'] => $activated,
+                $personalize['normal.state.deactivated'] => ! $current,
+                $personalize['normal.state.activated'] => $current,
             ])>
             @if ($icon instanceof \Illuminate\View\ComponentSlot)
                 {{ $icon }}
@@ -46,11 +46,11 @@
                                      internal
                                      @class([
                                         $personalize['normal.icon.base'],
-                                        $personalize['normal.icon.deactivated'] => ! $activated,
-                                        $personalize['normal.icon.activated'] => $activated,
+                                        $personalize['normal.icon.deactivated'] => ! $current,
+                                        $personalize['normal.icon.activated'] => $current,
                                     ]) />
             @endif
-            {{ $label ?? $slot }}
+            {{ $text }}
         </a>
     </li>
 @endif

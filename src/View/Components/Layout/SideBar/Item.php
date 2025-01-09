@@ -13,11 +13,11 @@ use TallStackUi\TallStackUiComponent;
 class Item extends TallStackUiComponent implements Personalization
 {
     public function __construct(
-        public ?string $label = null,
+        public ?string $text = null,
         public ?string $route = null,
         public ComponentSlot|string|null $icon = null,
         public ComponentSlot|string|null $collapseIcon = null,
-        public ?bool $activated = null,
+        public ?bool $current = null,
         public ?bool $opened = null,
         public ?bool $grouped = null,
     ) {

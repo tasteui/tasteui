@@ -7,7 +7,7 @@
     'justify-start' => $left && ! $middle && ! $right,
     'justify-center' => ! $left && $middle && ! $right,
     'justify-end' => ! $left && ! $middle && $right,
-    'justify-between' => $left && $middle && $right,
+    'justify-between' => ($left && $middle && $right) || ($left && $right),
 ]) }}>
     @if (!$withoutMobileButton || $left)
     <div class="{{ $personalize['slots.left'] }}">
