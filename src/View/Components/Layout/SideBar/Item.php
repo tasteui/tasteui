@@ -67,7 +67,7 @@ class Item extends TallStackUiComponent implements Personalization
                 'group' => 'mt-1 px-2 pl-5',
             ],
             'item' => [
-                'wrapper' => 'border-outline border-l dark:border-dark-500 py-0.5 pl-2',
+                'wrapper' => 'border-outline border-l border-primary-200 dark:border-dark-500 py-0.5 pl-2',
                 'state' => [
                     'base' => 'group flex items-center gap-x-3 rounded-md p-2 text-sm font-semibold transition-all',
                     'current' => 'text-primary-500 bg-primary-50 dark:bg-dark-600 dark:text-white',
