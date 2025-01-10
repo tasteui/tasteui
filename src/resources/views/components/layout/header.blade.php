@@ -3,7 +3,7 @@
 @endphp
 
 <div {{ $attributes->class([
-     $personalize['wrapper.first'],
+     $personalize['wrapper'],
     'justify-start' => $left && ! $middle && ! $right,
     'justify-center' => ! $left && $middle && ! $right,
     'justify-end' => ! $left && ! $middle && $right,

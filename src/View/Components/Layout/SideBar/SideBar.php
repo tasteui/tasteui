@@ -39,6 +39,7 @@ class SideBar extends TallStackUiComponent implements Personalization
                     'sixth' => 'flex h-16 flex-1 flex-col',
                     'seventh' => 'flex flex-1 flex-col gap-y-1',
                 ],
+                'backdrop' => 'fixed inset-0 bg-gray-900/80 dark:bg-dark-900/50',
                 'button' => [
                     'wrapper' => 'absolute left-full top-0 flex w-16 justify-center pt-5',
                     'size' => 'w-6 h-6 text-white',
