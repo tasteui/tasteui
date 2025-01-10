@@ -34,7 +34,7 @@ class Layout extends TallStackUiComponent implements Personalization
                 'first' => 'min-h-full',
                 'second' => 'md:pl-72',
             ],
-            'main' => 'max-w-full mx-auto p-10',
+            'main' => 'mx-auto max-w-full p-10',
         ]);
     }
 }

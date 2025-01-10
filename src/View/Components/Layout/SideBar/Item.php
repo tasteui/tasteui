@@ -34,12 +34,11 @@ class Item extends TallStackUiComponent implements Personalization
     final public function matches(): bool
     {
         if ($this->route) {
-            $app = config('app.url');
             $str = str($this->route);
 
             // If start with / and does not contain the app.url,
             // then we assume it is a basic url: /dashboard
-            if ($str->startsWith('/') && ! $str->contains($app)) {
+            if ($str->startsWith('/') && ! $str->contains(config('app.url'))) {
                 return url($this->route) === url(request()->url());
             }
 
@@ -57,24 +56,24 @@ class Item extends TallStackUiComponent implements Personalization
     {
         return Arr::dot([
             'group' => [
-                'button' => 'flex w-full items-center gap-x-3 rounded-md p-2 text-left text-sm font-semibold text-primary-500 hover:bg-primary-50/50 transition-all',
+                'button' => 'text-primary-500 hover:bg-primary-50/50 dark:hover:bg-dark-600/50 flex w-full items-center gap-x-3 rounded-md p-2 text-left text-sm font-semibold transition-all dark:text-white',
                 'icon' => [
-                    'base' => 'w-6 h-6 shrink-0 text-primary-500',
+                    'base' => 'text-primary-500 h-6 w-6 shrink-0 dark:text-white',
                     'collapse' => [
-                        'base' => 'ml-auto w-4 h-4 shrink-0 text-primary-500 transition-all',
-                        'rotate' => 'rotate-180 text-primary-500',
+                        'base' => 'text-primary-500 ml-auto h-4 w-4 shrink-0 transition-all dark:text-white',
+                        'rotate' => 'text-primary-500 rotate-180 dark:text-white',
                     ],
                 ],
                 'group' => 'mt-1 px-2 pl-5',
             ],
             'item' => [
-                'wrapper' => 'border-l pl-2 py-0.5 border-outline',
+                'wrapper' => 'border-outline border-l dark:border-dark-500 py-0.5 pl-2',
                 'state' => [
                     'base' => 'group flex items-center gap-x-3 rounded-md p-2 text-sm font-semibold transition-all',
-                    'current' => 'text-primary-500 bg-primary-50',
-                    'normal' => 'text-primary-500 hover:bg-primary-50/50',
+                    'current' => 'text-primary-500 bg-primary-50 dark:bg-dark-600 dark:text-white',
+                    'normal' => 'text-primary-500 hover:bg-primary-50/50 dark:hover:bg-dark-600/50 dark:text-white',
                 ],
-                'icon' => 'w-6 h-6 shrink-0 text-primary-500 transition-all',
+                'icon' => 'text-primary-500 h-6 w-6 shrink-0 transition-all dark:text-white',
             ],
         ]);
     }
