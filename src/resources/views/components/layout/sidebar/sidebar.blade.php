@@ -2,7 +2,7 @@
     $personalize = $classes();
 @endphp
 
-<div class="{{ $personalize['mobile.wrapper.first'] }}" role="dialog" aria-modal="true" x-show="tallStackUiMenuMobile">
+<div class="{{ $personalize['mobile.wrapper.first'] }}" x-show="tallStackUiMenuMobile">
     <div x-transition:enter="transition-opacity ease-linear duration-300"
          x-transition:enter-start="opacity-0"
          x-transition:enter-end="opacity-100"
