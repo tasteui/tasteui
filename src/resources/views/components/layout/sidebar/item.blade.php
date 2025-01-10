@@ -5,7 +5,7 @@
 @aware(['smart' => null, 'navigate' => null, 'navigateHover' => null])
 
 @if ($slot->isNotEmpty())
-    <li x-data="{ show : @js($opened ?? $smart ?? false) }">
+    <li x-data="{ show : @js($opened ?? \Illuminate\Support\Str::contains($slot, 'ts-ui-group-opened') ?? false) }">
         <button x-on:click="show = !show"
                 type="button"
                 class="{{ $personalize['group.button'] }}">
@@ -38,7 +38,7 @@
             @class([
                 $personalize['item.state.base'],
                 $personalize['item.state.normal'] => ! $current || (! $smart && ! $matches()),
-                $personalize['item.state.current'] => $current || ($smart && $matches()),
+                \Illuminate\Support\Arr::toCssClasses(['ts-ui-group-opened', $personalize['item.state.current']]) => $current || ($smart && $matches()),
             ]) @if ($navigate) wire:navigate @elseif ($navigateHover) wire:navigate.hover @endif>
             @if ($icon instanceof \Illuminate\View\ComponentSlot)
                 {{ $icon }}
