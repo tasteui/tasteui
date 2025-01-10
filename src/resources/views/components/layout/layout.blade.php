@@ -6,17 +6,8 @@
     @if ($top)
         {{ $top }}
     @endif
-    @if ($sideBar?->isNotEmpty() && ! $sideBar?->attributes->has('raw'))
-        <x-dynamic-component :component="TallStackUi::prefix('side-bar')">
-            @if ($brand)
-                <x-slot:brand>
-                    {{ $brand }}
-                </x-slot:brand>
-            @endif
-            {{ $sideBar }}
-        </x-dynamic-component>
-    @elseif ($sideBar?->attributes->has('raw'))
-        {{ $sideBar }}
+    @if ($menu)
+        {{ $menu }}
     @endif
     <div class="{{ $personalize['wrapper.first'] }}">
         <div class="{{ $personalize['wrapper.second'] }}">

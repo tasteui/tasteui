@@ -12,8 +12,12 @@ use TallStackUi\TallStackUiComponent;
 #[SoftPersonalization('layout.side-bar')]
 class SideBar extends TallStackUiComponent implements Personalization
 {
-    public function __construct(public ComponentSlot|string|null $brand = null)
-    {
+    public function __construct(
+        public ComponentSlot|string|null $brand = null,
+        public ?bool $smart = null,
+        public ?bool $navigate = null,
+        public ?bool $navigateHover = null
+    ) {
         //
     }
 
