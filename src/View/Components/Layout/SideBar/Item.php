@@ -71,7 +71,7 @@ class Item extends TallStackUiComponent implements Personalization
                 'state' => [
                     'base' => 'group flex items-center gap-x-3 rounded-md p-2 text-sm font-semibold transition-all',
                     'current' => 'text-primary-500 bg-primary-50 dark:bg-dark-600 dark:text-white',
-                    'normal' => 'text-primary-500 hover:bg-primary-50/50 dark:hover:bg-dark-600/50 dark:text-white',
+                    'normal' => 'text-primary-500 hover:bg-primary-50 dark:hover:bg-dark-600 dark:text-white',
                 ],
                 'icon' => 'text-primary-500 h-6 w-6 shrink-0 transition-all dark:text-white',
             ],
