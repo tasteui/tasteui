@@ -44,6 +44,7 @@ use TallStackUi\View\Components\Interaction\Toast;
 use TallStackUi\View\Components\Layout\Header;
 use TallStackUi\View\Components\Layout\Layout;
 use TallStackUi\View\Components\Layout\SideBar\Item as SideBarItem;
+use TallStackUi\View\Components\Layout\SideBar\Separator;
 use TallStackUi\View\Components\Layout\SideBar\SideBar;
 use TallStackUi\View\Components\Link;
 use TallStackUi\View\Components\Loading;
@@ -266,8 +267,6 @@ class Personalization
         $class = match ($component) {
             'index' => Layout::class,
             'header' => Header::class,
-            'side-bar' => SideBar::class,
-            'side-bar.item' => SideBarItem::class,
             default => $component,
         };
 
@@ -345,6 +344,22 @@ class Personalization
         $class = match ($component) {
             'native' => SelectNative::class,
             'styled' => SelectStyled::class,
+            default => $component,
+        };
+
+        return $this->component($class);
+    }
+
+    public function sideBar(?string $component = null, ?string $scope = null): PersonalizationFactory
+    {
+        $component ??= 'side-bar';
+
+        $this->scope ??= $scope;
+
+        $class = match ($component) {
+            'side-bar' => SideBar::class,
+            'item' => SideBarItem::class,
+            'separator' => Separator::class,
             default => $component,
         };
 

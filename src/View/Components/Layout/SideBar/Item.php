@@ -10,7 +10,7 @@ use TallStackUi\Foundation\Attributes\SoftPersonalization;
 use TallStackUi\Foundation\Personalization\Contracts\Personalization;
 use TallStackUi\TallStackUiComponent;
 
-#[SoftPersonalization('layout.side-bar.item')]
+#[SoftPersonalization('sideBar.item')]
 class Item extends TallStackUiComponent implements Personalization
 {
     public function __construct(

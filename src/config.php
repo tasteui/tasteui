@@ -328,6 +328,7 @@ return [
         'rating' => Components\Rating::class,
         'side-bar' => Components\Layout\SideBar\SideBar::class,
         'side-bar.item' => Components\Layout\SideBar\Item::class,
+        'side-bar.separator' => Components\Layout\SideBar\Separator::class,
         'select.native' => Components\Form\Select\Native::class,
         'select.styled' => Components\Form\Select\Styled::class,
         'signature' => Components\Signature::class,
