@@ -58,7 +58,7 @@ class Errors extends TallStackUiComponent implements Personalization
             'title' => [
                 'wrapper' => 'flex items-center justify-between border-b pb-3',
                 'text' => 'text-md inline-flex items-center gap-1 font-bold',
-                'icon' => 'w-12 h-12',
+                'icon' => 'w-5 h-5',
             ],
             'body' => [
                 'wrapper' => 'ml-5 mt-2 pl-1',

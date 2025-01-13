@@ -38,6 +38,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Invalidate Components
+    |--------------------------------------------------------------------------
+    |
+    | Controls the "invalidation" of all form input components globally.
+    | The "Invalidate" is the way to prevent showing validation errors in the
+    | components. You can set this value as "true" to invalidate all components globally.
+    | What means, you will not need anymore to pass "invalidate" per component.
+    */
+    'invalidate_global' => false,
+
+    /*
+    |--------------------------------------------------------------------------
     | Debug Mode
     |--------------------------------------------------------------------------
     |

@@ -32,7 +32,7 @@ abstract class AbstractRuntime
         return app(BindProperty::class, [
             'attributes' => $this->data['attributes'],
             'errors' => $this->errors,
-            'invalidate' => $this->data['invalidate'] ?? false,
+            'invalidate' => $this->data['invalidate'] ?? config('tallstackui.invalidate_global') ?? false,
             // Livewire here is a boolean to check if the
             // component is being used within a Livewire context.
             'livewire' => $this->livewire !== null,
