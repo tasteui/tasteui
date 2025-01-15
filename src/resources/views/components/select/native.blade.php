@@ -16,20 +16,20 @@
             $personalize['error'] => $error
         ]) }}>
         @forelse ($options as $option)
-            @if (is_array($option[$selectable['value']]))
+            @if (!empty($selectable) && is_array($option[$selectable['value']]))
                 <optgroup label="{{ $option[$selectable['label']] }}">
                     @foreach ($option[$selectable['value']] as $children)
                         @php
-                            $value = (string) ($select ? $children[$selectable['value']] : $children);
+                            $value = (string) (!empty($selectable) ? $children[$selectable['value']] : $children);
                         @endphp
-                        <option value="{{ $value }}" @selected(!$livewire && $value === (string) $attributes->get('value'))>{{ $select ? $children[$selectable['label']] : $children }}</option>
+                        <option value="{{ $value }}" @selected(!$livewire && $value === (string) $attributes->get('value'))>{{ !empty($selectable) ? $children[$selectable['label']] : $children }}</option>
                     @endforeach
                 </optgroup>
             @else
                 @php
-                    $value = (string) ($select ? $option[$selectable['value']] : $option);
+                    $value = (string) (!empty($selectable) ? $option[$selectable['value']] : $option);
                 @endphp
-                <option value="{{ $value }}" @selected(!$livewire && $value === (string) $attributes->get('value'))>{{ $select ? $option[$selectable['label']] : $option }}</option>
+                <option value="{{ $value }}" @selected(!$livewire && $value === (string) $attributes->get('value'))>{{ !empty($selectable) ? $option[$selectable['label']] : $option }}</option>
             @endif
         @empty
             {{ $slot }}

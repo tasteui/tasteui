@@ -41,10 +41,10 @@ return [
     | Invalidate Components
     |--------------------------------------------------------------------------
     |
-    | Controls the "invalidation" of all form input components globally.
-    | The "Invalidate" is the way to prevent showing validation errors in the
-    | components. You can set this value as "true" to invalidate all components globally.
-    | What means, you will not need anymore to pass "invalidate" per component.
+    | Controls the "invalidation" of all form components globally. The "invalidate"
+    | is the way to prevent showing validation errors in the components. When you
+    | set this value as "true" you will use "invalidate" of all form components
+    | globally, without need to specific it individually per component.
     */
     'invalidate_global' => false,
 
