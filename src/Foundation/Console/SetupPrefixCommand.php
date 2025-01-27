@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Process;
 
 use function Laravel\Prompts\text;
 
+// TODO: check if .env exists
 class SetupPrefixCommand extends Command
 {
     public $description = 'Set up Component prefix.';
