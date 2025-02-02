@@ -26,7 +26,7 @@
              ])>
             <div class="{{ $personalize['wrapper.third'] }}">
                 <div class="{{ $personalize['wrapper.fourth'] }}">
-                    <div class="flex-shrink-0">
+                    <div class="shrink-0">
                         <div x-show="toast.type === 'success'">
                             <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                  :icon="TallStackUi::icon('check-circle')"

@@ -32,7 +32,7 @@
                                      class="{{ $personalize['icon'] }}" />
             </div>
         @endif
-        <div class="flex-grow">
+        <div class="grow">
             @if ($title) <h2 class="{{ $personalize['title'] }}">{{ $title }}</h2> @endif
             @if ($slot->isNotEmpty())
                 {{ $slot }}

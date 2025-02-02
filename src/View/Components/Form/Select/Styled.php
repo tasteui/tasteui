@@ -69,7 +69,7 @@ class Styled extends TallStackUiComponent implements Personalization
             'input' => [
                 'wrapper' => [
                     'base' => 'dark:text-dark-300 dark:bg-dark-800 dark:focus:ring-primary-600 dark:disabled:bg-dark-600 dark:ring-dark-600 mt-1 flex w-full cursor-pointer items-center gap-x-2 rounded-md border-0 bg-white py-1.5 text-sm ring-1 ring-gray-300 transition disabled:bg-gray-100 disabled:text-gray-500 disabled:ring-gray-300',
-                    'color' => 'focus:ring-primary-600 text-gray-600 focus:outline-none focus:ring-2',
+                    'color' => 'focus:ring-primary-600 text-gray-600 focus:outline-hidden focus:ring-2',
                     'error' => $this->error(),
                 ],
                 'content' => [
@@ -95,7 +95,7 @@ class Styled extends TallStackUiComponent implements Personalization
                     'icon' => 'dark:text-dark-400 h-5 w-5 text-gray-500 transition hover:text-red-500',
                 ],
                 'list' => [
-                    'wrapper' => 'soft-scrollbar z-50 max-h-60 w-full overflow-auto text-base focus:outline-none sm:text-sm',
+                    'wrapper' => 'soft-scrollbar z-50 max-h-60 w-full overflow-auto text-base focus:outline-hidden sm:text-sm',
                     'loading' => [
                         'wrapper' => 'flex items-center justify-center space-x-4 p-4',
                         'class' => 'text-primary-600 dark:text-dark-400 h-12 w-12 animate-spin',
@@ -111,7 +111,7 @@ class Styled extends TallStackUiComponent implements Personalization
                         ],
                     ],
                     'item' => [
-                        'wrapper' => 'dark:text-dark-300 dark:hover:bg-dark-500 dark:focus:bg-dark-500 relative cursor-pointer select-none px-2 py-2 text-gray-700 transition hover:bg-gray-100 focus:bg-gray-100 focus:outline-none',
+                        'wrapper' => 'dark:text-dark-300 dark:hover:bg-dark-500 dark:focus:bg-dark-500 relative cursor-pointer select-none px-2 py-2 text-gray-700 transition hover:bg-gray-100 focus:bg-gray-100 focus:outline-hidden',
                         'options' => 'flex items-center justify-between',
                         'grouped' => 'flex items-center justify-between pl-3',
                         'base' => 'flex items-center truncate',

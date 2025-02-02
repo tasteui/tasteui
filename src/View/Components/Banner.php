@@ -55,7 +55,7 @@ class Banner extends TallStackUiComponent implements Personalization
                 'lg' => 'py-4',
             ],
             'slot.left' => 'absolute left-0 ml-4 text-sm font-medium',
-            'text' => 'flex-grow text-center text-sm font-medium',
+            'text' => 'grow text-center text-sm font-medium',
             'icon' => 'w-5 h-5 text-white',
             'close' => 'h-4 w-4 cursor-pointer',
         ]);

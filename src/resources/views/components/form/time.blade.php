@@ -74,7 +74,7 @@
                        x-on:change="alert(1);"
                        x-on:mouseenter="$refs.hours.classList.add('{{ $personalize['range.light'] }}', '{{ $personalize['range.dark'] }}')"
                        x-on:mouseleave="$refs.hours.classList.remove('{{ $personalize['range.light'] }}', '{{ $personalize['range.dark'] }}')"
-                       @class(['focus:outline-none', $personalize['range.base'], $personalize['range.thumb']])>
+                       @class(['focus:outline-hidden', $personalize['range.base'], $personalize['range.thumb']])>
                 <input type="range"
                        min="0"
                        max="59"
@@ -85,7 +85,7 @@
                        dusk="tallstackui_time_minutes"
                        x-on:mouseenter="$refs.minutes.classList.add('{{ $personalize['range.light'] }}', '{{ $personalize['range.dark'] }}')"
                        x-on:mouseleave="$refs.minutes.classList.remove('{{ $personalize['range.light'] }}', '{{ $personalize['range.dark'] }}')"
-                       @class(['focus:outline-none', $personalize['range.base'], $personalize['range.thumb']])>
+                       @class(['focus:outline-hidden', $personalize['range.base'], $personalize['range.thumb']])>
             </div>
             @if ($format === '12')
                 <div x-ref="format" {{ $attributes->only('x-on:interval') }} class="{{ $personalize['interval.buttons.wrapper'] }}">

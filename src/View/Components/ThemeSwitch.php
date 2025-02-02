@@ -52,7 +52,7 @@ class ThemeSwitch extends TallStackUiComponent implements Personalization
                 ],
             ],
             'switch' => [
-                'button' => 'focus:ring-primary-500 dark:ring-offset-dark-900 relative flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2',
+                'button' => 'focus:ring-primary-500 dark:ring-offset-dark-900 relative shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-hidden focus:ring-2 focus:ring-offset-2',
                 'wrapper' => 'text-dark-500 pointer-events-none relative inline-block transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out',
                 'on' => 'bg-primary-500',
                 'off' => 'bg-gray-200',

@@ -72,7 +72,7 @@ class Time extends TallStackUiComponent implements Personalization
                 'dark' => 'dark:bg-dark-600',
             ],
             'helper' => [
-                'wrapper' => 'mt-2 flex flex-col space-y-6 outline-none',
+                'wrapper' => 'mt-2 flex flex-col space-y-6 outline-hidden',
                 'button' => 'w-full uppercase',
             ],
         ]);
