@@ -27,7 +27,7 @@
                          x-ref="input"
                          x-model="model"
                          maxlength="7">
-        <x-slot:prefix>
+        <x-slot:prefix class="ml-2 mr-1">
             <div class="{{ $personalize['selected.wrapper'] }}">
                 <template x-if="model">
                     <button type="button"
@@ -37,7 +37,7 @@
                 </template>
             </div>
         </x-slot:prefix>
-        <x-slot:suffix>
+        <x-slot:suffix class="mr-2">
             <div class="flex items-center min-w-full">
                 <div @class([ $personalize['clearable.wrapper'], $personalize['clearable.padding']])>
                     <button type="button" dusk="tallstackui_form_color_clearable" x-show="clearable">

@@ -31,7 +31,7 @@
                              dusk="tallstackui_upload_input"
                              invalidate
                              floatable>
-                             <x-slot:suffix>
+                             <x-slot:suffix class="ml-1 mr-2">
                                 <button type="button" x-on:click="show = !show">
                                     <x-dynamic-component :component="TallStackUi::prefix('icon')"
                                                          :icon="TallStackUi::icon('arrow-up-tray')"
