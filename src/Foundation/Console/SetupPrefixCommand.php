@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Process;
 
 use function Laravel\Prompts\text;
 
-// TODO: check if .env exists
 class SetupPrefixCommand extends Command
 {
     public $description = 'Set up Component prefix.';
@@ -77,6 +76,12 @@ class SetupPrefixCommand extends Command
      */
     private function env(string $prefix): bool|string
     {
+        if (! file_exists(base_path('.env'))) {
+            $this->components->error('The .env file does not exist.');
+
+            return self::FAILURE;
+        }
+
         try {
             $env = file_get_contents(base_path('.env'));
             $prefix = $prefix === 'null' ? '' : "\"$prefix\"";

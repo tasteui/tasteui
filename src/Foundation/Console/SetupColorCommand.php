@@ -8,11 +8,11 @@ use TallStackUi\Foundation\Attributes\ColorsThroughOf;
 
 use function Laravel\Prompts\suggest;
 
-class PublishColorsClassCommand extends Command
+class SetupColorCommand extends Command
 {
     public $description = 'Publish stubs to personalize Component colors.';
 
-    public $signature = 'tallstackui:colors';
+    public $signature = 'tallstackui:setup-colors';
 
     public function handle(): int
     {
