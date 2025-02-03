@@ -12,7 +12,7 @@ class SetupColorCommand extends Command
 {
     public $description = 'Publish stubs to personalize Component colors.';
 
-    public $signature = 'tallstackui:setup-colors';
+    public $signature = 'tallstackui:setup-color';
 
     public function handle(): int
     {

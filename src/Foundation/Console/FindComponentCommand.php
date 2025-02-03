@@ -26,7 +26,7 @@ class FindComponentCommand extends Command
 
     public $description = 'Find Components occurrences usage through all Blade files.';
 
-    public $signature = 'tallstackui:occurrences';
+    public $signature = 'tallstackui:find-component';
 
     public function handle(): int
     {

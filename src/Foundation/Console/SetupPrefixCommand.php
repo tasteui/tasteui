@@ -12,7 +12,7 @@ class SetupPrefixCommand extends Command
 {
     public $description = 'Set up Component prefix.';
 
-    public $signature = 'tallstackui:prefix';
+    public $signature = 'tallstackui:setup-prefix';
 
     public function handle(): int
     {
