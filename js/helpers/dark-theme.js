@@ -1,6 +1,5 @@
 export default (data = {}) => ({
   storage: data?.name ?? 'dark-theme',
-
   darkTheme: (() => {
     const storage = localStorage.getItem(data?.name ?? 'dark-theme');
 
