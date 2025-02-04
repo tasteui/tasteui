@@ -77,7 +77,7 @@ class Card extends TallStackUiComponent implements Personalization
                     'top' => 'rounded-t-lg',
                     'bottom' => 'rounded-b-lg',
                 ],
-                'size' => 'w-full h-64',
+                'size' => 'w-full',
             ],
         ]);
     }
